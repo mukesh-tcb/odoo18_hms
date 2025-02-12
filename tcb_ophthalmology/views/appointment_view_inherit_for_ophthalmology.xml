@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    
+    <record id="appointment_form_view_inherit" model="ir.ui.view">
+        <field name="name">tcb.appointment.view.form.inherit</field>
+        <field name="model">hms.appointment</field>
+        <field name="inherit_id" ref="tcb_hms_base.view_hms_appointment_form"/>
+        <field name="arch" type="xml">
+
+
+        <xpath expr="//field[@name='blood_group']" position="after">
+                <field name="ophthalmology_created" />
+                <field name="ophthalmology_id" />
+            </xpath>
+            <xpath expr="//button[@name='action_reset_to_draft']" position="after">
+                <button name="action_create_ophthalmology_request" string="Create Ophthalmology Request" 
+                type="object" class="btn-outline-primary" invisible="state not in 'confirmed' or ophthalmology_created"/>
+            </xpath>
+        </field>
+    </record>
+
+        <!-- For Prescription -->
+    <record id="appointment_form_view_inherit_for_prescription_inherit" model="ir.ui.view">
+        <field name="name">appointment.form.inherit.for.prescription.inherit</field>
+        <field name="model">hms.appointment</field>
+        <field name="inherit_id" ref="tcb_prescription_order.appointment_form_view_inherit_for_prescription" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_show_prescription']" position="after">
+                <button class="oe_stat_button" name="action_show_ophthalmology" 
+                        type="object" invisible="state not in 'confirmed'" icon="fa-eye" >
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value" 
+                                widget="statinfo">Show Ophthalmology</span><span class="o_stat_value" widget="statinfo">
+                                <field name="ophthalmology_count"/></span>
+                            </div>
+                        </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

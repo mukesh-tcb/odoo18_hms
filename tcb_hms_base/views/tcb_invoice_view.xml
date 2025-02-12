@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="tcb_invoice_form_view" model="ir.ui.view">
+        <field name="name">tcb.invoice.form.view</field>
+        <field name="model">tcb.invoice</field>
+        <field name="arch" type="xml">
+                <!-- This condition could be applied after implementation of refund module for payment ribbon -->
+                <!-- or move_type not in ('out_invoice', 'out_refund', 'in_invoice', 'in_refund', 'out_receipt', 'in_receipt') -->
+            <form>
+            <!-- Status Section -->
+            <header>
+
+                    <button name="action_confirm" 
+                            string="Confirm" 
+                            type="object" 
+                            class="btn-primary" invisible="state not in 'draft'"/>
+                    <button name="action_register_payment" string="Register Payment" type="object"
+                        class="btn-primary"
+                        invisible="state in ('cancel','draft') or payment_state in 'fully_paid'"/>
+                    <button name="action_refund_payment" string="Refund" type="object"
+                        class="btn-warning" invisible="state in ('cancel','draft') or payment_state in ('not_paid','fully_reversed')"/>
+                    
+                    <button name="action_draft" 
+                            string="Set to Draft" 
+                            type="object" invisible="state in 'draft'"/>
+                    <button name="action_cancel"
+                            string="Cancel"
+                            type="object" invisible="state in 'cancelled'"/>
+                <field name="state" widget="statusbar" 
+                    statusbar_visible="draft,posted,cancelled"
+                    decoration-success="state == 'posted'"
+                    decoration-info="state == 'draft'"
+                    decoration-muted="state == 'draft'"/>
+            </header>
+
+            <sheet>
+                <widget name="web_ribbon" 
+                    title="Not Paid" 
+                    bg_color="bg-dark" 
+                    invisible="payment_state != 'not_paid'"/>
+                <widget name="web_ribbon" 
+                    title="Fully Paid"
+                    bg_color="bg-success"
+                    invisible="payment_state != 'fully_paid'"/>
+                <widget name="web_ribbon" 
+                    title="Partially Paid" 
+                    bg_color="bg-info" 
+                    invisible="payment_state != 'partially_paid'"/>
+                <widget name="web_ribbon" 
+                    title="Fully Reversed" 
+                    bg_color="bg-danger" 
+                    invisible="payment_state != 'fully_reversed'"/>
+                <widget name="web_ribbon" 
+                    title="Partially Reversed" 
+                    bg_color="bg-warning" 
+                    invisible="payment_state != 'partially_reversed'"/>
+                <!-- Invoice Details -->
+                <div class="oe_title">
+                    <h1>
+                        <field name="name" placeholder="Invoice Number" required="1"/>
+                    </h1>
+                </div>
+                <group>
+                    <group name="invoice_left_column">
+                        <field name="payment_state" readonly="0"/>
+                        <field name="patient_id" required="0"/>
+                        <field name="patient_name" required="0"/>
+                        <field name="invoice_date" required="1"/>
+                        <field name="invoice_datetime" required="1"/>
+                    </group>
+                    
+                    <group>
+                    <separator string="Amount Details" colspan="4" />
+                
+            
+        <group name="financial_details_left">
+            <field name="amount_total" string="Total Amount" widget="monetary"/>
+            <field name="discount_amount" string="Discount Amount" widget="monetary"/>
+            <field name="payable_amount" string="Payable Amount" widget="monetary" readonly="1"/>
+        </group>
+        
+        <group name="financial_details_right">
+            <field name="total_paid_amount" string="Paid Amount" widget="monetary" readonly="1"/>
+            <field name="total_refunded_amount" string="Refunded Amount" widget="monetary" readonly="1"/>
+            <field name="total_received_amount" string="Total Received" widget="monetary" readonly="1"/>
+            <field name="amount_pending" string="Pending Amount" widget="monetary" readonly="1"/>
+        </group>
+    </group>
+                    
+                </group>
+                <notebook>
+                        <page string="Invoice Lines">
+                            <field name="invoice_line_ids" readonly="state not in ('draft')">
+                                <list editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="quantity"/>
+                                    <field name="price_unit" readonly="0"/>
+                                    <field name="subtotal"/>
+                                </list>
+                            </field>
+                        </page>
+
+
+                        <page string="Payments" invisible="state in 'draft'">
+                            <field name="payment_line_ids" readonly="state not in ('draft')">
+                            <list name="payment_lines" editable="bottom" decoration-danger="payment_type == 'send' and state == 'posted'" 
+                            decoration-warning="state == 'draft'" decoration-success="payment_type == 'receive' and state == 'posted'"
+                            decoration-bold= "state == 'cancelled'">
+                                <field name="name" readonly="0" options="{'no_create': True, 'no_open': False}"/>
+                                <field name="patient_id" readonly="0" />
+                                <field name="invoice_id"/>
+                                <field name="payment_mode"/>
+                                <field name="payment_amount"/>
+                                <field name="payment_type"/>
+                                <field name="payment_datetime" readonly="0"/>
+                                <field name="state" readonly="1"/>
+                            </list>
+                            </field>
+
+                            <group col="4" class="oe_subtotal_footer">
+                                <field name="total_paid_amount" string="Total Paid" widget="monetary"/>
+                                <field name="total_refunded_amount" string="Total Refunded" widget="monetary"/>
+                                <field name="total_received_amount" string="Total Received" widget="monetary"/>
+                            </group>
+                    </page>
+
+
+                    <page name="more_info" string="More Info">
+                    <group>
+                    <field name="appointment_id" readonly="1"/>
+                    <field name="physician_id" readonly="1"/>
+                    </group>
+                    </page>
+                </notebook>
+
+            </sheet>
+
+                    <group name="footer_amounts" style="align-self: self-end;  margin: 30px;font-size: 21px;">
+                        <field name="amount_total" widget="monetary"/>
+                        <field name="amount_pending" widget="monetary"/>
+                    </group>
+        <chatter/>
+        </form>
+        </field>
+    </record>
+
+
+    <!-- Sequence for Invoice -->
+    <record id="tcb_invoice_sequence" model="ir.sequence">
+        <field name="name">TCB Invoice Sequence</field>
+        <field name="code">tcb.invoice</field>
+        <field name="prefix">INV/</field>
+        <field name="padding">5</field>
+    </record>
+
+
+    <record id="tcb_invoice_tree_view" model="ir.ui.view">
+        <field name="name">tcb.invoice.tree.view</field>
+        <field name="model">tcb.invoice</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="invoice_datetime"/>
+                <field name="amount_total" string="Total Amount" widget="monetary"/>
+                <field name="total_received_amount" string="Total Received" widget="monetary"/>
+                <field name="state" widget="badge" decoration-success="state == 'posted'"
+                    decoration-danger="state == 'cancel'"/>
+                <field name="amount_pending" string="Pending Amount" widget="monetary" readonly="1"/>
+                <field name="payment_state"/>
+            </list>
+        </field>
+    </record>
+
+
+    <record id="action_open_invoice" model="ir.actions.act_window">
+        <field name="name">Invoice</field>
+        <field name="res_model">tcb.invoice</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Record Found
+            </p>
+            <p>
+                Click to add a Physician.
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem id="tcb_invoice_menu" 
+    name="Invoices"
+    action="tcb_hms_base.action_open_invoice" 
+    sequence="10"
+    />
+</odoo>

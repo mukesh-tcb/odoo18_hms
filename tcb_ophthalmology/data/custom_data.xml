@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+<!--        UnaidedDistEye-->
+        <record id="tcb_dist_eye_6_12_p" model = "unaided.dist.eye">
+            <field name="name">6/12P</field>
+        </record>
+        <record id="tcb_dist_eye_6_18" model = "unaided.dist.eye">
+            <field name="name">6/18</field>
+        </record>
+        <record id="tcb_dist_eye_6_18_p" model = "unaided.dist.eye">
+            <field name="name">6/18P</field>
+        </record>
+        <record id="tcb_dist_eye_6_24" model = "unaided.dist.eye">
+            <field name="name">6/24</field>
+        </record>
+        <record id="tcb_dist_eye_6_24_p" model = "unaided.dist.eye">
+            <field name="name">6/24P</field>
+        </record>
+
+
+        <record id="tcb_near_eye_n4" model = "unaided.near.eye">
+            <field name="name">N4</field>
+        </record>
+        <record id="tcb_near_eye_n6" model = "unaided.near.eye">
+            <field name="name">N6</field>
+        </record>
+        <record id="tcb_near_eye_n8" model = "unaided.near.eye">
+            <field name="name">N8</field>
+        </record>
+        <record id="tcb_near_eye_n10" model = "unaided.near.eye">
+            <field name="name">N10</field>
+        </record>
+        <record id="tcb_near_eye_n12" model = "unaided.near.eye">
+            <field name="name">N12</field>
+        </record>
+        <record id="tcb_near_eye_n18" model = "unaided.near.eye">
+            <field name="name">N18</field>
+        </record>
+    </data>
+</odoo>

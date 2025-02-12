@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="tcb_ph_acid_fallen" model="tcb.history">
+            <field name="name">ACID FALLEN</field>
+        </record>
+
+        <record id="tcb_ph_amblyopia" model="tcb.history">
+            <field name="name">AMBLYOPIA</field>
+        </record>
+
+        <record id="tcb_ph_anterior_ischemic_optic_neuropathy" model="tcb.history">
+            <field name="name">ANTERIOR ISCHEMIC OPTIC NEUROPATHY</field>
+        </record>
+
+        <record id="tcb_ph_anti_tb_treatment" model="tcb.history">
+            <field name="name">ANTI TB TREATMENT</field>
+        </record>
+
+        <record id="tcb_ph_antivegf_therapy" model="tcb.history">
+            <field name="name">ANTIVEGF THERAPY</field>
+        </record>
+
+        <record id="tcb_ph_avastin_inj_done" model="tcb.history">
+            <field name="name">AVASTIN INJ DONE</field>
+        </record>
+
+        <record id="tcb_ph_barrage_laser_done" model="tcb.history">
+            <field name="name">BARRAGE LASER DONE</field>
+        </record>
+
+        <record id="tcb_ph_blunt_injury" model="tcb.history">
+            <field name="name">BLUNT INJURY</field>
+        </record>
+
+        <record id="tcb_ph_by_pass_sy_done" model="tcb.history">
+            <field name="name">BY PASS SY DONE</field>
+        </record>
+
+        <record id="tcb_ph_c3r_done" model="tcb.history">
+            <field name="name">C3R DONE</field>
+        </record>
+
+        <record id="tcb_ph_cataract_surgery" model="tcb.history">
+            <field name="name">CATARACT SURGERY</field>
+        </record>
+
+        <record id="tcb_ph_cataract_sy_done" model="tcb.history">
+            <field name="name">CATARACT SY DONE</field>
+        </record>
+
+        <record id="tcb_ph_chemical_fallen" model="tcb.history">
+            <field name="name">CHEMICAL FALLEN</field>
+        </record>
+
+        <record id="tcb_ph_choroidal_neovascularization" model="tcb.history">
+            <field name="name">CHOROIDAL NEOVASCULARIZATION</field>
+        </record>
+
+        <record id="tcb_ph_cl_not_brought" model="tcb.history">
+            <field name="name">CL NOT BROUGHT</field>
+        </record>
+
+        <record id="tcb_ph_conjunctivitis" model="tcb.history">
+            <field name="name">CONJUNCTIVITIS</field>
+        </record>
+
+        <record id="tcb_ph_consanguinity" model="tcb.history">
+            <field name="name">CONSANGUINITY</field>
+        </record>
+
+        <record id="tcb_ph_coreal_tear_repair_done" model="tcb.history">
+            <field name="name">COREAL TEAR REPAIR DONE</field>
+        </record>
+
+
+        <record id="tcb_ph_cracker_injury" model="tcb.history">
+            <field name="name">CRACKER INJURY</field>
+        </record>
+
+        <record id="tcb_ph_cryotherapy_done" model="tcb.history">
+            <field name="name">CRYOTHERAPY DONE</field>
+        </record>
+
+        <record id="tcb_ph_csr" model="tcb.history">
+            <field name="name">CSR</field>
+        </record>
+
+        <record id="tcb_ph_dcr_done" model="tcb.history">
+            <field name="name">DCR DONE</field>
+        </record>
+
+        <record id="tcb_ph_dct_done" model="tcb.history">
+            <field name="name">DCT DONE</field>
+        </record>
+
+        <record id="tcb_ph_disc_edema" model="tcb.history">
+            <field name="name">DISC EDEMA</field>
+        </record>
+
+        <record id="tcb_ph_dry_eye" model="tcb.history">
+            <field name="name">DRY EYE</field>
+        </record>
+
+        <record id="tcb_ph_desk_surgery" model="tcb.history">
+            <field name="name">DESK SURGERY</field>
+        </record>
+
+        <record id="tcb_ph_endophthalmitis" model="tcb.history">
+            <field name="name">ENDOPHTHALMITIS</field>
+        </record>
+
+        <record id="tcb_ph_eylea" model="tcb.history">
+            <field name="name">EYLEA</field>
+        </record>
+
+        <record id="tcb_ph_ffa_done" model="tcb.history">
+            <field name="name">FFA DONE</field>
+        </record>
+
+        <record id="tcb_ph_filling_laser_done" model="tcb.history">
+            <field name="name">FILLING LASER DONE</field>
+        </record>
+
+        <record id="tcb_ph_focal_laser_done" model="tcb.history">
+            <field name="name">FOCAL LASER DONE</field>
+        </record>
+
+        <record id="tcb_ph_glaucoma" model="tcb.history">
+            <field name="name">GLAUCOMA2</field>
+        </record>
+
+        <record id="tcb_ph_glaucoma_sy_done" model="tcb.history">
+            <field name="name">GLAUCOMA SY DONE</field>
+        </record>
+
+        <record id="tcb_ph_icl_done" model="tcb.history">
+            <field name="name">ICL DONE</field>
+        </record>
+
+        <record id="tcb_ph_icr_done" model="tcb.history">
+            <field name="name">ICR DONE</field>
+        </record>
+
+        <record id="tcb_ph_inj_ranibizumab" model="tcb.history">
+            <field name="name">INJ RANIBIZUMAB</field>
+        </record>
+
+        <record id="tcb_ph_injury" model="tcb.history">
+            <field name="name">INJURY</field>
+        </record>
+
+        <record id="tcb_ph_injury_with_ball" model="tcb.history">
+            <field name="name">INJURY WITH BALL</field>
+        </record>
+
+        <record id="tcb_ph_injury_with_hand" model="tcb.history">
+            <field name="name">INJURY WITH HAND</field>
+        </record>
+
+        <record id="tcb_ph_injury_with_unknown_material" model="tcb.history">
+            <field name="name">INJURY WITH UNKNOWN MATERIAL</field>
+        </record>
+
+        <record id="tcb_ph_insect_trauma" model="tcb.history">
+            <field name="name">INSECT TRAUMA</field>
+        </record>
+
+        <record id="tcb_ph_ipcl_done" model="tcb.history">
+            <field name="name">IPCL DONE</field>
+        </record>
+
+        <record id="tcb_ph_ivta_inj" model="tcb.history">
+            <field name="name">IVTA INJ</field>
+        </record>
+
+        <record id="tcb_ph_l_vit_sfiol_imp" model="tcb.history">
+            <field name="name">L + VIT + SFIOL + IMP</field>
+        </record>
+
+        <record id="tcb_ph_l_vit_iofb_removal_done" model="tcb.history">
+            <field name="name">L + VIT +IOFB REMOVAL DONE</field>
+        </record>
+
+        <record id="tcb_ph_larsorraphy_done" model="tcb.history">
+            <field name="name">LARSORRAPHY DONE</field>
+        </record>
+
+        <record id="tcb_ph_laser_treatment_done" model="tcb.history">
+            <field name="name">LASER TREATMENT DONE</field>
+        </record>
+
+        <record id="tcb_ph_lasik_done" model="tcb.history">
+            <field name="name">LASIK DONE</field>
+        </record>
+
+        <record id="tcb_ph_lasik_sy_done" model="tcb.history">
+            <field name="name">LASIK SY DONE</field>
+        </record>
+
+        <record id="tcb_ph_le_operated" model="tcb.history">
+            <field name="name">LE OPERATED</field>
+        </record>
+
+        <record id="tcb_ph_liver_cirrhosis" model="tcb.history">
+            <field name="name">LIVER CIRRHOSIS</field>
+        </record>
+
+        <record id="tcb_ph_macular_hole_surgery" model="tcb.history">
+            <field name="name">MACULAR HOLE SURGERY</field>
+        </record>
+
+        <record id="tcb_ph_micro_phaco_with_toric_iol_done" model="tcb.history">
+            <field name="name">MICRO PHACO WITH TORIC IOL DONE</field>
+        </record>
+
+        <record id="tcb_ph_microphaco_with_foldable_iol_done" model="tcb.history">
+            <field name="name">MICROPHACO WITH FOLDABLE IOL DONE</field>
+        </record>
+
+        <record id="tcb_ph_microphaco_with_multifocaliol_done" model="tcb.history">
+            <field name="name">MICROPHACO WITH MULTIFOCALIOL DONE</field>
+        </record>
+
+        <record id="tcb_ph_microphaco_with_toric_iol_done" model="tcb.history">
+            <field name="name">MICROPHACO WITH TORIC IOL DONE</field>
+        </record>
+
+        <record id="tcb_ph_nasal_sy_done" model="tcb.history">
+            <field name="name">NASAL SY DONE</field>
+        </record>
+
+        <record id="tcb_ph_neuroretinitis" model="tcb.history">
+            <field name="name">NEURORETINITIS</field>
+        </record>
+
+        <record id="tcb_ph_non_phacoemulsification_with_iol" model="tcb.history">
+            <field name="name">NON PHACOEMULSIFICATION WITH IOL</field>
+        </record>
+
+        <record id="tcb_ph_oil_fallen" model="tcb.history">
+            <field name="name">OIL FALLEN</field>
+        </record>
+
+        <record id="tcb_ph_ozurdex_inj_done" model="tcb.history">
+            <field name="name">OZURDEX INJ DONE</field>
+        </record>
+
+        <record id="tcb_ph_pacemaker" model="tcb.history">
+            <field name="name">PACEMAKER</field>
+        </record>
+
+        <record id="tcb_ph_pacemaker_on_rx" model="tcb.history">
+            <field name="name">PACEMAKER ON RX</field>
+        </record>
+
+        <record id="tcb_ph_paint_fallen" model="tcb.history">
+            <field name="name">PAINT FALLEN</field>
+        </record>
+
+        <record id="tcb_ph_penetrating_injury" model="tcb.history">
+            <field name="name">PENETRATING INJURY</field>
+        </record>
+
+        <record id="tcb_ph_pg_broken" model="tcb.history">
+            <field name="name">PG BROKEN</field>
+        </record>
+
+        <record id="tcb_ph_pg_lost" model="tcb.history">
+            <field name="name">PG LOST</field>
+        </record>
+
+
+        <record id="tcb_ph_pg_misplaced" model="tcb.history">
+            <field name="name">PG MISPLACED</field>
+        </record>
+
+        <record id="tcb_ph_pg_not_brought" model="tcb.history">
+            <field name="name">PG NOT BROUGHT</field>
+        </record>
+
+        <record id="tcb_ph_phaco_with_foldable_iol_pterygium_excession" model="tcb.history">
+            <field name="name">PHACO WITH FOLDABLE IOL + PTERYGIUM EXCESSION</field>
+        </record>
+
+        <record id="tcb_ph_phaco_with_foldable_iol_done" model="tcb.history">
+            <field name="name">PHACO WITH FOLDABLE IOL DONE</field>
+        </record>
+
+        <record id="tcb_ph_pk_done" model="tcb.history">
+            <field name="name">PK DONE</field>
+        </record>
+
+        <record id="tcb_ph_pkp_done" model="tcb.history">
+            <field name="name">PKP DONE</field>
+        </record>
+
+        <record id="tcb_ph_plant_juice_fallen" model="tcb.history">
+            <field name="name">PLANT JUICE FALLEN</field>
+        </record>
+
+        <record id="tcb_ph_post_anti_vegf_therapy" model="tcb.history">
+            <field name="name">POST ANTI-VEGF THERAPY</field>
+        </record>
+
+        <record id="tcb_ph_post_inj_pagenax" model="tcb.history">
+            <field name="name">POST. INJ PAGENAX</field>
+        </record>
+
+        <record id="tcb_ph_ppv_mp_so_done" model="tcb.history">
+            <field name="name">PPV+MP+EL+SO DONE</field>
+        </record>
+
+        <record id="tcb_ph_prematurity" model="tcb.history">
+            <field name="name">PREMATURITY</field>
+        </record>
+
+        <record id="tcb_ph_pst_done" model="tcb.history">
+            <field name="name">PST DONE</field>
+        </record>
+
+        <record id="tcb_ph_pt_met_with_accident" model="tcb.history">
+            <field name="name">PT MET WITH ACCIDENT</field>
+        </record>
+
+        <record id="tcb_ph_pterigium_sy_done" model="tcb.history">
+            <field name="name">PTERIGIUM SY DONE</field>
+        </record>
+
+        <record id="tcb_ph_Pterygium_excision" model="tcb.history">
+            <field name="name">PTERYGIUM EXCISION</field>
+        </record>
+
+        <record id="tcb_ph_ptosis_sy_done" model="tcb.history">
+            <field name="name">PTOSIS SY DONE</field>
+        </record>
+
+        <record id="tcb_ph_rd_sy_done" model="tcb.history">
+            <field name="name">RD SY DONE</field>
+        </record>
+
+        <record id="tcb_ph_re_operated" model="tcb.history">
+            <field name="name">RE OPERATED</field>
+        </record>
+
+
+        <record id="tcb_ph_respiratory_distress" model="tcb.history">
+            <field name="name">RESPIRATORY DISTRESS</field>
+        </record>
+
+        <record id="tcb_ph_retinitis_pigmentosa" model="tcb.history">
+            <field name="name">RETINITIS PIGMENTOSA</field>
+        </record>
+
+
+        <record id="tcb_ph_rk_done" model="tcb.history">
+            <field name="name">RK DONE</field>
+        </record>
+
+        <record id="tcb_ph_sp_retinal_detachment_surgery" model="tcb.history">
+            <field name="name">S/P RETINAL DETACHMENT SURGERY</field>
+        </record>
+
+        <record id="tcb_ph_sand_fallen" model="tcb.history">
+            <field name="name">SAND FALLEN</field>
+        </record>
+
+        <record id="tcb_ph_scleral_buckling_done" model="tcb.history">
+            <field name="name">SCLERAL BUCKLING DONE</field>
+        </record>
+
+        <record id="tcb_ph_seizures" model="tcb.history">
+            <field name="name">SEIZURES</field>
+        </record>
+
+        <record id="tcb_ph_sics_with_rigid_iol_done" model="tcb.history">
+            <field name="name">SICS WITH RIGID IOL DONE</field>
+        </record>
+
+        <record id="tcb_ph_sor_mivs_done" model="tcb.history">
+            <field name="name">SOR (MIVS) DONE</field>
+        </record>
+
+        <record id="tcb_ph_squint_surgery_done" model="tcb.history">
+            <field name="name">SQUINT SURGERY DONE</field>
+        </record>
+
+        <record id="tcb_ph_stroke_on_rx" model="tcb.history">
+            <field name="name">STROKE ON RX</field>
+        </record>
+
+        <record id="tcb_ph_surgery_done" model="tcb.history">
+            <field name="name">SURGERY DONE</field>
+        </record>
+
+        <record id="tcb_ph_surgical_eye_wash" model="tcb.history">
+            <field name="name">SURGICAL EYEWASH</field>
+        </record>
+
+        <record id="tcb_ph_topography_done" model="tcb.history">
+            <field name="name">TOPOGRAPHY DONE</field>
+        </record>
+
+        <record id="tcb_ph_TORIC_ICL_DONE" model="tcb.history">
+            <field name="name">TORIC ICL DONE</field>
+        </record>
+
+        <record id="tcb_ph_TORIC_IPCL_DONE" model="tcb.history">
+            <field name="name">TORIC IPCL DONE</field>
+        </record>
+
+        <record id="tcb_ph_TRAB_DONE" model="tcb.history">
+            <field name="name">TRAB DONE</field>
+        </record>
+
+        <record id="tcb_ph_TRAUMA" model="tcb.history">
+            <field name="name">TRAUMA</field>
+        </record>
+
+        <record id="tcb_ph_TUBERCULOSIS" model="tcb.history">
+            <field name="name">TUBERCULOSIS</field>
+        </record>
+
+        <record id="tcb_ph_USED_CONTACT_LENSES" model="tcb.history">
+            <field name="name">USED CONTACT LENSES</field>
+        </record>
+
+        <record id="tcb_ph_USING_GLASSES" model="tcb.history">
+            <field name="name">USING GLASSES</field>
+        </record>
+
+        <record id="tcb_ph_UVEITIS_POST_OPERATIVE" model="tcb.history">
+            <field name="name">UVEITIS-POST OPERATIVE</field>
+        </record>
+
+        <record id="tcb_ph_VA_IS_LESS_BY_BIRTH" model="tcb.history">
+            <field name="name">VA IS LESS BY BIRTH</field>
+        </record>
+
+        <record id="tcb_ph_VECONTA_DONE" model="tcb.history">
+            <field name="name">VECONTA DONE</field>
+        </record>
+
+        <record id="tcb_ph_VIT_C3FB" model="tcb.history">
+            <field name="name">VIT + C3FB</field>
+        </record>
+
+        <record id="tcb_ph_VIT_EL_MP_SOI" model="tcb.history">
+            <field name="name">VIT + EL + MP + SOI</field>
+        </record>
+
+        <record id="tcb_ph_VIT_ERM_REMOVAL_IMP" model="tcb.history">
+            <field name="name">VIT + ERM + REMOVAL + IMP</field>
+        </record>
+
+
+        <record id="tcb_ph_VIT_MP_EL_SOI_IMP" model="tcb.history">
+            <field name="name">VIT + MP + EL + SOI + IMP</field>
+        </record>
+
+        <record id="tcb_ph_VIT_MP_EL_IMP_DONE" model="tcb.history">
+            <field name="name">VIT + MP + EL + IMP DONE</field>
+        </record>
+
+        <record id="tcb_ph_VIT_SF_IOL_DONE" model="tcb.history">
+            <field name="name">VIT + SF + IOL DONE</field>
+        </record>
+
+        <record id="tcb_ph_VIT_MIVS_IMP_DONE" model="tcb.history">
+            <field name="name">VIT(MIVS) + IMP DONE</field>
+        </record>
+
+        <record id="tcb_ph_VITRECTOMY_DONE" model="tcb.history">
+            <field name="name">VITRECTOMY DONE</field>
+        </record>
+
+        <record id="tcb_ph_WALL_PAINT_FALLEN" model="tcb.history">
+            <field name="name">WALL PAINT FALLEN</field>
+        </record>
+
+        <record id="tcb_ph_WAS_USING_CONTACT_LENSES" model="tcb.history">
+            <field name="name">WAS USING CONTACT LENSES</field>
+        </record>
+
+        <record id="tcb_ph_WAS_USING_GLASSES" model="tcb.history">
+            <field name="name">WAS USING GLASSES</field>
+        </record>
+
+        <record id="tcb_ph_YAG_CAPSULOTOMY_DONE" model="tcb.history">
+            <field name="name">YAG CAPSULOTOMY DONE</field>
+        </record>
+
+        <record id="tcb_ph_YAG_PI_DONE" model="tcb.history">
+            <field name="name">YAG PI DONE</field>
+        </record>
+    </data>
+</odoo>

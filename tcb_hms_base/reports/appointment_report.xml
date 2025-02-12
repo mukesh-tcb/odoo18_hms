@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="appointment_report">
+        <t t-call="web.external_layout">
+        <t t-foreach="docs" t-as="doc">
+            <t t-set="doc" t-value="doc.with_context({lang: env.lang})"/>
+            <div class="page">
+                <main>
+                <div style="border-bottom: 1px solid black; padding: 1px; margin-top: -5px;">
+                    <div style="width: 34%; display: inline-block; vertical-align: top;">
+                        <strong>OPD No.:</strong>
+                        <span t-field="doc.name"/>
+                            <br/>
+                            <strong>UHID No.:</strong>
+                            <span t-field="doc.patient_id.name"/>
+                            <br/>
+                            <strong>Patient Name:</strong>
+                            <span t-field="doc.patient_id.patient_name"/>
+                            <br/>
+                            <t t-if="doc.relation and doc.care_of">
+                                <strong>
+                                    <span t-esc="doc.relation.name"/>
+                                    Name:
+                                </strong>
+                                <span t-field="doc.care_of"/>
+                                <br/>
+                            </t>
+                            <strong>Age/Sex:</strong>
+                            <span t-if="doc.patient_id.age" t-field="doc.patient_id.age"/>
+                            <span t-if="doc.patient_id.gender and doc.patient_id.age">
+                                /
+                            </span>
+                            <span t-if="doc.patient_id.gender" t-field="doc.patient_id.gender"/>
+                            <br/>
+                            <strong>Phone Number:</strong>
+                            <span t-field="doc.patient_id.phone"/>
+                            <br/>
+                        </div>
+                        <div style="width: 32%; display: inline-block; vertical-align: top;">
+                            <strong>Date:</strong>
+                            <span t-field="doc.datetime"/>
+                            <br/>
+                            <strong>Consultation Charges:</strong>
+                            <span t-field="doc.total_paid_amount"/>
+                            <br/>
+                            <strong>Address:</strong>
+                            <span t-field="doc.patient_id.street"/>
+                            <span t-field="doc.patient_id.street2"/>
+                            <span t-field="doc.patient_id.city"/>
+                            <span t-if="doc.patient_id.state_id" t-field="doc.patient_id.state_id.name"/>
+                            <span t-field="doc.patient_id.zip"/>
+                            <span t-if="doc.patient_id.country_id" t-field="doc.patient_id.country_id.name"/>
+                            <br/>
+                            <t t-if="doc.date and doc.valid_till and doc.valid_till>0">
+                                <span>**Valid up to<t t-esc="doc.get_valid_till_date()"/>**
+                                </span>
+                            </t>
+                            <t t-else="">
+                                <span>**Valid for One Visit Only**</span>
+                            </t>
+                        </div>
+                        <div style="width: 2%; display: inline-block; vertical-align: top;">
+                            <!-- This div is empty; you might add content here if needed. -->
+                        </div>
+                        <t t-if="doc.physician_id">
+                            <div style="width: 30%; display: inline-block; vertical-align: top;">
+                                <strong>Consultant Details:</strong>
+                                <br/>
+                                <t t-if="doc.sudo().department_id">
+                                    <strong>Department:</strong>
+                                    <span t-field="doc.sudo().department_id.name"/>
+                                    <br/>
+                                </t>
+                                <strong>
+                                    <span t-field="doc.sudo().physician_id.name"/>
+                                </strong>
+                                <br/>
+                                <strong t-esc="','.join(x.name for x in doc.sudo().physician_id.degree_ids)"/>
+                                <br/>
+                                <strong>Reg No.:</strong>
+                                <strong t-field="doc.sudo().physician_id.registration_number"/>
+                            </div>
+                        </t>
+                    </div>
+                    <table style="border-collapse: collapse; border-spacing: 0;border: 1px solid black;font-size:13px;">
+                        <tr>
+                            <td style="width:20%;border-left:1px solid white;">
+                                <div style="padding:2px;">
+                                    <span>Pulse............................./min</span>
+                                    <br/>
+                                    <span>BP..............................mmHg</span>
+                                    <br/>
+                                    <span>Temp.................................°F</span>
+                                    <br/>
+                                    <span>Wt......................................kg</span>
+                                    <br/>
+                                    <span>Ht......................................cm</span>
+                                    <br/>
+                                    <span>BMI...............................ratio</span>
+                                </div>
+                            </td>
+                            <td style="width:40%;">
+                                <div style="padding:2px;">
+                                    <span>Patient History: (DM,HTN,CAD COAD,CVA)</span>
+                                    <br/>
+                                    <span>Others:</span>
+                                </div>
+                            </td>
+                            <td style="width:40%;border-right:1px solid white;">
+                                <div style="padding:2px;">
+                                    <span>Allergic
+                                        to................................................................................................
+                                    </span>
+                                    <br/>
+                                    <span>Drug / Food
+                                        Interactions..................................................................
+                                    </span>
+                                    <br/>
+                                    <span>Nutritional Screening: Normal/Obese/Under Nutritioned</span>
+                                    <br/>
+                                    <span>Diet: Normal/Diabetic/Salt Restricted</span>
+                                    <br/>
+                                    <img t-if="doc.company_id.pain_level_diagram"
+                                        t-att-src="image_data_uri(doc.company_id.pain_level_diagram)"
+                                        style="max-height: 80px;max-width:400px; width:325px" alt="Logo"/>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="border-collapse: collapse; border-spacing: 0;border: 1px solid black;width:100%;font-size:13px;">
+                        <tr>
+                            <td style="width:30%;height:120px;border-left:1px solid white;">
+                                <div style="padding:2px;">
+                                    <span>Chief Complaints:</span>
+                                </div>
+                            </td>
+                            <td style="width:40%;">
+                                <div style="padding:2px;">
+                                    <span>Provisional Diagnosis:</span>
+                                </div>
+                            </td>
+                            <td style="width:40%;border-right:1px solid white;">
+                                <div style="padding:2px;">
+                                    <span>Instructions / Precautions:</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="border-collapse: collapse; border-spacing: 0;border: 1px solid white;width:100%;height:530px;font-size:13px;">
+                        <tr>
+                            <td style="width:40%;height:120px;border-right:1px solid black;border-top:1px solid black;">
+                                <span>Patient Examination &amp; Investigation Advice:</span>
+                                <br/>
+                                <br/>
+                                <div style="margin-top:46px;">
+                                    <strong>NCT</strong>
+                                </div>
+                                <div style="margin-left: 40px;margin-top: -32px;">
+                                    <img src="tcb_hms_base/static/src/img/less_than.jpg"
+                                        height="40px" width="54px"/>
+                                </div>
+                                <div style="margin-left:110px;margin-top:-50px;">
+                                    <strong>R</strong>
+                                </div>
+                                <div style="margin-left:110px;margin-top:20px;">
+                                    <strong>L</strong>
+                                </div>
+                                <br/>
+                                <div style="margin-top:46px;">
+                                    <strong>Vision</strong>
+                                </div>
+                                <div style="margin-left: 40px;margin-top: -32px;">
+                                    <img src="tcb_hms_base/static/src/img/less_than.jpg"
+                                        height="40px" width="54px"/>
+                                </div>
+                                <div style="margin-left:110px;margin-top:-50px;">
+                                    <strong>R</strong>
+                                </div>
+                                <div style="margin-left:110px;margin-top:20px;">
+                                    <strong>L</strong>
+                                </div>
+                            </td>
+                            <td style="width:8%;border-top:1px solid black;">
+                                <span style="margin-left:2px;">Sr No.</span>
+                            </td>
+                            <td style="width:12%;border-top:1px solid black;">
+                                <span>Medicine</span>
+                            </td>
+                            <td style="width:12%;border-top:1px solid black;">
+                                <span>Strength</span>
+                            </td>
+                            <td style="width:12%;border-top:1px solid black;">
+                                <span>Dose Instruction</span>
+                            </td>
+                            <td style="width:8%;border-top:1px solid black;">
+                                <span>Duration</span>
+                            </td>
+                        </tr>
+                    </table>
+                    </main>
+                </div>
+                <style>
+                    .page-break{page-break-after: always;}
+                </style>
+                <div class="page">
+                    <table style="border-collapse: collapse; border-spacing: 0;border: 1px solid white;width:100%;">
+                        <tr>
+                            <th style="width:20%;">
+                                <span>AR Reading -</span>
+                                <br/>
+                                <span>(Undilated)</span>
+                            </th>
+                            <td style="width:8%;">
+                                <span>Sr No.</span>
+                            </td>
+                            <td style="width:16%;">
+                                <span>Medicine</span>
+                            </td>
+                            <td style="width:16%;">
+                                <span>Strength</span>
+                            </td>
+                            <td style="width:24%;">
+                                <span>Dose Instruction</span>
+                            </td>
+                            <td style="width:8%;">
+                                <span>Duration</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="width:20%;">
+                                <span>AR Reading -</span>
+                                <br/>
+                                <span>(Dilated)</span>
+                            </th>
+                        </tr>
+                    </table>
+                    <div style="margin-top:380px;">
+                        <div class="row">
+                            <div class="col-4">
+                                <strong>Date:</strong>
+                            </div>
+                            <div class="col-4" style="margin-left: 100px;">
+                                <strong>Prescription</strong>
+                            </div>
+                        </div>
+                        <table class="table"
+                            style="border-collapse: collapse; border-spacing: 0;font-size:12px !important;">
+                            <thead>
+                                <tr>
+                                    <th style="border: 1px solid black;font-weight: bold;" colspan="6">RIGHT</th>
+                                    <th style="border: 1px solid black;font-weight: bold;" colspan="4">LEFT</th>
+                                </tr>
+                                <tr>
+                                    <th style="border: 1px solid black;font-weight: bold;"/>
+                                    <th style="border: 1px solid black;font-weight: bold;">SPH</th>
+                                    <th style="border: 1px solid black;font-weight: bold;">CYL</th>
+                                    <th style="border: 1px solid black;font-weight: bold;">AXIS</th>
+                                    <th style="border: 1px solid black;font-weight: bold;">VA</th>
+                                    <th style="border: 1px solid black;font-weight: bold;">SPH</th>
+                                    <th style="border: 1px solid black;font-weight: bold;">CYL</th>
+                                    <th style="border: 1px solid black;font-weight: bold;">AXIS</th>
+                                    <th style="border: 1px solid black;font-weight: bold;">VA</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th style="border: 1px solid black;font-weight: bold;">Dist.</th>
+                                    <td style="border: 1px solid black;font-weight: bold;">
+
+                                    </td>
+                                    <td style="border: 1px solid black;font-weight: bold;">
+
+                                    </td>
+                                    <td style="border: 1px solid black;font-weight: bold;">
+
+                                    </td>
+                                    <td style="border: 1px solid black;font-weight: bold;">
+
+                                    </td>
+                                    <td style="border: 1px solid black;font-weight: bold;">
+
+                                    </td>
+                                    <td style="border: 1px solid black;font-weight: bold;">
+
+                                    </td>
+                                    <td style="border: 1px solid black;font-weight: bold;">
+
+                                    </td>
+                                    <td style="border: 1px solid black;font-weight: bold;">
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="border: 1px solid black;font-weight: bold;">Near</th>
+                                    <td style="border: 1px solid black;font-weight: bold;">
+
+                                    </td>
+                                    <td style="border: 1px solid black;font-weight: bold;">
+
+                                    </td>
+                                    <td style="border: 1px solid black;font-weight: bold;">
+
+                                    </td>
+                                    <td style="border: 1px solid black;font-weight: bold;">
+
+                                    </td>
+                                    <td style="border: 1px solid black;font-weight: bold;">
+
+                                    </td>
+                                    <td style="border: 1px solid black;font-weight: bold;">
+
+                                    </td>
+                                    <td style="border: 1px solid black;font-weight: bold;">
+
+                                    </td>
+                                    <td style="border: 1px solid black;font-weight: bold;">
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <span>Bifocal/Separate Glasses/Progressive/Constant use/Near Vision</span>
+                            <br/>
+                            <span>I.P.D.</span>
+                            <br/>
+                            <span>Please get glassed checked before use.</span>
+                        </div>
+                    </div>
+                    <div style="width: 100%;height: 200px;border-radius: 10px;border:1px solid black;margin-top:20px;">
+                        <div style="padding:4px;text-align:center;text-decoration: underline;">
+                            <h3>CONSENT</h3>
+                        </div>
+                        <div style="padding:4px;">
+                            <span>I (patient name)____________________________________have come to
+                                <t t-esc="doc.sudo().company_id.name"/>
+                                Hospital for my own treatment
+                                and I give the consent to the hospital for my treatment and further management.
+                            </span>
+                        </div>
+                        <div style="padding:4px;float:right;margin-top:50px;">
+                            <strong>Signature / Thumb Impression of Patient</strong>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer -->
+                <div t-attf-class="footer o_standard_footer">
+                    <div style="border-top:1px solid black;">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="horizontal-line-box"
+                                     style="position: relative;text-align: center;padding:2px;white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                    <span style="position: relative;text-align: center;padding:2px;">This is not meant
+                                        for
+                                        any Medico Legal Purpose.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <t t-if="doc.company_id.company_timing">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="horizontal-line-box"
+                                         style="position: relative;text-align: center;padding:2px;">
+                                        Timings :
+                                        <t t-esc="doc.company_id.company_timing"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-if="doc.company_id.phone or doc.company_id.mobile or doc.company_id.email">
+                            <div class="horizontal-line-box" style="position: relative;text-align: center;padding:2px;">
+                                <t t-if="doc.company_id.phone">
+                                    <span>
+                                        Phone :
+                                        <t t-esc="doc.company_id.phone"/>,
+                                    </span>
+                                </t>
+                                <t t-if="doc.company_id.mobile">
+                                    <span>
+                                        Mobile :
+                                        <t t-esc="doc.company_id.mobile"/>,
+                                    </span>
+                                </t>
+                                <t t-if="doc.company_id.email">
+                                    <span>
+                                        Email :
+                                        <t t-esc="doc.company_id.email"/>
+                                    </span>
+                                </t>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </t>
+            </t>
+        </template>
+
+    <template id="appointment_report_custom">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="company" t-value="doc.company_id or env.company"/>
+                <t t-call="web.external_layout">
+                    <div class="page" style="margin-top: 120px;"> <!-- Added margin-top here -->
+                        <!-- Header Section -->
+                        <div class="border-bottom mb-4">
+                            <div class="row align-items-center">
+                                <div class="col-6">
+                                    <h2 class="mb-0" style="color: #2c3e50;">Appointment Slip</h2>
+                                </div>
+                                <div class="col-6 text-right">
+                                    <p class="mb-0" style="color: #7f8c8d;">Date: <t t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/></p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Main Content -->
+                        <div class="row">
+                            <!-- Patient Information Card -->
+                            <div class="col-6">
+                                <div class="card mb-4" style="border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                                    <div class="card-header" style="background-color: #3498db; color: white; border-radius: 10px 10px 0 0;">
+                                        <h4 class="mb-0">Patient Information</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row mb-2">
+                                            <div class="col-12">
+                                                <strong style="color: #2c3e50;">Patient Name:</strong>
+                                                <span class="ml-2" t-field="doc.patient_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-12">
+                                                <strong style="color: #2c3e50;">Appointment ID:</strong>
+                                                <span class="ml-2" t-field="doc.name"/>
+                                                <strong style="color: #2c3e50; margin-left: 20px;">DOB:</strong>
+                                                <span class="ml-2" t-field="doc.date_of_birth"/>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-6">
+                                                <strong style="color: #2c3e50;">Gender:</strong>
+                                                <span class="ml-2" t-field="doc.gender"/>
+                                            </div>
+                                            <div class="col-6">
+                                                <strong style="color: #2c3e50;">Age:</strong>
+                                                <span class="ml-2" t-field="doc.age"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <strong style="color: #2c3e50;">Mobile:</strong>
+                                                <span class="ml-2" t-field="doc.mobile"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <!-- Doctor Information Card -->
+                            <div class="col-6">
+                                <div class="card mb-4" style="border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                                    <div class="card-header" style="background-color: #2ecc71; color: white; border-radius: 10px 10px 0 0;">
+                                        <h4 class="mb-0">Doctor Information</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row mb-2">
+                                            <div class="col-12">
+                                                <strong style="color: #2c3e50;">Physician:</strong>
+                                                <span class="ml-2" t-field="doc.physician_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-12">
+                                                <strong style="color: #2c3e50;">Department:</strong>
+                                                <span class="ml-2" t-field="doc.department_id.name"/>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-12">
+                                                <strong style="color: #2c3e50;">Email:</strong>
+                                                <span class="ml-2" t-field="doc.email"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Charges Section -->
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <div class="card" style="border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                                    <div class="card-header" style="background-color: #e74c3c; color: white; border-radius: 10px 10px 0 0;">
+                                        <h4 class="mb-0">Payment Details</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <strong style="color: #2c3e50;">Charges:</strong>
+                                                <span class="ml-2" t-field="doc.amount_total"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Footer Section -->
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <div class="text-center" style="border-top: 1px solid #eee; padding-top: 20px;">
+                                    <small style="color: #7f8c8d;">
+                                        Thank you for choosing our services. For any queries, please contact us at:
+                                        <span t-field="company.email"/>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    <!-- <template id="appointment_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <h2>Appointment Report</h2>
+                        <div class="row mt32 mb32">
+                            <div class="col-6">
+                                <strong>Patient:</strong> <span t-field="doc.patient_id.name"/>
+                                <br/>
+                                <strong>Appointment ID:</strong> <span t-field="doc.name"/>
+                                <br/>
+                                <strong>Date of Birth:</strong> <span t-field="doc.date_of_birth"/>
+                                <br/>
+                                <strong>Gender:</strong> <span t-field="doc.gender"/>
+                            </div>
+                            <img t-att-src="'footer_image.png'" 
+                            style="width: 100%; height: auto;" 
+                            alt="Footer Image"/>
+                            <div class="col-6">
+                                <strong>Physician:</strong> <span t-field="doc.physician_id.name"/>
+                                <br/>
+                                <strong>Department:</strong> <span t-field="doc.department_id.name"/>
+                                <br/>
+                                <strong>Mobile:</strong> <span t-field="doc.mobile"/>
+                                <br/>
+                                <strong>Email:</strong> <span t-field="doc.email"/>
+                            </div>
+                        </div>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Blood Group</th>
+                                    <th>Age</th>
+                                    <th>Marital Status</th>
+                                    <th>Occupation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span t-field="doc.blood_group"/></td>
+                                    <td><span t-field="doc.age"/></td>
+                                    <td><span t-field="doc.marital_status"/></td>
+                                    <td><span t-field="doc.occupation"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+        
+    </template> -->
+
+
+    
+    
+</odoo> 

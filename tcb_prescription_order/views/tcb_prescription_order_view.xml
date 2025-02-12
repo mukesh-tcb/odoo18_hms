@@ -1,0 +1,108 @@
+<odoo>
+    <data>
+        <!-- Action for Prescription Orders -->
+        <record id="action_tcb_prescription_order" model="ir.actions.act_window">
+            <field name="name">Prescription Orders</field>
+            <field name="res_model">tcb.prescription.order</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create your first prescription order
+                </p>
+            </field>
+        </record>
+
+        <!-- list View for Prescription Orders -->
+        <record id="tcb_prescription_order_list_view" model="ir.ui.view">
+            <field name="name">tcb.prescription.order.list.view</field>
+            <field name="model">tcb.prescription.order</field>
+            <field name="arch" type="xml">
+                <list string="Prescription Orders">
+                    <field name="name"/>
+                    <field name="patient_id"/>
+                    <field name="physician_id"/>
+                    <field name="datetime"/>
+                    <field name="state"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Form View for Prescription Orders -->
+        <record id="tcb_prescription_order_form_view" model="ir.ui.view">
+            <field name="name">tcb.prescription.order.form</field>
+            <field name="model">tcb.prescription.order</field>
+            <field name="arch" type="xml">
+                <form string="Prescription Order">
+                    <header>
+                        <button name="action_prescribe_with_payment" type="object" string="Prescribe With Payment" class="btn-primary"/>
+                        <button name="action_prescribe_without_payment" type="object" string="Prescribe Without Payment" invisible="state not in 'draft'" class="btn-primary"/>
+                        <button name="action_cancel" type="object" string="Cancel" invisible="state not in 'draft'" class="btn-danger"/>
+                        <button name="action_reset_to_draft" type="object" string="Reset to Draft" invisible="state in 'draft'"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,prescribed,cancelled"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <div class="oe_title">
+                                    <h1>
+                                        <field name="name" readonly="1"/>
+                                    </h1>
+                                </div>
+                                <field name="patient_id"/>
+                                <field name="physician_id"/>
+                                <field name="date"/>
+                                <field name="old_prescription_id"/>
+                                <field name="appointment_id"/>
+                            </group>
+                            <group>
+                                <field name="datetime"/>
+                                <field name="pregnancy_warning_bool"/>
+                                <field name="disease_id" widget="many2many_tags" string="Diseases"/>
+                                <field name="total_amount" readonly="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                        <page name="prescription_lines" string="Prescription Lines">
+                        <field name="prescription_order_line_ids" context="{'default_quantity': 1}">
+                            <list editable="bottom">
+                                <field name="add_in_bill_bool"/>
+                                <field name="product_id" domain="[('is_medicament_product','=',True)]"/>
+                                <field name="name"/>
+                                <field name="route_name"/>
+                                <field name="dosage"/>
+                                <field name="frequency_id"/>
+                                <field name="prescription_days"/>
+                                <field name="duration_id"/>
+                                <field name="quantity"/>
+                                <field name="price_unit"/>
+                                <field name="price_subtotal" readonly="1"/>
+                                <field name="note"/>
+                            </list>
+                        </field>   
+                        </page>
+                        <page name="general_information" string="General Information">
+                            
+                            <field name="prescription_notes"/>
+
+                        </page>
+
+                    </notebook> 
+                    </sheet>
+                    <chatter/>
+                </form>
+            </field>
+        </record>
+
+        <!-- Menu Item for Prescription Orders -->
+        <menuitem
+            id="prescriptiom_menu"
+            name="Prescription"
+            sequence="15"/>
+
+        <menuitem id="menu_tcb_prescription_order" 
+        name="Prescription Orders" 
+        action="action_tcb_prescription_order" 
+        sequence="16"/>
+
+    </data>
+</odoo>

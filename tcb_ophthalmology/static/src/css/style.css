@@ -1,0 +1,36 @@
+.cross-container {
+    position: relative;
+    width: 20vw;
+    height: 20vw;
+    margin-left:4vw;
+}
+
+.line {
+    position: absolute;
+    width: 1%;
+    height: 100%; /* Adjust line thickness */
+    background-color: black; /* Adjust line color */
+    transform-origin: top left;
+}
+
+.line.horizontal {
+    transform: rotate(45deg);
+}
+
+.line.vertical {
+    transform: rotate(-45deg);
+}
+
+.field {
+    position: absolute;
+    top: 0%;
+    transform: translate(-50%, -50%);
+    font-size: 14px; /* Adjust font size */
+}
+canvas{
+border: 1px solid black;
+}
+
+.o_data_row.text-warning{
+color:#a97600 !important
+}

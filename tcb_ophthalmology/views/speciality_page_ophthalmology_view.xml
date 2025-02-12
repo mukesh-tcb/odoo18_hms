@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+
+    <record id="ophthalmology_form_view_inherit_for_speciality_page" model="ir.ui.view">
+        <field name="name">ophthalmology.form.view.inherit.for.speciality.page</field>
+        <field name="model">tcb.ophthalmology.evaluation</field>
+        <field name="inherit_id"
+            ref="tcb_ophthalmology.ophthalmology_form_view_inherit_for_diagnosis_page" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='ophthalmology_diagnosis']" position="after">
+                <page name="ophthalmology_speciality" string="Speciality" >
+                    <table class="speciality-table" style="width:50%">
+                        <tr>
+                            <th>SLE
+                            </th>
+                            <th>
+                                R <i class="fa fa-eye" />
+                            </th>
+                            <th>
+                                L <i class="fa fa-eye" />
+                            </th>
+                            
+                        </tr>
+
+                        <tr>
+                        <td>Ac. Cells</td>
+                        <td><field name="spec_ac_cells_re" />
+                        </td>
+                        <td><field name="spec_ac_cells_le" />
+                        </td>
+                        </tr>
+
+                        <tr>
+                        <td>Flare</td>
+                        <td><field name="spec_flare_re" />
+                        </td>
+                        <td><field name="spec_flare_le" />
+                        </td>
+                        </tr>
+
+                        <tr>
+                        <td>KP's</td>
+                        <td><field name="spec_kps_re" />
+                        </td>
+                        <td><field name="spec_kps_le" />
+                        </td>
+                        </tr>
+
+                        <tr>
+                        <td>Hypopyon</td>
+                        <td><field name="spec_hypopyon_re" />
+                        </td>
+                        <td><field name="spec_hypopyon_le" />
+                        </td>
+                        </tr>
+
+                        <tr>
+                        <td>Vt. Cells</td>
+                        <td><field name="spec_vt_cells_re" />
+                        </td>
+                        <td><field name="spec_vt_cells_le" />
+                        </td>
+                        </tr>
+
+                        </table>
+                    <style>
+                        :root {
+                        --primary-purple: #5E72E4;
+                        --border-color: #2c5282;
+                        }
+                        table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        font-size: 15px;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                        }
+                        th {
+                        background-color: var(--primary-purple);
+                        color: white;
+                        padding: 6px 10px;
+                        text-align: left;
+                        border: 1px solid var(--border-color);
+                        }
+                        td {
+                        padding: 2px 3px;
+                        border: 1px solid var(--border-color);
+                        }
+                        tbody tr:nth-child(even) {
+                        background-color: #f8f9fe;
+                        }
+                        
+                        strong {
+                        font-size: 16px;
+                        color: Black;
+                        display: block;
+                        margin-bottom: 4px;
+                        margin-left: 4px;
+                        margin-top: 4px;
+                        }
+                        .fa-eye {
+                        color: Black;
+                        margin-left: 4px;
+
+                        }
+                    </style>
+                </page>
+
+                <page name="eye_patient_image_tab_hospital_admin" string="Patient Image">
+                        <!-- groups="sltech_base_module.group_hospital_admin_custom,sltech_ophthalmology.group_ophthalmology_doctor" -->
+                        <div class="oe_left">
+                            <field name="image_1920" widget="image" options="{'size': [400, 400]}"/>
+                            <button name="tcb_open_websitefrom_appointment_url" string=" Take Picture"
+                                    class="fa fa-camera text-info" type="object" data-hotkey="p"/>
+                        </div>
+                    </page>
+
+            </xpath>    
+        </field>
+    </record>
+</odoo>

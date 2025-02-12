@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="payment_receipt_form_view_inherit" model="ir.ui.view">
+        <field name="name">tcb.payment.receipt.view.form.inherit</field>
+        <field name="model">tcb.payment.receipt</field>
+        <field name="inherit_id" ref="tcb_hms_base.tcb_payment_receipt_form_view"/>
+        <field name="arch" type="xml">
+
+
+            <xpath expr="//field[@name='appointment_id']" position="after">
+                <field name="procedure_id" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

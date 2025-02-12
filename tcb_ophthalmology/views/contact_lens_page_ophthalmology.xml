@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ophthalmology_form_view_inherit_for_contact_lens_page" model="ir.ui.view">
+        <field name="name">ophthalmology.form.view.inherit.for.contact.lens.page</field>
+        <field name="model">tcb.ophthalmology.evaluation</field>
+        <field name="inherit_id" ref="tcb_ophthalmology.ophthalmology_form_view_inherit_for_examination_page" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='ophthalmology_examination']" position="after">
+                <page name="ophthalmology_contact_lens" string="Contact Lens">
+                    <div class="contact-lens-container">
+                        <div class="table-container left-table" style ="width: 46%;">
+                            <style>
+                            table{
+                                border-collapse: collapse;
+                            }
+                        </style>    
+                            <table style="border: 2px solid black; padding: 4px; font-size: medium; width: 100% !important;">
+                                <tr>
+                                    <th colspan="2" style="background-color: #5E72E4; color: #fff; font-weight: bold; padding: 3px; margin-left: 7px;">CL HISTORY</th>
+                                </tr>
+                                <tr>
+                                    <th style="border: 1px solid black; padding-left:5px;">Using Contact Lens Since</th>
+                                    <td style="border: 1px solid black; padding-left:5px;">
+                                        <field name="using_contact_lens_since" class="contact_lens-fields" style="width: 70%;"/>
+                                        <field name="using_contact_lens_since_duration" placeholder="Min/Hrs/D" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="border: 1px solid black; padding-left:5px;">Type of Contact Lens</th>
+                                    <td style="border: 1px solid black; padding-left:5px;">
+                                        <field name="type_of_contact_lens" class="contact_lens-fields" style="width: 95%;"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="border: 1px solid black; padding-left:5px;">Name of the solution</th>
+                                    <td style="border: 1px solid black; padding-left:5px;">
+                                        <field name="name_of_the_solution" class="contact_lens-fields" style="width: 95%;"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="border: 1px solid black; padding-left:5px;">Cleaning Contact Lens</th>
+                                    <td style="border: 1px solid black; padding: 5px">CL<field name="cleaning_contact_lens_cl" class="contact_lens-fields"/>Case:<field name="cleaning_contact_lens_case" class="contact_lens-fields"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="border: 1px solid black; padding-left:5px;">Usage a Day</th>
+                                    <td style="border: 1px solid black; padding-left:5px;">
+                                        <field name="usage_a_day" class="contact_lens-fields"/> Hrs </td>
+                                </tr>
+                                <tr>
+                                    <th style="border: 1px solid black;">Power Of Contact Lens</th>
+                                    <td style="border: 1px solid black; padding: 5px; text-align: center">
+                                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                                            <span style="border: 1px solid black; background-color: #5E72E4; color: #fff; padding: 3px;">SPH</span>
+                                            <span style="border: 1px solid black; background-color: #5E72E4; color: #fff; padding: 3px;">CYL</span>
+                                            <span style="border: 1px solid black; background-color: #5E72E4; color: #fff; padding: 3px;">AXIS</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td style="border: 1px solid black; padding: 5px;">
+                                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; align-items: center; margin-left: 12px;">
+                                            <field name="pcl_sph_re" style="width: 90%; background:  #deebfe ;"/>
+                                            <field name="pcl_cyl_re" style="width: 90%; background:  #deebfe ;"/>
+                                            <field name="pcl_axis_re" style="width: 90%; background:  #deebfe ;"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td style="border: 1px solid black; padding: 5px;">
+                                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; align-items: center; margin-left: 12px;">
+                                            <field name="pcl_sph_le" style="width: 90%; background:  #deebfe ;"/>
+                                            <field name="pcl_cyl_le" style="width: 90%; background:  #deebfe ;"/>
+                                            <field name="pcl_axis_le" style="width: 90%; background:  #deebfe ;"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="border: 1px solid black; padding-left:5px;">P P C L</th>
+                                    <td style="border: 1px solid black; padding-left:5px;">
+                                        <field name="ppcl" class="contact_lens-fields"/>
+                                        <field name="ppcl_select" placeholder="Yes/No" style="margin: 5px;"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="border: 1px solid black; padding-left:5px;">Sleeping With Contact Lens</th>
+                                    <td style="border: 1px solid black; padding-left:5px;">
+                                        <field name="sleeping_with_contact_lens" widget="radio" options="{'horizontal': true}" style="margin: 5px;"/>
+                                        <field name="sleeping_with_contact_lens_duration" class="contact_lens-fields"/>Hrs
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="border: 1px solid black; padding-left:5px;">CL Last Used</th>
+                                    <td style="border: 1px solid black; padding-left:5px;">
+                                        <field name="cl_last_used" class="contact_lens-fields"/>
+                                        <field name="cl_last_usage_a_day" placeholder="Yes/No"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="border: 1px solid black; padding-left:5px;">Any Problem With CL</th>
+                                    <td style="border: 1px solid black; padding-left:5px;">
+                                        <span style="margin-left: 20px; margin-right: 4px;">RE</span>
+                                        <field name="any_problem_with_cl_re" class="contact_lens-fields" style="width: 80%;"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td style="border: 1px solid black; padding-left:5px;">
+                                        <span style="margin-left: 20px; margin-right: 4px;">LE</span>
+                                        <field name="any_problem_with_cl_le" class="contact_lens-fields" style="width: 80%;"/>
+                                    </td>
+                                </tr>
+                            </table>
+
+
+                            <table class="ophtha-keratometry-table"
+                            style="width:100%; border: 2px solid #666; height:30%; padding:4px; margin-top: 20px; text-align: center;">
+                            <tr>
+                                <th colspan="14"
+                                    style="border: 1px solid #666; background-color: #5E72E4; color: #fff; text-align: center;">
+                                    KERATOMETRY</th>
+
+                            </tr>
+                            <!--   Header row  -->
+                            <tr>
+
+                                <th style="border: 1px solid #666; padding-left:20px" colspan="5" >Machine Type: <field name="contact_lens_keratometry_machine_type" 
+                                widget="radio" options="{'horizontal': true}"/></th>
+                            </tr>
+                            <!-- First row -->
+
+                            <tr>
+
+                                <th
+                                    style="border: 1px solid #666; background-color: #5E72E4; color: #fff; " rowspan="2">OD:</th>
+                                <th
+                                    style="border: 1px solid #666; background-color:  #ffd1d1;">
+                                    K1</th>
+
+                                <td style="border: 1px solid #666;">
+                                    <field name="contact_lens_keratometry_od_k1" nolabel="1"  style ="background:  #deebfe ;"/>
+                                </td>
+
+                                <th
+                                    style="border: 1px solid #666; background-color:  #ffd1d1;">
+                                    AXIS</th>
+
+                                <td style="border: 1px solid #666;">
+                                    <!-- This field will be declared later -->
+                                    <field name="contact_lens_keratometry_od_k1_axis" nolabel="1" style ="background:  #deebfe ;" />
+                                </td>
+                            </tr>
+
+                            <!--     Second row -->
+
+                            <tr style="border-bottom: 2px solid #666;">
+
+                                <th
+                                    style="border: 1px solid #666; background-color:  #ffd1d1;">
+                                    K2</th>
+
+                                <td style="border: 1px solid #666;">
+                                    <field name="contact_lens_keratometry_od_k2" nolabel="1" style ="background:  #deebfe ;"/>
+                                </td>
+
+                                <th
+                                    style="border: 1px solid #666; background-color:  #ffd1d1;">
+                                    AXIS</th>
+
+                                <td style="border: 1px solid #666;">
+                                    <!-- This field will be declared later -->
+                                    <field name="contact_lens_keratometry_od_k2_axis" nolabel="1" style ="background:  #deebfe ;"/>
+                                </td>
+
+                            </tr>
+
+                            <!-- Third row -->
+
+                            <tr>
+
+                                <th
+                                    style="border: 1px solid #666; background-color: #5E72E4; color: #fff;"
+                                    rowspan="2">OS:</th>
+
+                                <th
+                                    style="border: 1px solid #666; background-color:  #ffd1d1;">
+                                    K1</th>
+
+                                <td style="border: 1px solid #666;">
+                                    <field name="contact_lens_keratometry_os_k1" nolabel="1" style ="background:  #deebfe ;"/>
+                                </td>
+
+                                <th
+                                    style="border: 1px solid #666; background-color:  #ffd1d1;">
+                                    AXIS</th>
+
+                                <td style="border: 1px solid #666;">
+                                    <!-- This field will be declared later -->
+                                    <field name="contact_lens_keratometry_os_k1_axis" nolabel="1" style ="background:  #deebfe ;"/>
+                                </td>
+
+                            </tr>
+
+                            <!-- Forth row -->
+
+                            <tr>
+
+                                <th
+                                    style="border: 1px solid #666; background-color:  #ffd1d1;">
+                                    K2</th>
+
+                                <td style="border: 1px solid #666;">
+                                    <field name="contact_lens_keratometry_os_k2" nolabel="1" style ="background:  #deebfe ;"/>
+                                </td>
+
+                                <th
+                                    style="border: 1px solid #666; background-color:  #ffd1d1;">
+                                    AXIS</th>
+
+                                <td style="border: 1px solid #666;">
+                                    <!-- This field will be declared later -->
+                                    <field name="contact_lens_keratometry_os_k2_axis" nolabel="1" style ="background:  #deebfe ;"/>
+                                </td>
+                            </tr>
+
+                        </table>
+                        </div>
+
+                        <div class="table-container right-tables">
+                            <table class="measurement-table">
+                                <tr>
+                                    <th colspan="5" style="background-color: #5E72E4; color: #fff; font-weight: bold; padding: 3px;">AR WITH CL</th>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <th>SPH</th>
+                                    <th>CYL</th>
+                                    <th>AXIS</th>
+                                    <th>STATUS</th>
+                                </tr>
+                                <tr>
+                                    <td>RE</td>
+                                    <td><field name="ar_with_cl_sph_re" style=" background:  #deebfe ; margin: 2px;"/></td>
+                                    <td><field name="ar_with_cl_cyl_re" style=" background:  #deebfe ; margin: 2px;"/></td>
+                                    <td><field name="ar_with_cl_axis_re" style=" background:  #deebfe ; margin: 2px;"/></td>
+                                    <td><field name="ar_with_cl_status_re" style=" margin: 2px;"/></td>
+                                </tr>
+                                <tr>
+                                    <td>LE</td>
+                                    <td><field name="ar_with_cl_sph_le" style=" background:  #deebfe ; margin: 2px;"/></td>
+                                    <td><field name="ar_with_cl_cyl_le" style=" background:  #deebfe ; margin: 2px;"/></td>
+                                    <td><field name="ar_with_cl_axis_le" style=" background:  #deebfe ; margin: 2px;"/></td>
+                                    <td><field name="ar_with_cl_status_le" style=" margin: 2px;"/></td>
+                                </tr>
+                            </table>
+
+                            <table class="measurement-table">
+                                <tr>
+                                    <th colspan="5" style="background-color: #5E72E4; color: #fff; font-weight: bold; padding: 3px;">AR WITHOUT CL</th>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <th>SPH</th>
+                                    <th>CYL</th>
+                                    <th>AXIS</th>
+                                    <th>STATUS</th>
+                                </tr>
+                                <tr>
+                                    <td>RE</td>
+                                    <td><field name="ar_without_cl_sph_re" style=" background:  #deebfe ; margin: 2px;"/></td>
+                                    <td><field name="ar_without_cl_cyl_re" style=" background:  #deebfe ; margin: 2px;"/></td>
+                                    <td><field name="ar_without_cl_axis_re" style=" background:  #deebfe ; margin: 2px;"/></td>
+                                    <td><field name="ar_without_cl_status_re" style=" margin: 2px;"/></td>
+                                </tr>
+                                <tr>
+                                    <td>LE</td>
+                                    <td><field name="ar_without_cl_sph_le" style=" background:  #deebfe ; margin: 2px;"/></td>
+                                    <td><field name="ar_without_cl_cyl_le" style=" background:  #deebfe ; margin: 2px;"/></td>
+                                    <td><field name="ar_without_cl_axis_le" style=" background:  #deebfe ; margin: 2px;"/></td>
+                                    <td><field name="ar_without_cl_status_le" style=" margin: 2px;"/></td>
+                                </tr>
+                            </table>
+
+                            <table class="measurement-table">
+                                <tr>
+                                    <th colspan="7" style="background-color: #5E72E4; color: #fff; font-weight: bold; padding: 3px;">VA WITH CL</th>
+                                </tr>
+                                <tr>
+                                    
+                                        <th colspan="3"></th>
+                                    <th>SPH</th>
+                                    <th>CYL</th>
+                                    <th>AXIS</th>
+                                    <th>VA</th>
+                                </tr>
+                                <tr><td style="border: 1px solid black; border-bottom :none; padding-left:5px;"><div style = "display:ruby;">RE<field name="va_with_cl_re" style=" background:  #deebfe ; margin: 2px;"/></div></td>
+                                    <td style="border: 1px solid black; padding-left:5px; witdth: 40px" rowspan="2">OVER THE REFRACTION</td>
+
+                                    
+                                    <td>RE</td>
+                                    <td><field name="va_with_cl_sph_re" style=" background:  #deebfe ; margin: 2px;"/></td>
+                                    <td><field name="va_with_cl_cyl_re" style=" background:  #deebfe ; margin: 2px;"/></td>
+                                    <td><field name="va_with_cl_axis_re" style=" background:  #deebfe ; margin: 2px;"/></td>
+                                    <td><field name="va_with_cl_va_re" style=" margin: 2px;"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid black; border-bottom :none; padding-left:5px;"><div style = "display:ruby;">LE<field name="va_with_cl_le" style=" background:  #deebfe ; margin: 2px;"/></div></td>
+                                    <td>LE</td>
+                                    <td><field name="va_with_cl_sph_le" style=" background:  #deebfe ; margin: 2px;"/></td>
+                                    <td><field name="va_with_cl_cyl_le" style=" background:  #deebfe ; margin: 2px;"/></td>
+                                    <td><field name="va_with_cl_axis_le" style=" background:  #deebfe ; margin: 2px;"/></td>
+                                    <td><field name="va_with_cl_va_le" style=" margin: 2px;"/></td>
+                                </tr>
+                            </table>
+                            <table class="measurement-table" style="margin-top: 2px; padding:4px">
+                                <style>
+                                    table{
+                                        border-collapse: collapse;
+                                    }
+                                </style>
+                                <tr>
+                                    <th colspan="3" style="background-color: #5E72E4; color: #fff; font-weight: bold; padding: 8px;">CL PRESCRIPTION</th>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <th style="text-align: center; padding: 5px;">RIGHT</th>
+                                    <th style="text-align: center; padding: 5px;">LEFT</th>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 5px;">SPHERE</td>
+                                    <td><field name="cl_prescription_sphere_re" style="width: 100%; background:  #deebfe ;"/></td>
+                                    <td><field name="cl_prescription_sphere_le" style="width: 100%; background:  #deebfe ;"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 5px;">SPH</td>
+                                    <td><field name="cl_prescription_sph_re" style="width: 100%; background:  #deebfe ;"/></td>
+                                    <td><field name="cl_prescription_sph_le" style="width: 100%; background:  #deebfe ;"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 5px;">CYL</td>
+                                    <td><field name="cl_prescription_cyl_re" style="width: 100%; background:  #deebfe ;"/></td>
+                                    <td><field name="cl_prescription_cyl_le" style="width: 100%; background:  #deebfe ;"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 5px;">AXIS</td>
+                                    <td><field name="cl_prescription_axis_re" style="width: 100%; background:  #deebfe ;"/></td>
+                                    <td><field name="cl_prescription_axis_le" style="width: 100%; background:  #deebfe ;"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 5px;">BASE CURVE</td>
+                                    <td><field name="cl_prescription_base_curve_re" style="width: 100%; background:  #deebfe ;"/></td>
+                                    <td><field name="cl_prescription_base_curve_le" style="width: 100%; background:  #deebfe ;"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 5px;">DIAMETER</td>
+                                    <td><field name="cl_prescription_diameter_re" style="width: 100%; background:  #deebfe ;"/></td>
+                                    <td><field name="cl_prescription_diameter_le" style="width: 100%; background:  #deebfe ;"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 5px;">LENS TYPE</td>
+                                    <td><field name="cl_prescription_lenstype_re" style="width: 100%; background:  #deebfe ;"/></td>
+                                    <td><field name="cl_prescription_lenstype_le" style="width: 100%; background:  #deebfe ;"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 5px;">BRAND</td>
+                                    <td><field name="cl_prescription_brand_re" style="width: 100%; background:  #deebfe ;"/></td>
+                                    <td><field name="cl_prescription_brand_le" style="width: 100%; background:  #deebfe ;"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 5px;">COLOUR</td>
+                                    <td><field name="cl_prescription_colour_re" style="width: 100%; background:  #deebfe ;"/></td>
+                                    <td><field name="cl_prescription_colour_le" style="width: 100%; background:  #deebfe ;"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 5px;">DONE BY</td>
+                                    <td colspan="2"><field name="cl_prescription_done_by" style="width: 100%; background:  #deebfe ; text-align: left;"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 5px;">REMARKS</td>
+                                    <td colspan="2"><field name="cl_prescription_remarks" style="width: 100%; background:  #deebfe ; text-align: left;"/></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <style>
+                        .contact-lens-container {
+                            display: flex;
+                            width: 100%;
+                            gap: 2px;
+                        }
+
+                        .table-container {
+                            padding: 3px;
+                        }
+
+                        .left-table {
+                            flex: -1;
+                        }
+
+                        .right-tables {
+                            flex: 1;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 2px;
+                        }
+
+                        .measurement-table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            border: 2px solid black;
+                            margin-bottom: 5px;
+                        }
+                        .measurement-table th,
+                        .measurement-table td {
+                            border: 1px solid black;
+                            padding: 5px;
+                            text-align: center;
+                        }
+
+                        .contact_lens-fields {
+                            width: 100px;
+                            margin: 5px;
+                            background:  #deebfe ;
+                        }
+                    </style>                    
+                    
+                    
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

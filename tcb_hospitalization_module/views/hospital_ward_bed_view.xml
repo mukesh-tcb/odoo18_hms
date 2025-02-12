@@ -1,0 +1,132 @@
+<odoo>
+    <!-- Action for Hospital Ward -->
+    <record id="action_hospital_ward" model="ir.actions.act_window">
+        <field name="name">Hospital Wards</field>
+        <field name="res_model">hospital.ward</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p>Manage hospital wards and their details.</p>
+        </field>
+    </record>
+
+    <!-- Action for Hospital Bed -->
+    <record id="action_hospital_bed" model="ir.actions.act_window">
+        <field name="name">Hospital Beds</field>
+        <field name="res_model">hospital.bed</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p>Manage hospital beds and their details.</p>
+        </field>
+    </record>
+
+
+    <!-- Submenu for Hospital Wards -->
+    <menuitem id="menu_hospital_ward" name="Wards" 
+    parent="menu_tcb_hospitalization_main" action="action_hospital_ward" sequence="2"/>
+
+    <!-- Submenu for Hospital Beds -->
+    <menuitem id="menu_hospital_bed" name="Beds" 
+    parent="menu_tcb_hospitalization_main" action="action_hospital_bed" sequence="3"/>
+
+    <!-- Form View for Hospital Ward -->
+    <record id="view_hospital_ward_form" model="ir.ui.view">
+        <field name="name">hospital.ward.form</field>
+        <field name="model">hospital.ward</field>
+        <field name="arch" type="xml">
+            <form string="Hospital Ward">
+                <sheet>
+                <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="action_show_beds" icon="fa-bed" type="object" >
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value" widget="statinfo">
+                                    <field name="bed_available_count" nolabel="1" class="mr4"/>/<field name="bed_count"/>
+                                </span>
+                                <span class="o_stat_text">Available Beds</span>
+                            </div>
+                        </button>
+                    </div>
+                    <group>
+                        <field name="name"/>
+                        <field name="floor"/>
+                        <field name="gender"/>
+                        <field name="state"/>
+                        <field name="ward_room_type"/>
+                        <field name="description" placeholder="Description....."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- List View for Hospital Ward -->
+    <record id="view_hospital_ward_list" model="ir.ui.view">
+        <field name="name">hospital.ward.list</field>
+        <field name="model">hospital.ward</field>
+        <field name="arch" type="xml">
+            <list string="Hospital Wards">
+                <field name="name"/>
+                <field name="floor"/>
+                <field name="gender"/>
+                <field name="state"/>
+                <field name="ward_room_type"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View for Hospital Bed -->
+    <record id="view_hospital_bed_form" model="ir.ui.view">
+        <field name="name">hospital.bed.form</field>
+        <field name="model">hospital.bed</field>
+        <field name="arch" type="xml">
+            <form string="Hospital Bed">
+            <header>
+                    <field name="state" nolabel="1" widget="statusbar" statusbar_visible="free,reserved,occupied,blocked"/>
+                </header>
+                <sheet>
+                <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="action_accommodation_history" icon="fa-bed" type="object" >
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Accommodation History</span><span class="o_stat_value" widget="statinfo"><field name="accommodation_count"/></span>
+                            </div>
+                        </button>
+                    </div>
+                        <group>
+                        <group>
+                        <field name="name" readonly="state in ('occupied','reserved')"/>
+                        <field name="ward_id" readonly="state in ('occupied','reserved')"/>
+                        <field name="patient_id" readonly="state in ('occupied','reserved')"/>
+                        </group>
+                        
+                        <group>
+                        <field name="product_id" widget="selection" readonly="state in ('occupied','reserved')"/>
+                        <field name="bed_type" readonly="state in ('occupied','reserved')"/>
+                        <field name="list_price" readonly="state in ('occupied','reserved')"/>
+                        <field name="telephone" readonly="state in ('occupied','reserved')"/>
+                        <field name="state" invisible="1"/>
+                        </group>
+                    </group>
+                        <field name="notes" placeholder="Description....."/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- List View for Hospital Bed -->
+    <record id="view_hospital_bed_list" model="ir.ui.view">
+        <field name="name">hospital.bed.list</field>
+        <field name="model">hospital.bed</field>
+        <field name="arch" type="xml">
+            <list string="Hospital Beds">
+                <field name="name"/>
+                <field name="ward_id"/>
+                <field name="product_id"/>
+                <field name="list_price" readonly="1"/>
+                <field name="bed_type"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+
+
+</odoo>

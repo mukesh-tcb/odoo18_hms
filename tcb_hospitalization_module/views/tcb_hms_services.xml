@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menu and Action -->
+    <record id="action_tcb_hms_services" model="ir.actions.act_window">
+        <field name="name">Hospital Services</field>
+        <field name="res_model">tcb.hms.services</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+    <menuitem id="menu_hms_services" name="Services" 
+            action="action_tcb_hms_services" 
+            parent="menu_tcb_hospitalization_main" 
+            sequence="20" />
+
+    <!-- List View -->
+    <record id="view_tcb_hms_services_list" model="ir.ui.view">
+        <field name="name">tcb.hms.services.list</field>
+        <field name="model">tcb.hms.services</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="price"/>
+                <field name="max_limit"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_tcb_hms_services_form" model="ir.ui.view">
+        <field name="name">tcb.hms.services.form</field>
+        <field name="model">tcb.hms.services</field>
+        <field name="arch" type="xml">
+            <form string="Hospital Service">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="price"/>
+                        <field name="max_limit"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

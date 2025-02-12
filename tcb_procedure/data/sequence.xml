@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="tcb_patient_procedure_sequence" model="ir.sequence">
+            <field name="name">TCB Patient Procedure Sequence</field>
+            <field name="code">tcb.patient.procedure</field>
+            <field name="prefix">PR</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</odoo>

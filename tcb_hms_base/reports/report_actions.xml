@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="action_report_hms_appointment" model="ir.actions.report">
+            <field name="name">Appointment Report</field>
+            <field name="model">hms.appointment</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">tcb_hms_base.appointment_report</field>
+            <field name="report_file">tcb_hms_base.appointment_report</field>
+            <field name="print_report_name">'Appointment Report - %s' % object.name</field>
+            <field name="binding_model_id" ref="model_hms_appointment"/>
+            <field name="binding_type">report</field>
+        </record>
+
+    <record id="action_report_tcb_invoice" model="ir.actions.report">
+        <field name="name">Invoice</field>
+        <field name="model">tcb.invoice</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">tcb_hms_base.report_tcb_invoice</field>
+        <field name="report_file">tcb_hms_base.report_tcb_invoice</field>
+        <field name="print_report_name">'Invoice - %s' % object.name</field>
+        <field name="binding_model_id" ref="model_tcb_invoice"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

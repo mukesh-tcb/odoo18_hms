@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+    
+<record id="ir_cron_update_dilation_durations" model="ir.cron">
+    <field name="name">Update Dilation Durations</field>
+    <field name="model_id" ref="model_tcb_ophthalmology_evaluation"/>
+    <field name="state">code</field>
+    <field name="code">update_dilation_durations()</field>
+    <field name="interval_number">1</field>
+    <field name="interval_type">minutes</field>
+    <!-- <field name="numbercall">-1</field> -->
+    <field name="active" eval="True"/>
+</record>
+
+</data>
+</odoo>

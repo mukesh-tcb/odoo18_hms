@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="tcb_ph_1_PLUS_CELLS_AND_FLARE" model="tcb.ophthalmology.anterior.chamber">
+            <field name="name">1+ CELLS AND FLARE</field>
+        </record>
+
+        <record id="tcb_ph_2_PLUS_CELLS_AND_FLARE" model="tcb.ophthalmology.anterior.chamber">
+            <field name="name">2+ CELLS AND FLARE</field>
+        </record>
+
+        <record id="tcb_ph_3_PLUS_CELLS_AND_FLARE" model="tcb.ophthalmology.anterior.chamber">
+            <field name="name">3+ CELLS AND FLARE</field>
+        </record>
+
+        <record id="tcb_ph_BORDERLINE_DEPTH" model="tcb.ophthalmology.anterior.chamber">
+            <field name="name">BORDERLINE DEPTH</field>
+        </record>
+
+        <record id="tcb_ph_FIBRINOUS_EXUDATES" model="tcb.ophthalmology.anterior.chamber">
+            <field name="name">FIBRINOUS EXUDATES</field>
+        </record>
+
+        <record id="tcb_ph_NORMAL_anterior" model="tcb.ophthalmology.anterior.chamber">
+            <field name="name">NORMAL</field>
+        </record>
+
+        <record id="tcb_ph_OCC_CELLS" model="tcb.ophthalmology.anterior.chamber">
+            <field name="name">OCC CELLS</field>
+        </record>
+
+        <record id="tcb_ph_QUIET_AND_NORMAL_DEPTH" model="tcb.ophthalmology.anterior.chamber">
+            <field name="name">QUIET &amp; NORMAL DEPTH</field>
+        </record>
+
+        <record id="tcb_ph_QUIET_AND_SHALLOW" model="tcb.ophthalmology.anterior.chamber">
+            <field name="name">QUIET &amp; SHALLOW</field>
+        </record>
+
+        <record id="tcb_ph_SHALLOW" model="tcb.ophthalmology.anterior.chamber">
+            <field name="name">SHALLOW</field>
+        </record>
+
+        <record id="tcb_ph_VH_GRADE_1" model="tcb.ophthalmology.anterior.chamber">
+            <field name="name">VH GRADE 1</field>
+        </record>
+
+        <record id="tcb_ph_VH_GRADE_2" model="tcb.ophthalmology.anterior.chamber">
+            <field name="name">VH GRADE 2</field>
+        </record>
+
+        <record id="tcb_ph_VH_GRADE_3" model="tcb.ophthalmology.anterior.chamber">
+            <field name="name">VH GRADE 3</field>
+        </record>
+
+        <record id="tcb_ph_VH_GRADE_4" model="tcb.ophthalmology.anterior.chamber">
+            <field name="name">VH GRADE 4</field>
+        </record>
+    </data>
+</odoo>

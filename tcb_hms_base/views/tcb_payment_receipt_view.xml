@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tcb_payment_receipt_list_view" model="ir.ui.view">
+        <field name="name">tcb.payment.receipt.list</field>
+        <field name="model">tcb.payment.receipt</field>
+        <field name="arch" type="xml">
+            <list string="Payment Receipts" decoration-danger="payment_type == 'send' and state == 'posted'" 
+                    decoration-warning="state == 'draft'" decoration-success="payment_type == 'receive' and state == 'posted'">
+                <field name="name"/>
+                <field name="invoice_id"/>
+                <field name="payment_datetime"/>
+                <field name="patient_id"/>
+                <field name="payment_type"/>
+                <field name="payment_amount"/>
+                <field name="payment_mode"/>
+                <field name="state" readonly="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="tcb_payment_receipt_form_view" model="ir.ui.view">
+        <field name="name">tcb.payment.receipt.form</field>
+        <field name="model">tcb.payment.receipt</field>
+        <field name="arch" type="xml">
+            <form string="Payment Receipt">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,posted,cancelled"/>
+                    <button name="action_post" string="Confirm" type="object" invisible= "state in  ('cancelled','posted')" class="btn-primary"/>
+                    <button name="action_reset_to_draft" string="Reset To Draft" type="object" invisible= "state  in 'draft'" class="btn-secondary"/>
+                    <button name="action_cancel" string="Cancel" type="object" invisible= "state in 'cancelled'" class="btn-warning"/>
+
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1" placeholder="Payment Receipt Number"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="patient_id"  readonly="state not in 'draft'"/>
+                            <field name="payment_date"  readonly="state not in 'draft'"/>
+                            <field name="payment_mode" readonly="state not in 'draft'"/>
+                        </group>
+                        <group>
+                            <field name="payment_amount" readonly="state not in 'draft'"/>
+                            <field name="payment_type" readonly="state not in 'draft'"/>
+                            <field name="payment_datetime"  readonly="state not in 'draft'"/>
+                            <field name="appointment_id"  readonly="state not in 'draft'"/>
+                            <field name="invoice_id"  readonly="state not in 'draft'"/>
+                            <field name="refund_reason" invisible="payment_type in 'receive'"  readonly="state not in 'draft'"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- <record id="tcb_payment_receipt_search_view" model="ir.ui.view">
+        <field name="name">tcb.payment.receipt.search</field>
+        <field name="model">tcb.payment.receipt</field>
+        <field name="arch" type="xml">
+            <search string="Payment Receipts">
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="payment_mode"/>
+                <field name="state"/>
+                <filter string="Draft" domain="[('state','=','draft')]"/>
+                <filter string="Posted" domain="[('state','=','posted')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="group_by_patient" context="{'group_by':'patient_id'}"/>
+                    <filter string="Payment Mode" name="group_by_mode" context="{'group_by':'payment_mode'}"/>
+                </group>
+            </search>
+        </field>
+    </record> -->
+
+    <!-- Action -->
+    <record id="action_tcb_payment_receipt" model="ir.actions.act_window">
+        <field name="name">Payment Receipts</field>
+        <field name="res_model">tcb.payment.receipt</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Payment Receipt
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem 
+        id="menu_tcb_payment_receipt_list" 
+        name="Payment Receipts" 
+        action="action_tcb_payment_receipt"
+        sequence="11"/>
+</odoo>

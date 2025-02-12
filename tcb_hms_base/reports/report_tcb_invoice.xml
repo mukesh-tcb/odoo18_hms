@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_tcb_invoice">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page" style="margin-top:-10px;">
+                        <!-- Header Section -->
+            <!-- If there is appointment id then it should be print  -->
+                <div class="text-center mb-4" style="margin-top: -10px !important;">
+                    <h2 style="text-align:center; border-bottom: 2px solid black; font-size:40px !important; padding-right:10px;">
+                        <span t-if="doc.state == 'posted'">Invoice</span>
+                        <span t-if="doc.state == 'draft'">Draft Invoice</span>
+                        <span t-if="doc.state == 'cancelled'">Cancelled Invoice</span>
+                        <!-- <span t-if="doc.name != 'New'" t-field="doc.name"/> -->
+                    </h2>
+
+                    </div>
+
+                    <div class="row mb-3" style="font-size:16px;">
+                        <div class="col-4">
+                            <strong>Invoice No.: </strong><span t-field="doc.name"/><br/>
+                            <strong>Patient Name: </strong><span t-field="doc.patient_id.patient_name"/><br/>
+                            <t t-if="doc.patient_id.relation and doc.patient_id.care_of">
+                                <strong>
+                                    <span t-esc="doc.patient_id.relation.name"/>
+                                    Name:
+                                </strong>
+                                <span t-field="doc.patient_id.care_of"/>
+                                <br/>
+                            </t>
+                            <strong>Age: </strong><span t-field="doc.patient_id.age"/> Sex: <span t-field="doc.patient_id.gender"/>
+                        </div>
+                        <div class="col-4">
+                            <strong>UHID No.: </strong><span t-field="doc.patient_id.name"/><br/>
+                            <strong>Date: </strong><span t-field="doc.invoice_datetime" t-options='{"format": "dd/MM/yyyy"}'/><br/>
+                            <strong>Phone Number: </strong><span t-field="doc.patient_id.mobile"/><br/>
+                            <strong>Address:</strong>
+                            <span t-field="doc.patient_id.street"/>
+                            <span t-field="doc.patient_id.street2"/>
+                            <span t-field="doc.patient_id.city"/>
+                            <span t-if="doc.patient_id.state_id" t-field="doc.patient_id.state_id.name"/>
+                            <span t-field="doc.patient_id.zip"/>
+                            <span t-if="doc.patient_id.country_id" t-field="doc.patient_id.country_id.name"/>
+                            <br/>
+                        </div>
+                        <div class="col-4">
+                            <strong>Department: </strong><span t-field="doc.physician_id.physician_department_id.name"/><br/>
+                            <strong>Consultant Details:</strong><br/>
+                            Dr. <span t-field="doc.physician_id.name"/><br/>
+                            <span t-field="doc.physician_id.degree_ids"/><br/>
+                            <strong>Registration No.: </strong><span t-field="doc.physician_id.registration_number"/>
+                        </div>
+                    </div>
+
+                    <!-- Invoice Lines Table -->
+            <div style="height: 1px; background-color: #000; margin-top:15px; margin-bottom:0px; width: 100%;"></div>
+                <table style="width: 100%; border-collapse: collapse; margin-top: 10px;" border="1">
+                    <!-- <thead>
+                        <tr style="background-color: #f2f2f2; text-align: center;">
+                            <th style="padding: 8px; border: 1px solid black;">Description</th>
+                            <th style="padding: 8px; border: 1px solid black;">Quantity</th>
+                            <th style="padding: 8px; border: 1px solid black;">Unit Price</th>
+                            <th style="padding: 8px; border: 1px solid black;">Amount</th>
+                        </tr>
+                    </thead> -->
+                            <thead style="border: 0.01px #FFFFFF; ">
+                            
+                        <tr style="background-color: #f2f2f2; text-align: center;">
+                            <th style="padding: 8px; border: 0px #FFFFFF; text-align: left;"><strong>Description</strong></th>
+                            <th style="padding: 8px; border: 0px #FFFFFF; text-align: center;"><strong>Quantity</strong></th>
+                            <th style="padding: 8px; border: 0px #FFFFFF; text-align: right;"><strong>Unit Price</strong></th>
+                            <th style="padding: 8px; border: 0px #FFFFFF; text-align: right;"><strong>Amount</strong></th>
+                        </tr>
+                        </thead>
+                    <tbody style="border: 0.01px #FFFFFF;">
+                        <tr t-foreach="doc.invoice_line_ids" t-as="line">
+                            <td style="padding: 8px; border: 0px #FFFFFF; text-align: left;">
+                                <span t-field="line.product_id.name"/>
+                            </td>
+                            <td style="padding: 8px; border: 0px #FFFFFF; text-align: center;">
+                                <span t-field="line.quantity"/>
+                            </td>
+                            <td style="padding: 8px; border: 0px #FFFFFF; text-align: right;">
+                                ₹ <span t-field="line.price_unit"/>
+                            </td>
+                            <td style="padding: 8px; border: 0px #FFFFFF; text-align: right;">
+                                ₹ <span t-field="line.subtotal"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                    <!-- Totals Section -->
+            <div style="height: 1px; background-color: #000; margin-top:15px; margin-bottom:5px; width: 50%; margin-left: auto; margin-right: 0;"></div>
+                    <div class="row justify-content-end" style="font-size: 16px; border: 0.01px #FFFFFF;">
+                        <div>
+                            <table style="border-collapse: collapse; border: 0.01px #FFFFFF; width:50%; margin-left: auto; margin-right: 0; padding:2px">
+                                <tr style="margin-bottom: 5px;">
+                                    <td style="width:70%; margin-right: auto; margin-left: 0;"><strong>Total</strong></td>
+                                    <td class="text-right" style="width:30%; ">₹ <span t-field="doc.amount_total"/></td>
+                                </tr>
+                                <t t-foreach="doc.payment_line_ids" t-as="payment">
+                                    <t t-if="payment.state == 'posted'">
+                                    <tr style="margin-bottom: 5px;">
+                                        <td>
+                                            <i><span style="padding-bottom:-5px"><strong>Paid on </strong></span>
+                                            <span  t-field="payment.payment_date"/>
+                                            (<span t-field="payment.payment_mode"/>)
+                                            </i>
+                                            <br/>
+                                            <span style="font-size: 13px"><strong>Memo: </strong>
+                                            <span t-field="payment.name"/>
+                                            (<span t-field="payment.invoice_id.name"/>)</span>
+                                        </td>
+                                        <td class="text-right">₹ 
+                                        <t t-if="payment.payment_type == 'receive'">
+                                            <span t-field="payment.payment_amount"/>
+                                        </t>
+                                        <t t-if="payment.payment_type == 'send'">
+                                            -<span t-field="payment.payment_amount"/>
+                                        </t>
+                                        </td>
+                                    </tr>
+                                </t>
+                                </t>
+                                <tr style="margin-top: 10px !important;">
+                                    <td><strong>Total Amount Paid:</strong></td>
+                                    <td class="text-right">₹ <span t-field="doc.total_paid_amount"/></td>
+                                </tr>
+            
+                        
+                            </table>
+                            <div style="height: 1px; background-color: #000; margin-top:15px; margin-bottom:5px; width: 50%; margin-left: auto; margin-right: 0;"></div>
+                        <table style="border-collapse: collapse; border: 0.01px #FFFFFF; width:50%; margin-left: auto; margin-right: 0; padding:2px">
+
+                                <tr style="margin-bottom: 5px;">
+                                    <td><strong>Amount Due</strong></td>
+                                    <td class="text-right">₹ <span t-field="doc.amount_pending"/></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <style>
+                        .text-right {
+                            text-align: right;
+                            padding-bottom: 5px;
+                        }
+                    </style>
+                    <!-- Payment Reference -->
+                    <div class="mt-3" style="font-size: 16px;">
+                        <p>Please use the following communication for your payment : <span t-field="doc.name"/></p>
+                        <p><strong>Total (In Words): </strong><span t-field="doc.amount_total_words"/></p>
+                    </div>
+                </div>
+
+                <!-- <div style="border-bottom: 1px solid black; padding: 1px; margin-top: -5px;">
+                    <div style="width: 34%; display: inline-block; vertical-align: top;">
+                        <strong>Invoice No.:</strong>
+                        <span t-field="doc.name"/>
+                            <br/>
+                            <strong>UHID No.:</strong>
+                            <span t-field="doc.patient_id.name"/>
+                            <br/>
+                            <strong>Patient Name:</strong>
+                            <span t-field="doc.patient_id.patient_name"/>
+                            <br/>
+                            <t t-if="doc.patient_id.relation and doc.patient_id.care_of">
+                                <strong>
+                                    <span t-esc="doc.patient_id.relation.name"/>
+                                    Name:
+                                </strong>
+                                <span t-field="doc.patient_id.care_of"/>
+                                <br/>
+                            </t>
+                            <strong>Age/Sex:</strong>
+                            <span t-if="doc.patient_id.age" t-field="doc.patient_id.age"/>
+                            <span t-if="doc.patient_id.gender and doc.patient_id.age">
+                                /
+                            </span>
+                            <span t-if="doc.patient_id.gender" t-field="doc.patient_id.gender"/>
+                            <br/>
+                            <strong>Phone Number:</strong>
+                            <span t-field="doc.patient_id.phone"/>
+                            <br/>
+                        </div>
+                        <div style="width: 32%; display: inline-block; vertical-align: top;">
+                            <strong>Date:</strong>
+                            <span t-field="doc.invoice_datetime"/>
+                            <br/>
+                            <strong>Consultation Charges:</strong>
+                            <span t-field="doc.total_paid_amount"/>
+                            <br/>
+                            <strong>Address:</strong>
+                            <span t-field="doc.patient_id.street"/>
+                            <span t-field="doc.patient_id.street2"/>
+                            <span t-field="doc.patient_id.city"/>
+                            <span t-if="doc.patient_id.state_id" t-field="doc.patient_id.state_id.name"/>
+                            <span t-field="doc.patient_id.zip"/>
+                            <span t-if="doc.patient_id.country_id" t-field="doc.patient_id.country_id.name"/>
+                            <br/>
+                        </div>
+                        <div style="width: 2%; display: inline-block; vertical-align: top;">
+                            This div is empty; you might add content here if needed.
+                        </div>
+                        <t t-if="doc.physician_id">
+                            <div style="width: 30%; display: inline-block; vertical-align: top;">
+                                <strong>Consultant Details:</strong>
+                                <br/>
+                                <t t-if="doc.physician_id.physician_department_id">
+                                    <strong>Department:</strong>
+                                    <span t-field="doc.physician_id.physician_department_id.name"/>
+                                    <br/>
+                                </t>
+                                <strong>
+                                    <span t-field="doc.physician_id.name"/>
+                                </strong>
+                                <br/>
+                                <strong t-esc="','.join(x.name for x in doc.physician_id.degree_ids)"/>
+                                <br/>
+                                <strong>Reg No.:</strong>
+                                <strong t-field="doc.physician_id.registration_number"/>
+                            </div>
+                        </t>
+                    </div> -->
+
+                        <!-- <table>
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th class="text-right">Quantity</th>
+                                    <th class="text-right">Unit Price</th>
+                                    <th class="text-right">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.invoice_line_ids" t-as="line">
+                                    <td><span t-field="line.product_id.name"/></td>
+                                    <td class="text-right"><span t-field="line.quantity"/></td>
+                                    <td class="text-right">
+                                        <span t-field="line.price_unit"
+                                              t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="line.subtotal"
+                                              t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div t-if="doc.payment_line_ids">
+                                    <strong>Payment Information:</strong>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Method</th>
+                                                <th class="text-right">Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr t-foreach="doc.payment_line_ids" t-as="payment">
+                                                <td><span t-field="payment.payment_date"/></td>
+                                                <td><span t-field="payment.payment_mode"/></td>
+                                                <td class="text-right">
+                                                    <span t-field="payment.payment_amount"
+                                                          t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-7 text-right">
+                                        <strong>Subtotal:</strong>
+                                    </div>
+                                    <div class="col-5 text-right">
+                                        <span t-field="doc.amount_total"
+                                              t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7 text-right">
+                                        <strong>Paid Amount:</strong>
+                                    </div>
+                                    <div class="col-5 text-right">
+                                        <span t-field="doc.total_paid_amount"
+                                              t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7 text-right">
+                                        <strong>Balance Due:</strong>
+                                    </div>
+                                    <div class="col-5 text-right">
+                                        <span t-field="doc.amount_pending"
+                                              t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <!-- Terms and Conditions -->
+                        <!-- <div class="row mt-4">
+                            <div class="col-12">
+                                <strong>Terms &amp; Conditions:</strong>
+                                <p t-field="doc.company_id.invoice_terms"/>
+                            </div>
+                        </div> -->
+
+                        <!-- Footer -->
+                    
+                </t>
+            </t>
+        </t>
+
+<!--<style>
+ /* static/src/scss/invoice_report.scss */
+.invoice-page {
+    .header {
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .company-details {
+        font-size: 16px;
+        color: #666;
+    }
+    
+    .invoice-details {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+    
+    .table {
+        th {
+            background-color: #f8f9fa;
+            border-top: 2px solid #dee2e6;
+        }
+        
+        td {
+            vertical-align: middle;
+        }
+    }
+    
+    .total-section {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 20px;
+        
+        .total-line {
+            border-top: 1px solid #dee2e6;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+    }
+    
+    .footer {
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 1px solid #ddd;
+        text-align: center;
+        color: #666;
+    }
+}</style> -->
+    </template>
+
+
+</odoo>

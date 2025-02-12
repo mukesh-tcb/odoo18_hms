@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+<template id="external_layout_standard_custom" inherit_id="web.external_layout_standard">
+
+        <!-- Custom header -->
+
+    <xpath expr="//div[1]" position="replace">
+    <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style" style="margin-bottom: 0px ! important;">
+        <div class="row align-items-center text-center" style="font-family: 'Trebuchet MS', sans-serif; display: flex; justify-content: center;margin-top:15px;">
+            <div class="col-3 d-flex justify-content-start">
+                <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 100px; max-width: 600px;" alt="Logo"/>
+            </div>
+            <div class="col-6 text-center">
+                <div style="width: 100%;">
+                    <span style="font-size: 35px; font-family: 'Kozuka Mincho Pro', serif; font-weight: 600; text-transform: uppercase; display: block;">
+                        <t t-esc="company.name"/>
+                    </span>
+                    <span style="font-size: 20px; display: block;">
+                        <t t-esc="company.street"/>,
+                    </span>
+                    <span style="font-size: 20px; display: block;">
+                        <t t-esc="company.city"/> - <t t-esc="company.zip"/>, (<t t-esc="company.state_id.name"/>), M. <t t-esc="company.mobile"/>
+                    </span>
+                </div>
+            </div>
+            <div class="col-3 d-flex justify-content-end" style="display:flex flex-direction:column;">
+                <img t-if="company.nabh_logo" t-att-src="image_data_uri(company.nabh_logo)" style="max-height: 100px; max-width: 300px;" alt="NABH Logo"/>
+                <img t-if="company.pm_jay_logo" t-att-src="image_data_uri(company.pm_jay_logo)" style="max-height: 100px; max-width: 300px;" alt="NABH Logo"/>
+            
+            </div>
+        </div>
+    <div style="height: 1px; background-color: #000; margin-top:20px; margin-bottom: -10px; width: 100%;"></div>
+
+    </div>
+</xpath>
+
+
+    <!-- <xpath expr="//div[contains(@t-attf-class, 'footer')]" position="replace">
+            <t t-if="o and o._name in ['hms.appointment']">
+                <div style="border-top:1px solid black;">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="horizontal-line-box"
+                                style="position: relative;text-align: center;padding:2px;white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                <span style="position: relative;text-align: center;padding:2px;">This is not meant for
+                                    any Medico Legal Purpose.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <t t-if="doc.company_id.company_timing">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="horizontal-line-box"
+                                        style="position: relative;text-align: center;padding:2px;">
+                                        Timings :
+                                        <t t-esc="doc.company_id.company_timing"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-if="doc.company_id.phone or doc.company_id.mobile or doc.company_id.email">
+                            <div class="horizontal-line-box" style="position: relative;text-align: center;padding:2px;">
+                                <t t-if="doc.company_id.phone">
+                                    <span>
+                                        Phone :
+                                        <t t-esc="doc.company_id.phone"/>,
+                                    </span>
+                                </t>
+                                <t t-if="doc.company_id.mobile">
+                                    <span>
+                                        Mobile :
+                                        <t t-esc="doc.company_id.mobile"/>,
+                                    </span>
+                                </t>
+                                <t t-if="doc.company_id.email">
+                                    <span>
+                                        Email :
+                                        <t t-esc="doc.company_id.email"/>
+                                    </span>
+                                </t>
+                            </div>
+                        </t>
+                </div>
+            </t> 
+        </xpath>-->
+    </template>
+    
+
+</odoo>

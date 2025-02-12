@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Frequencies -->
+        <record id="frequency_one_time_a_day" model="tcb.prescription.frequency">
+            <field name="name">One Time a Day</field>
+            <field name="frequency">1.0</field>
+        </record>
+
+        <record id="frequency_two_times_a_day" model="tcb.prescription.frequency">
+            <field name="name">Two Times a Day</field>
+            <field name="frequency">2.0</field>
+        </record>
+
+        <record id="frequency_three_times_a_day" model="tcb.prescription.frequency">
+            <field name="name">Three Times a Day</field>
+            <field name="frequency">3.0</field>
+        </record>
+
+        <record id="frequency_four_times_a_day" model="tcb.prescription.frequency">
+            <field name="name">Four Times a Day</field>
+            <field name="frequency">4.0</field>
+        </record>
+
+        <record id="frequency_five_times_a_day" model="tcb.prescription.frequency">
+            <field name="name">Five Times a Day</field>
+            <field name="frequency">5.0</field>
+        </record>
+
+        <record id="frequency_six_times_a_day" model="tcb.prescription.frequency">
+            <field name="name">Six Times a Day</field>
+            <field name="frequency">6.0</field>
+        </record>
+
+        <record id="frequency_seven_times_a_day" model="tcb.prescription.frequency">
+            <field name="name">Seven Times a Day</field>
+            <field name="frequency">7.0</field>
+        </record>
+
+        <record id="frequency_eight_times_a_day" model="tcb.prescription.frequency">
+            <field name="name">Eight Times a Day</field>
+            <field name="frequency">8.0</field>
+        </record>
+
+        <record id="frequency_nine_times_a_day" model="tcb.prescription.frequency">
+            <field name="name">Nine Times a Day</field>
+            <field name="frequency">9.0</field>
+        </record>
+
+        <record id="frequency_ten_times_a_day" model="tcb.prescription.frequency">
+            <field name="name">Ten Times a Day</field>
+            <field name="frequency">10.0</field>
+        </record>
+
+        <record id="frequency_before_meals" model="tcb.prescription.frequency">
+            <field name="name">Before Meals</field>
+            <field name="frequency">3.0</field> <!-- Assuming three meals a day -->
+        </record>
+
+        <record id="frequency_after_meals" model="tcb.prescription.frequency">
+            <field name="name">After Meals</field>
+            <field name="frequency">3.0</field> <!-- Assuming three meals a day -->
+        </record>
+
+        <record id="frequency_at_bedtime" model="tcb.prescription.frequency">
+            <field name="name">At Bedtime</field>
+            <field name="frequency">1.0</field>
+        </record>
+
+        <record id="frequency_once_in_the_morning" model="tcb.prescription.frequency">
+            <field name="name">Once in the Morning</field>
+            <field name="frequency">1.0</field>
+        </record>
+
+        <record id="frequency_every_one_hour" model="tcb.prescription.frequency">
+            <field name="name">Every One Hour</field>
+            <field name="frequency">24.0</field> <!-- 24 times a day -->
+        </record>
+
+        <record id="frequency_twice_a_week" model="tcb.prescription.frequency">
+            <field name="name">Twice a Week</field>
+            <field name="frequency">0.2857</field> <!-- Approximately 2 times a week -->
+        </record>
+
+        <record id="frequency_once_a_week" model="tcb.prescription.frequency">
+            <field name="name">Once a Week</field>
+            <field name="frequency">0.1429</field> <!-- Approximately 1 time a week -->
+        </record>
+
+        <record id="frequency_thrice_a_week" model="tcb.prescription.frequency">
+            <field name="name">Thrice a Week</field>
+            <field name="frequency">0.4286</field> <!-- Approximately 3 times a week -->
+        </record>
+
+        <record id="frequency_once_a_month" model="tcb.prescription.frequency">
+            <field name="name">Once a Month</field>
+            <field name="frequency">0.0333</field> <!-- Approximately 1 time a month -->
+        </record>
+
+        <record id="frequency_twice_a_month" model="tcb.prescription.frequency">
+            <field name="name">Twice a Month</field>
+            <field name="frequency">0.0667</field> <!-- Approximately 2 times a month -->
+        </record>
+
+        <record id="frequency_thrice_a_month" model="tcb.prescription.frequency">
+            <field name="name">Thrice a Month</field>
+            <field name="frequency">0.1</field> <!-- Approximately 3 times a month -->
+        </record>
+
+        <!-- Durations -->
+                <record id="duration_one_day" model="tcb.prescription.duration">
+            <field name="name">1 Day</field>
+            <field name="days">1.0</field>
+        </record>
+
+        <record id="duration_two_days" model="tcb.prescription.duration">
+            <field name="name">2 Days</field>
+            <field name="days">2.0</field>
+        </record>
+
+        <record id="duration_three_days" model="tcb.prescription.duration">
+            <field name="name">3 Days</field>
+            <field name="days">3.0</field>
+        </record>
+
+        <record id="duration_four_days" model="tcb.prescription.duration">
+            <field name="name">4 Days</field>
+            <field name="days">4.0</field>
+        </record>
+
+        <record id="duration_five_days" model="tcb.prescription.duration">
+            <field name="name">5 Days</field>
+            <field name="days">5.0</field>
+        </record>
+
+        <record id="duration_six_days" model="tcb.prescription.duration">
+            <field name="name">6 Days</field>
+            <field name="days">6.0</field>
+        </record>
+
+        <record id="duration_1_week" model="tcb.prescription.duration">
+            <field name="name">1 Week</field>
+            <field name="days">7.0</field>
+        </record>
+
+        <record id="duration_eight_days" model="tcb.prescription.duration">
+            <field name="name">8 Days</field>
+            <field name="days">8.0</field>
+        </record>
+
+        <record id="duration_nine_days" model="tcb.prescription.duration">
+            <field name="name">9 Days</field>
+            <field name="days">9.0</field>
+        </record>
+
+        <record id="duration_ten_days" model="tcb.prescription.duration">
+            <field name="name">10 Days</field>
+            <field name="days">10.0</field>
+        </record>
+
+        <record id="duration_two_weeks" model="tcb.prescription.duration">
+            <field name="name">2 Weeks</field>
+            <field name="days">14.0</field>
+        </record>
+
+        <record id="duration_three_weeks" model="tcb.prescription.duration">
+            <field name="name">3 Weeks</field>
+            <field name="days">21.0</field>
+        </record>
+
+        <record id="duration_one_month" model="tcb.prescription.duration">
+            <field name="name">1 Month</field>
+            <field name="days">30.0</field>
+        </record>
+
+        <record id="duration_two_months" model="tcb.prescription.duration">
+            <field name="name">2 Months</field>
+            <field name="days">60.0</field>
+        </record>
+
+        <record id="duration_three_months" model="tcb.prescription.duration">
+            <field name="name">3 Months</field>
+            <field name="days">90.0</field>
+        </record>
+
+        <record id="duration_four_months" model="tcb.prescription.duration">
+            <field name="name">4 Months</field>
+            <field name="days">120.0</field>
+        </record>
+
+        <record id="duration_five_months" model="tcb.prescription.duration">
+            <field name="name">5 Months</field>
+            <field name="days">150.0</field>
+        </record>
+
+        <record id="duration_six_months" model="tcb.prescription.duration">
+            <field name="name">6 Months</field>
+            <field name="days">180.0</field>
+        </record>
+
+        <record id="duration_seven_months" model="tcb.prescription.duration">
+            <field name="name">7 Months</field>
+            <field name="days">210.0</field>
+        </record>
+
+        <record id="duration_eight_months" model="tcb.prescription.duration">
+            <field name="name">8 Months</field>
+            <field name="days">240.0</field>
+        </record>
+
+        <record id="duration_nine_months" model="tcb.prescription.duration">
+            <field name="name">9 Months</field>
+            <field name="days">270.0</field>
+        </record>
+
+        <record id="duration_ten_months" model="tcb.prescription.duration">
+            <field name="name">10 Months</field>
+            <field name="days">300.0</field>
+        </record>
+
+        <record id="duration_eleven_months" model="tcb.prescription.duration">
+            <field name="name">11 Months</field>
+            <field name="days">330.0</field>
+        </record>
+
+        <record id="duration_twelve_months" model="tcb.prescription.duration">
+            <field name="name">A Year</field>
+            <field name="days">360.0</field>
+        </record>
+
+        <record id="duration_thirteen_months" model="tcb.prescription.duration">
+            <field name="name">13 Months</field>
+            <field name="days">390.0</field>
+        </record>
+
+    </data>
+</odoo>

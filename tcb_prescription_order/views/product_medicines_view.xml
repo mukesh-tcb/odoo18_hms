@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- Form View for Medicines -->
+        <record id="view_medicine_form" model="ir.ui.view">
+            <field name="name">medicine.product.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+
+            <xpath expr="//label[@for='purchase_ok']" position="after">
+                <field name="is_medicament_product"/>
+                <label for='is_medicament_product'>Is Medicament Product</label>
+            </xpath>
+                <xpath expr="//page[@name='general_information']" position="before">
+                    <page name="medicament_details" string="Medicament Details" invisible="is_medicament_product != 1">
+                        <group>
+                            <group>
+                                <field name="drug_from_id" />
+                                <field name="route_name" />
+                            </group>
+                            <group>
+                                <field name="frequency_id" />
+                                <field name="active_component_ids" 
+                                widget="many2many_tags"
+                                />
+                            </group>
+                        </group>
+
+                        <separator string="Manufacturer Details" colspan="4" />
+                            <group>
+                                <field name="medic_product_code"
+                                    placeholder="Medicament Product Code" />
+                                <field name="drug_company_id" placeholder="Drug Company" />
+                            </group>
+                        <separator string="Indications" colspan="4" />
+                                <field name="product_indication" placeholder="Product Indication" />
+                                <field name="medicament_notes" placeholder="Medicament Notes" />
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Search View for Medicines -->
+        <record id="view_medicine_search" model="ir.ui.view">
+            <field name="name">medicine.product.search</field>
+            <field name="model">product.template</field>
+            <field name="arch" type="xml">
+                <search string="Medicines">
+                    <field name="name" string="Medicine Name"/>
+                    <field name="categ_id" string="Category"/>
+                    <field name="barcode"/>
+
+                    <filter string="Archived" name="archived" 
+                            domain="[('active', '=', False)]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Category" name="group_by_category" 
+                                context="{'group_by': 'categ_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Action for Medicines -->
+        <record id="action_medicine_list" model="ir.actions.act_window">
+            <field name="name">Medicines</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.template</field>
+            <field name="view_mode">list,form</field>
+            <field name="context">{'search_default_available': 1}</field>
+            <field name="domain">[('is_medicament_product','=',True)]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to add a new medicine to your inventory
+                </p>
+                <p>
+                    Manage your medical inventory, track medicines, 
+                    and keep record of available products
+                </p>
+            </field>
+        </record>
+
+        <menuitem 
+            id="menu_medicine_root" 
+            name="Medicines" 
+            sequence="10"
+            web_icon="base,static/description/icon.png"/>
+
+        <menuitem 
+            id="menu_medicine_master" 
+            name="Medicine Master" 
+            parent="menu_medicine_root" 
+            sequence="10"/>
+
+        <menuitem 
+            id="menu_medicine_list" 
+            name="Medicine List" 
+            parent="menu_medicine_master" 
+            action="action_medicine_list" 
+            sequence="10"/>
+
+
+        <!-- Menu Items for Products
+        <menuitem 
+            id="menu_product_root" 
+            name="Products" 
+            sequence="10"
+            web_icon="product,static/description/icon.png"/>
+
+        <menuitem 
+            id="menu_product_master" 
+            name="Product Master" 
+            parent="menu_product_root" 
+            sequence="10"/>
+
+        <menuitem 
+                        id="menu_product_list" 
+            name="Product List" 
+            parent="menu_product_master" 
+            action="action_product_template_list" 
+            sequence="10"/> -->
+</odoo>

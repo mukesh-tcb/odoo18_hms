@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="ophthalmology_form_view_inherit_for_diagnosis_page" model="ir.ui.view">
+        <field name="name">ophthalmology.form.view.inherit.for.diagnosis.page</field>
+        <field name="model">tcb.ophthalmology.evaluation</field>
+        <field name="inherit_id"
+            ref="tcb_ophthalmology.ophthalmology_form_view_inherit_for_doctor_examination_page" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='ophthalmology_contact_lens']" position="after">
+                <page name="ophthalmology_diagnosis" string="Diagnosis">
+                    <div class="diagnosis-container">
+                        <strong>Diagnosis</strong>
+
+                        <table>
+                            <tr>
+                                <td></td>
+                                <th>Diagnosis Details</th>
+                                <th>Disease</th>
+                                <th>ICD Code</th>
+                                <th>Doctor Comments</th>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>R <i class="fa fa-eye" /></strong>
+                                </td>
+                                <td>
+                                    <field name="diagnosis_details_re" />
+                                </td>
+                                <td>
+                                    <field name="diagnosis_diseases_re" />
+                                </td>
+                                <td>
+                                    <field name="diagnosis_icd_code_re" />
+                                </td>
+                                <td>
+                                    <field name="diagnosis_doctor_comments_re" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>L <i class="fa fa-eye" /></strong>
+                                </td>
+                                <td>
+                                    <field name="diagnosis_details_le" />
+                                </td>
+                                <td>
+                                    <field name="diagnosis_diseases_le" />
+                                </td>
+                                <td>
+                                    <field name="diagnosis_icd_code_le" />
+                                </td>
+                                <td>
+                                    <field name="diagnosis_doctor_comments_le" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div style="display:flex; width: 100%;">
+                        <div style="width: 70%;">
+
+                            <!-- <div class="procedure-container" style="height: 232px;"> -->
+                                <strong>Procedure</strong>
+                                <field name="diagnosis_procedure_ids">
+                                    <list string="Procedure" editable="bottom" >
+                                        <field name="diagnosis_eye"/>
+                                        <field name="procedure_id" />
+                                        <field name="doctor_comments"/>
+                                    </list>
+                                </field>
+
+                                <!-- <table>
+                                    <tr>
+                                        <td></td>
+                                        <th>Procedure</th>
+                                        <th>Doctor Comments</th>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <strong>R <i class="fa fa-eye" /></strong>
+                                        </td>
+                                        <td>
+                                            <field name="diagnosis_procedure_re" />
+                                        </td>
+                                        <td>
+                                            <field name="diagnosis_procedure_comments_re" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>L <i class="fa fa-eye" /></strong>
+                                        </td>
+                                        <td>
+                                            <field name="diagnosis_procedure_le" />
+                                        </td>
+                                        <td>
+                                            <field name="diagnosis_procedure_comments_le" />
+                                        </td>
+                                    </tr>
+                                </table> -->
+                            <!-- </div> -->
+                            <div class="counselling-container">
+                                <strong>Counselling</strong>
+                                <table>
+                                    <tr>
+                                        <td></td>
+                                        <th>OT Counselling</th>
+                                        <th>Doctor Comments</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>R <i class="fa fa-eye"/></strong>
+                                        </td>
+                                        <td>
+                                            <field name="diagnosis_ot_counselling_re"/>
+                                        </td>
+                                        <td rowspan="2">
+                                            <field name="diagnosis_ot_counselling_comments" placeholder="Notes....."/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>L <i class="fa fa-eye"/></strong>
+                                        </td>
+                                        <td>
+                                            <field name="diagnosis_ot_counselling_le"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="treatment-container" style="width: 30%; margin-left: 5px;">
+                            <strong>Treatment</strong>
+                            <div>
+                                <field name="diagnosis_treatment" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <label for="oph_old_prescription_id">Old Prescriptions</label>
+                    <field name="oph_old_prescription_id"/>
+                    <button string="Copy Last Line" name="copy_last_line" type="object" class="oe_highlight"/>
+                    
+                    <!-- <div class="treatment-container" style="height: 232px;"> -->
+                    <strong>Prescription Lines</strong>
+                    <field name="oph_prescription_line_ids">
+                        <list string="Prescription" editable="bottom">
+                            <field name="oph_eye" />
+                            <field name="product_id" domain="[('is_medicament_product','=',True)]"/>
+                            <field name="route_name"/>
+                            <field name="frequency_id"/>
+                            <field name="duration_id"/>
+                            <field name="quantity" optional="hide"/>
+                            <field name="price_unit" optional="hide"/>
+                            <field name="price_subtotal" readonly="0" optional="hide"/>
+                        </list>
+                    </field>
+                    <!-- </div> -->
+                    <style>
+                        :root {
+                        --primary-purple: #5E72E4;
+                        --border-color: #2c5282;
+                        }
+                        table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        font-size: 15px;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                        }
+                        th {
+                        background-color: var(--primary-purple);
+                        color: white;
+                        padding: 6px 10px;
+                        text-align: left;
+                        border: 1px solid var(--border-color);
+                        }
+                        td {
+                        padding: 2px 3px;
+                        border: 1px solid var(--border-color);
+                        }
+                        tbody tr:nth-child(even) {
+                        background-color: #f8f9fe;
+                        }
+                        .diagnosis-container,
+                        .procedure-container,
+                        .counselling-container,
+                        .treatment-container {
+                        margin: 4px 0;
+                        padding: 0px;
+                        border: 1px solid var(--border-color);
+                        }
+                        strong {
+                        font-size: 16px;
+                        color: Black;
+                        display: block;
+                        margin-bottom: 4px;
+                        margin-left: 4px;
+                        margin-top: 4px;
+                        }
+                        .fa-eye {
+                        color: Black;
+                        margin-left: 4px;
+
+                        }
+                    </style>
+                </page>
+
+
+                <page name="ophthalmic_drawing" string="Drawing">
+                        <group>
+                            <group>
+                                <field name="eye_drawing_le_re" widget="drawing_widget" options="{'no_create': True}"/>
+                            </group>
+                        </group>
+                    </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="web.DilationTimer" owl="1">
+        <span t-if="props.readonly" t-esc="formattedDuration"/>
+        <input t-else="" t-att-id="props.id" t-ref="numpadDecimal" t-att-placeholder="props.placeholder" inputmode="numeric" class="o_input" t-att-value="formattedDuration" readonly="readonly"/>
+    </t>
+</templates>

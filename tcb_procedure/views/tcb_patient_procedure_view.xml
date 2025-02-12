@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_patient_procedure_tree_view" model="ir.ui.view">
+        <field name="name">tcb.patient.procedure.tree.view</field>
+        <field name="model">tcb.patient.procedure</field>
+        <field name="arch" type="xml">
+            <list string="Patient Procedures">
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="appointment_id"/>
+                <field name="physician_id"/>
+                <field name="procedure_total_amount"/>
+                <field name="procedure_payment_state"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_patient_procedure_form_view" model="ir.ui.view">
+        <field name="name">tcb.patient.procedure.form.view</field>
+        <field name="model">tcb.patient.procedure</field>
+        <field name="arch" type="xml">
+            <form string="Patient Procedure">
+                <header>
+                    <button name="action_confirm_with_payment" string="Confirm With Payment" type="object" invisible="state != 'draft' and procedure_payment_state in 'fully_paid'" class="oe_highlight"/>
+                    <button name="action_confirm_without_payment" string="Confirm Without Payment" type="object" invisible="state != 'draft'" class="oe_highlight"/>
+                    <button name="action_refund_procedure" string="Refund" type="object" invisible="state in ('draft', 'cancel') or procedure_payment_state in ('not_paid','fully_reversed')" class="btn-warning"/>
+                    <button name="action_done" string="Done" type="object" invisible="state != 'running'" class="oe_highlight"/>
+                    <button name="action_cancel" string="Cancel" type="object" invisible="state in 'cancel'"/>
+                    <button name="action_reset_to_draft" string="Reset to Draft" type="object" invisible="state not in 'cancel'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,running,done"/>
+                </header>
+                <sheet>
+
+                <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="action_show_invoices" 
+                        type="object" invisible="state in 'draft'" icon="fa-credit-card" >
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value" 
+                                widget="statinfo">Invoices</span><span class="o_stat_value" widget="statinfo">
+                                <field name="invoice_count"/></span>
+                            </div>
+                </button>
+                </div>
+                <widget name="web_ribbon" 
+                        title="Not Paid" 
+                        bg_color="bg-dark" 
+                        invisible="procedure_payment_state != 'not_paid'"/>
+
+                    <widget name="web_ribbon" 
+                        title="Partially Paid" 
+                        bg_color="bg-info" 
+                        invisible="procedure_payment_state != 'partially_paid'"/>
+
+                    <widget name="web_ribbon" 
+                        title="Fully Paid"
+                        bg_color="bg-success"
+                        invisible="procedure_payment_state != 'fully_paid'"/>
+
+                    <widget name="web_ribbon" 
+                        title="Partially Reversed"
+                        bg_color="bg-warning"
+                        invisible="procedure_payment_state != 'partially_reversed'"/>
+
+                    <widget name="web_ribbon" 
+                        title="Fully Reversed"
+                        bg_color="bg-danger"
+                        invisible="procedure_payment_state != 'fully_reversed'"/>
+
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="patient_id" options="{'no_create': True}"/>
+                            <field name="appointment_id" options="{'no_create': True}" domain="[('patient_id', '=', patient_id)]"/>
+                            <field name="physician_id"/>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="invoice_id" readonly="1"/>
+                            <field name="procedure_total_amount"/>
+                            <field name="procedure_discount_amount"/>
+                            <field name="procedure_payable_amount"/>
+                            <field name="procedure_total_paid_amount"/>
+                            <field name="procedure_amount_pending"/>
+                            <field name="procedure_payment_state"/>
+                        </group>
+                    </group>
+                    <notebook>
+
+                        <page string="Charges">
+                            <field name="procedure_line_ids" readonly="state not in 'draft'">
+                            <list name="procedure_lines" editable="bottom" context="{'default_appointment_id': patient_procedure_id.appointment_id}">
+                                <field name="procedure_id"/>
+                                <field name="procedure_price"/>
+                                <field name="patient_procedure_id"/>
+                                <field name="appointment_id"/>
+                            </list>
+                            </field>
+                        </page>
+                        <page string="Payments" invisible="state == 'draft'" readonly="state not in 'draft'">
+                            <field name="procedure_payment_line_ids">
+                                <list name="payment_lines" editable="bottom" delete="0" decoration-danger="payment_type == 'send' and state == 'posted'" 
+                            decoration-warning="state == 'draft'" decoration-success="payment_type == 'receive' and state == 'posted'"
+                            decoration-bold= "state == 'cancelled'">
+                                    <field name="name"/>
+                                    <field name="invoice_id"/>
+                                    <field name="payment_datetime"/>
+                                    <field name="payment_mode"/>
+                                    <field name="payment_amount"/>
+                                    <field name="payment_type"/>
+                                    <field name="procedure_id"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                            <group col="4" class="oe_subtotal_footer">
+                                <field name="procedure_total_paid_amount" string="Total Paid" widget="monetary"/>
+                                <field name="procedure_total_refunded_amount" string="Total Refunded" widget="monetary"/>
+                                <field name="procedure_total_received_amount" string="Total Received" widget="monetary"/>
+                            </group>
+                        </page>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_patient_procedure" model="ir.actions.act_window">
+        <field name="name">Patient Procedures</field>
+        <field name="res_model">tcb.patient.procedure</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Patient Procedures Found
+            </p>
+            <p>
+                Create your first Patient Procedure
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem 
+        id="menu_patient_procedure" 
+        name="Patient Procedures" 
+        parent="tcb_procedure.procedure_menu" 
+        action="action_patient_procedure" 
+        sequence="12"/>
+</odoo>

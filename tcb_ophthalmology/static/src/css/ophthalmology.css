@@ -1,0 +1,195 @@
+.ophtha-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 15px;
+}
+
+.ophtha-section {
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.ophtha-header {
+    background-color: #6c757d;
+    color: white;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.reading-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+}
+
+.tonometry-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+}
+
+.ar-readings {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.field-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.field-label {
+    min-width: 80px;
+}
+
+
+.ophtha-table {
+    width: 80%;
+    border-collapse: collapse;
+}
+
+.ophtha-table th,
+.ophtha-table td {
+    border: 1px solid #ddd;
+    padding: 0px;
+    text-align: center;
+}
+
+.ophtha-table th {
+    background-color: #f5f5f5;
+}
+
+
+.eye_icon {
+    max-width: 40px;
+    max-height: 40px;
+}
+
+
+
+.ophtha-main-table {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.ophtha-main-table th,
+.ophtha-main-table td {
+    padding: 8px;
+    text-align: center;
+}
+.checkbox-group {
+    margin: 8px 0;
+}
+.checkbox-group label {
+    margin-left: 8px;
+}
+/* .o_form_view .o_form_sheet {
+    max-width: none !important;
+    width: 98% !important;
+} */
+/* 
+
+.ophthalmic-table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 2px 2;
+    background: #fff;
+}
+
+.ophthalmic-table td {
+    border: 1px solid #f0f0f0;
+    text-align: center;
+    padding: 0%;
+}
+
+.ophthalmic-table .header-row {
+    background: #b7f5f8;
+    font-weight: bold;
+    height: 30px;
+}
+
+.ophthalmic-table .symptom-cell {
+    width: 10%;
+    background: #bad2d256;
+}
+
+.ophthalmic-table .eye-selection-cell {
+    width: 15%;
+}
+
+.ophthalmic-table .duration-cell {
+    width: 30%;
+}
+
+
+.ophthalmic-table .since-cell {
+
+    width:10%;
+    padding: 0px;
+}
+
+.checkbox-group {
+    display: flex;
+    gap: 10px;
+}
+
+.symptom-checkbox {
+    margin-right: 4px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 15px;
+}
+
+
+.since-cells{
+    padding: 0px 0px 0px 0px !important; 
+    width: 1% !important;
+}
+ */
+
+
+.cross-container {
+    position: relative;
+    width: 20vw;
+    height: 20vw;
+    margin-left:1vw;
+    margin-bottom:0px;
+}
+
+.line {
+    position: absolute;
+    width: 1%;
+    height: 100%; /* Adjust line thickness */
+    background-color: black; /* Adjust line color */
+    transform-origin: top left;
+}
+
+.line.horizontal {
+    transform: rotate(45deg);
+}
+
+.line.vertical {
+    transform: rotate(-45deg);
+}
+
+.field {
+    position: absolute;
+    top: 0%;
+    transform: translate(-50%, -50%);
+    font-size: 14px; /* Adjust font size */
+}
+canvas{
+border: 1px solid black;
+}
+
+.o_data_row.text-warning{
+color:#a97600 !important
+}
+
+
+

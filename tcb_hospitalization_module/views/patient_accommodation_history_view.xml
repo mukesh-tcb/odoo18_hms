@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Action for Patient Accommodation History -->
+    <record id="action_patient_accommodation_history" model="ir.actions.act_window">
+        <field name="name">Patient Accommodation History</field>
+        <field name="res_model">patient.accommodation.history</field>
+        <field name="view_mode">list,form,search</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new patient accommodation history record
+            </p>
+            <p>
+                Track patient accommodation details, including ward, bed, and duration of stay
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item for Patient Accommodation History -->
+    <menuitem 
+        id="menu_patient_accommodation_history" 
+        name="Accommodation History" 
+        parent="menu_tcb_hospitalization_main" 
+        action="action_patient_accommodation_history" 
+        sequence="4"/>
+
+    <!-- List View for Patient Accommodation History -->
+    <record id="view_patient_accommodation_history_list" model="ir.ui.view">
+        <field name="name">patient.accommodation.history.list</field>
+        <field name="model">patient.accommodation.history</field>
+        <field name="arch" type="xml">
+            <list string="Patient Accommodation History">
+                <field name="patient_id"/>
+                <field name="hospitalization_id"/>
+                <field name="ward_id"/>
+                <field name="bed_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View for Patient Accommodation History -->
+    <record id="view_patient_accommodation_history_form" model="ir.ui.view">
+        <field name="name">patient.accommodation.history.form</field>
+        <field name="model">patient.accommodation.history</field>
+        <field name="arch" type="xml">
+            <form string="Patient Accommodation History">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id" required="1"/>
+                            <field name="hospitalization_id"/>
+                            <field name="ward_id"/>
+                            <field name="bed_id"/>
+                        </group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View for Patient Accommodation History -->
+    <record id="view_patient_accommodation_history_search" model="ir.ui.view">
+        <field name="name">patient.accommodation.history.search</field>
+        <field name="model">patient.accommodation.history</field>
+        <field name="arch" type="xml">
+            <search string="Patient Accommodation History">
+                <field name="patient_id"/>
+                <field name="ward_id"/>
+                <field name="bed_id"/>
+                <filter string="Active Accommodations" 
+                        domain="[('end_date', '=', False)]" 
+                        name="active_accommodations"/>
+                <group expand="0" string="Group By">
+                    <filter string="Patient" name="group_by_patient" context="{'group_by':'patient_id'}"/>
+                    <filter string="Ward" name="group_by_ward" context="{'group_by':'ward_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Pivot View for Patient Accommodation History -->
+    <record id="view_patient_accommodation_history_pivot" model="ir.ui.view">
+        <field name="name">patient.accommodation.history.pivot</field>
+        <field name="model">patient.accommodation.history</field>
+        <field name="arch" type="xml">
+            <pivot string="Accommodation Analysis">
+                <field name="patient_id" type="row"/>
+                <field name="ward_id" type="col"/>
+                <field name="start_date" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Graph View for Patient Accommodation History -->
+    <record id="view_patient_accommodation_history_graph" model="ir.ui.view">
+        <field name="name">patient.accommodation.history.graph</field>
+        <field name="model">patient.accommodation.history</field>
+        <field name="arch" type="xml">
+            <graph string="Accommodation Statistics" type="bar">
+                <field name="ward_id"/>
+                <field name="start_date" type="measure"/>
+            </graph>
+        </field>
+    </record>
+</odoo>

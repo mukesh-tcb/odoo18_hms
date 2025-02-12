@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- <record id="tcb_invoice_menu" model="ir.ui.menu">
+        <field name="name">tcb.invoice.menu</field>
+        <field name="sequence">10</field>
+    </record> -->
+
+    <menuitem id="tcb_invoice_menu" 
+    name="Invoices"
+    action="tcb_hms_base.action_open_invoice" 
+    sequence="100"/>
+
+
+        
+
+</odoo>

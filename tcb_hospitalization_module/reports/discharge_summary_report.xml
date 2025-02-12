@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+    <record id="report_discharge_summary" model="ir.actions.report">
+        <field name="name">Discharge Summary</field>
+        <field name="model">tcb.hospitalization</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_file">tcb_hospitalization_module.discharge_summary_report_template</field>
+        <field name="report_name">tcb_hospitalization_module.discharge_summary_report_template</field>
+        <field name="print_report_name">'Discharge Summary - %s' % (object.name if object.name else '')</field>
+        <field name="binding_model_id" ref="model_tcb_hospitalization"/>
+        <field name="binding_type">report</field>
+    </record>
+</data>
+
+    
+    <template id="discharge_summary_report_template" name="Discharge Summary Report Template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page" style="margin-top: 0px;line-height: 30px;">
+                        <h3 style="text-align: center;">
+                            <span style="border-bottom: 2px solid black; padding-bottom: 2px;">
+                            <b>DISCHARGE SUMMARY</b>
+                            </span>
+                        </h3>
+                    
+
+                <p style="font-size: 19px;">
+                    <div style="display: flex; justify-content: space-between; width: 100%; margin-top: 20px;font-size: 17px;">
+                        <div style="width: 55%; float: left;font-size: 17px;">
+                            <!-- <b>FREE FOLLOW UP UPTO  :</b> -->
+                            <span style="padding-bottom: 4px;">
+                                <b>FREE FOLLOW UP UPTO  :</b>
+                            </span>
+                            <span style="padding-left: 7px;" t-field="doc.free_follow_up"/>
+                            <br></br>
+                            <span style="padding-bottom: 2px;">
+                                <b>PATIENT'S NAME  :</b>
+                            </span>
+                            <span style="padding-left: 7px;" t-field="doc.patient_id.name" />
+                            <br></br>
+                            <span style="padding-bottom: 2px;">
+                                <b>PATIENT UHID/IPD  :</b></span>
+                            <span t-field="doc.patient_id.name" />/<span style="padding-left: 7px;" t-field="doc.name" />
+                            <br></br>
+                            <span style="padding-bottom: 2px;">
+                                <b>AGE/SEX  :</b></span>
+                            <span style="padding-left: 7px;" t-field="doc.age"/>/<span t-field="doc.gender"/>
+                            <br></br>
+                            <span>
+                                <b>DATE/TIME OF ADMISSION  :</b></span>
+                            <span style="padding-left: 7px;" t-field="doc.admission_date" />
+                            <br></br>
+                            <span>
+                                <b>DATE/TIME OF DISCHARGE  :</b></span><span style="padding-left: 7px;" t-field="doc.discharge_date" />
+                            <br></br>
+                            
+
+
+                        </div>
+                        <div style="width: 45%; float: right;font-size: 17px;">
+                            <b>ICD CODE  :</b>
+                            <span t-field='doc.icd_code'/>
+                            <br></br>
+                            <span><b>SURGEON NAME  :</b></span><span style="padding-left: 7px;" t-field="doc.physician_id" />
+                            <br></br>
+                            <span><b>DATE OF SURGERY  :</b></span><span style="padding-left: 7px;" t-field="doc.dos"/>
+                            <br></br>
+                            <span><b>CONSULTANT  :</b></span><span style="padding-left: 7px;" t-field="doc.attending_physician_ids"/>
+                            <br></br>
+                            <span><b>CATEGORY  :</b></span><span style="padding-left: 7px;" t-field="doc.patient_category_id"/>
+                            <br></br>
+                            <br></br>
+                            
+                        </div>
+                    </div>
+                    
+                </p>
+
+
+
+
+
+
+
+                <t t-if="doc.admission_reason">
+                    <span>
+                        <b>REASON FOR ADMISSION  :</b></span>
+                        <span style="padding-left: 7px;" t-field="doc.admission_reason"/>
+                </t>
+
+                <t t-if="doc.past_history">
+                        <table style="width: 100%; font-size: 17px;border-collapse: collapse;">
+                            <tr>
+                                <td style="margin-left: 7px; padding-bottom: 10px;">
+                                        <span style="margin-left: 20px; padding-bottom: 2px;">
+                                            <b>PAST HISTORY AND ALLERGIES -</b>
+                                        </span>
+                                        <span style="font-size: 16px;" t-field="doc.past_history"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </t>
+
+                    <br></br>
+
+                    <t t-if="doc.diagnosis_details_re or doc.diagnosis_details_le">
+                        <table style="width: 100%; font-size: 17px; border-collapse: collapse;font-color: black;">
+                            <tr>
+                                <td style="width: 30%;margin-left: 7px; padding-bottom: 10px;">
+                                    <span style="margin-left: 20px; padding-bottom: 2px;">
+                                        <b>DIAGNOSIS:</b>
+                                    </span>
+
+                                </td>
+                                <td style="width: 70%;margin-left: 7px; padding-bottom: 10px;">
+                                    <span style="margin-left: 20px; padding-bottom: 4px;">
+                                        <b>RIGHT EYE:-</b>
+                                    </span>
+                                    <span style="font-size: 16px;" t-field="doc.diagnosis_details_re"/>
+                                    <br></br>
+                                    <span style="margin-left: 20px; padding-bottom: 2px;">
+                                        <b>LEFT EYE:-</b>
+                                    </span>
+                                    <span style="font-size: 16px;" t-field="doc.diagnosis_details_le"/>
+
+                                </td>
+
+                            </tr>
+                        </table>
+                    </t>
+                    <!-- <div style="width: 60%; float: left;font-size: 19px;">
+                        <span><b>PROCEDURE PERFORMED  :</b></span><span style="padding-left: 7px;" t-field="doc.procedure_performed" />
+                        <br></br>
+                        <span><b>INVESTIGATION RESULT FINDINGS  :</b></span><span style="padding-left: 7px;" t-field="doc.investigation_result"/>
+                        
+                    </div> -->
+                    <t t-if="doc.procedure_performed">
+                    <span style="font-size: 17px;"><b>PROCEDURE PERFORMED  :</b><span style="font-size: 16px;padding-left: 7px;padding-bottom:0.5px;" t-field="doc.procedure_performed"/></span>
+                    
+                    </t>
+                    <br></br>
+
+                    <!-- <t t-if="doc.date_of_investigation"> -->
+                        <span style="font-size: 17px;"><b>DATE OF INVESTIGATION  :</b><span style="font-size: 16px;padding-left: 7px;padding-bottom:0.5px;" t-field="doc.date_of_investigation"/></span>
+                        
+                    <!-- </t> -->
+                    <br></br>
+
+
+                    <t t-if="doc.investigation_result">
+                        
+                        <span style="font-size: 17px;"><b>INVESTIGATION RESULT FINDINGS  :</b></span><span style="font-size: 16px;padding-left: 7px;padding-bottom:0.5px;" t-field="doc.investigation_result" />
+
+                    </t>
+                    <br></br>
+                    <t t-if="doc.hbsag">   
+                        <span style="font-size: 17px;"><b>HBsAg  :</b></span><span style="font-size: 16px;padding-left: 10px;" t-field="doc.hbsag" />
+                    </t>
+                    <t t-if="doc.hiv">   
+                        <span style="padding-left: 65px;font-size: 17px;"><b>HIV  :</b></span><span style="font-size: 16px;padding-left: 7px;" t-field="doc.hiv" />
+                    </t>
+                    <t t-if="doc.hcv">   
+                        <span style="padding-left: 65px;font-size: 17px;"><b>HCV  :</b></span><span style="font-size: 16px;padding-left: 7px;" t-field="doc.hcv" />
+                    </t>
+                    <br></br>
+                    <t t-if="doc.hb">   
+                        <span style="font-size: 17px;"><b>HB  :</b></span><span style="font-size: 16px;padding-left: 10px;" t-field="doc.hb" />
+                    </t>
+                    <t t-if="doc.plt">   
+                        <span style="padding-left: 65px;font-size: 17px;"><b>PLT  :</b></span><span style="font-size: 16px;padding-left: 7px;" t-field="doc.plt" />
+                    </t>
+                    <t t-if="doc.bsr">   
+                        <span style="padding-left: 65px;font-size: 17px;"><b>BSR  :</b></span><span style="font-size: 16px;padding-left: 7px;" t-field="doc.bsr" />
+                    </t>
+                    <br></br>
+                    <t t-if="doc.sugar or doc.albumin or doc.pus_cells">                    
+                        <span style="font-align:left;font-size: 17px;"><b>URINE EXAMINATION:</b></span>
+                        <br></br>
+                        <t t-if="doc.sugar">   
+                            <span style="font-size: 17px;"><b>SUGAR  :</b></span><span style="font-size: 16px;padding-left: 10px;" t-field="doc.sugar" />
+                        </t>
+                        <t t-if="doc.albumin">   
+                            <span style="padding-left: 65px;font-size: 17px;"><b>ALBUMIN  :</b></span><span style="font-size: 16px;padding-left: 7px;" t-field="doc.albumin" />
+                        </t>
+                        <t t-if="doc.pus_cells">   
+                            <span style="padding-left: 65px;font-size: 17px;"><b>PUS CELLS  :</b></span><span style="font-size: 16px;padding-left: 7px;" t-field="doc.pus_cells" />
+                        </t>
+                    </t>
+                    <br></br>
+
+
+
+
+                    <t t-if="any(line.eye_selection or line.product_id or line.frequency_id or line.notes for line in doc.prescription_lines_ids)">
+                        <p style="text-align:left;font-size: 17px;"><strong>POST-OP MEDICATIONS:</strong></p>
+                        <table style="margin-top:-20px;width: 100%;height: 30%; font-size: 17px;text-align: center; border-collapse: collapse;collapse;page-break-inside: avoid;">
+                            <!-- <thead style="color:black;font-weight: 300;"> 
+                                <tr>
+                                    <td>
+                                        Eye
+                                    </td>
+                                    <td>Medicine Name</td>
+                                    <td>Frequency</td>
+                                    <td>Duration</td>
+                                </tr>
+                            </thead> -->
+                            <tbody style="font-weight: 200;">
+                                <tr>
+                                    <th style="padding-top: 1px;padding-bottom: 1px;">
+                                        <b>Eye</b>
+                                    </th>
+                                    <th><b>Medicine Name</b></th>
+                                    <th><b>Frequency</b></th>
+                                    <th colspan="2"><b>Duration</b></th>
+                                    <!-- <th><b>To Date</b></th> -->
+                                </tr>
+                                <t t-foreach="doc.prescription_lines_ids" t-as="line">
+                                    <tr>
+                                        <td style="font-weight: normal;padding-top: 1px;font-size: 16px;padding-bottom: 1px;"><span t-field="line.eye_selection"/></td>
+                                        <td style="font-weight: normal;font-size: 16px;"><span t-field="line.product_id"/></td>
+                                        <td style="font-weight: normal;font-size: 16px;"><span t-field="line.frequency_id"/></td>
+                                        <td style="font-weight: normal;font-size: 16px;"><span t-field="line.from_date"/></td>
+                                        <td style="font-weight: normal;font-size: 16px;"><span t-field="line.to_date"/></td>
+                                        
+                                    </tr>
+                                </t>
+                            </tbody>
+
+                        
+                        
+                        </table>
+                    </t>
+                    <br></br>
+                    <br></br>
+
+                    <t t-if="any(line.follow_up or line.clinical_examination or line.treatment for line in doc.follow_up_line_ids)">
+                        <table style="width: 100%; font-size: 17px;text-align: center; border-collapse: collapse;page-break-inside: avoid;">
+                            
+                            
+                            <tbody style="font-weight: 200;">
+                                <tr style="text-align: center;">
+                                    <th style="padding-top: 1px;padding-bottom: 1px;">
+                                        <b>Follow-up:</b>
+                                    </th>
+                                    <th><b>Clinical Examination:</b></th>
+                                    <th><b>Treatment:</b></th>
+                                </tr>
+                                <t t-foreach="doc.follow_up_line_ids" t-as="line">
+                                    <tr>
+                                        <td style="font-weight: normal;padding-top: 1px;font-size: 16px;padding-bottom: 5px;"><span t-field="line.follow_up"/></td>
+                                        <td style="font-weight: normal;font-size: 16px;"><span t-field="line.clinical_examination"/></td>
+                                        <td style="font-weight: normal;font-size: 16px;"><span t-field="line.treatment"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </t>
+                    <div class="signature" style="margin-top: auto; padding-top: 70px;">
+                        <p style="text-align: right;"><b>SIGN. CONSULTANT</b></p>
+                    </div>
+                    
+                </div>
+
+                
+
+                    <div class="page" style="page-break-before: always;line-height: 30px;">
+                        <h1 style="text-align: center;">
+                            <span style="border-bottom: 3px solid black; padding-bottom: 2px;">
+                                ऑपरेशन के बाद के निर्देश एवं सावधानियां
+                            </span>
+                        </h1>      
+                        <p style="font-size: 20px;">
+                        <b>अपनी फाइल को सुरक्षित रखने की जिम्मेदारी आपकी है व जब कभी भी आप डॉक्टर को दिखाने के लिए हस्पताल में आये तो इस फाइल को हमेशा साथ लाये |</b> 
+                        <br></br>
+                        <br></br>
+                        <b>(अ) ऑपरेशनकेबाद आँख कीदेख-रेख |</b>
+                        <br></br>
+                        <ul style="list-style-type: decimal; margin-left: 10px;">
+                            <br></br>
+                            <li>
+                                <b>आँख तथा चेहरे की सफाई:</b>
+                                <br></br>
+                                स्टील की कटोरी में पानी लेकर थोड़ी सी रुई 8-10 मिनट तक उबाल लें, फिर इसको ठंडा होने दे। पहले साबुन से अच्छी तरह अपने हाथ धो ले | रुई से पानी निचोड़ ले तथा ऑपरेशन वाली आँख साफ़ कर ले (साफ़ करने का तरीका डॉक्टर द्वारा ऑपरेशन के बाद में समझा दिया जायेगा ) | आप उबली हुई रुई के स्थान पर Sterile Eye Wipes भी इस्तेमाल कर सकते है, जो कि हमारी फार्मेसी पर उपलब्ध है । पलकों के किनारों पर चिपके हुए शाव (कीचड़ या गीध ) या मलहम को हटा दो । मरीज को ऊपर की ओर देखने को कहिये, नीचे की पलक नीचे खीचिये एवं आँख में दवा (आई - ड्रॉप्स) की बूंद डाल दीजिये | ऊपर की पलक बिलकुल नहीं छुएं | दवा डालने के बाद आँख दो मिनट तक बंद रखें । आँख पर दबाव न पड़ने दे |रोगी को ऑपरेशन वाली आँख भीचनी / कसकर बंदनहीं करनी चहिये | ऑपरेशन के चार सप्ताह बाद तक चेहरा साफ करने के लिए उबले हुएठंडेपानी का इस्तमाल करें | चेहरे तथा आँख के ऊपर पानी के छपके न मारे ।
+                                <br></br>
+                            </li>
+                            <br></br>
+                            <li>
+                                <b>आँख की सुरक्षा:</b>
+                                <br></br>
+                                आँख की किसी भी बाहरी दबाव या चोट से रक्षा करनी चाहिये । दिन में विशेष रंगीन चश्मा (ऐनक) लगाये, खासकर सूर्य की रोशनी एवं सोते समय ! चश्मे के अंदर रुई या पट्टी न लगाए । सोते समय ऑपरेशन वाली तरफ़ करवट ना लें! एक सप्ताह बाद ऑपरेशन वाली तरफ़ भी लेटा जा सकता है! बच्चों और पालतू जानवरों से अलग रहना चाहिये क्योंकि यह अचानक अनजाने में चोट पहुँचा सकते हैं!                            <br></br>
+                            </li>
+                            <br></br>
+                            <li>
+                                <b>ऑपरेशन वाली आँख से देखना:</b>
+                                <br></br>
+                                ऑपरेशन वाली आँख से पट्टी हटा देने के तुरंत बाद ही उस आँख का प्रयोग किया जा सकता है! धूप एंव धूल से बचने के लिए धूप का (रंगीन) चश्मा लगाए! यदि आप ऑपरेशन से पहले चश्मा प्रयोग करते हैं तो ऑपरेशन वाली आँख के लिए सादा लेंस (बिना नंबर का) लगवा लें! ऐसा पास तथा दूर, दोनों ही तरह के चश्मों में किया जाना चाहिये! ऑपरेशन वाली आँख से पढ़ सकते हैं एवं टी.वी भी देख सकते हैं लकिन इस आँख से फोकस न कर सकनेके कारण कुछ दिनों तक स्पष्ट दिखाई नहीं देगा!                            <br></br>
+                            </li>
+    
+                            <br></br>
+                            <li>
+                                <b>ऑपरेशन के बाद आँख में रड़क (चुभन ):</b>
+                                <br></br>
+                                ऑपरेशन के बाद आँख से थोडा पानी आना और आंख में थोड़ी सी चुभन होनासामान्य है । यह समय के साथ अपने आप कम हो जाती है । खुजली, जलन या चुभन होने पर भी ऑपरेशन वाली आँख को रगड़े या मसलें नहीं । टांके, यदि लगाए गए हो तो चुभन जारी रहने पर, ऑपरेशन के 8 से 12 सप्ताह के दौरान निकले जाते है ।                            <br></br>
+                            </li>
+                            <br></br>
+                            <li>
+                                <b>ऑपरेशन के बाद नज़र (दृष्टि) में सुधार:</b>
+                                <br></br>
+                                ऑपरेशन के बाद दृष्टि ( रोशनी ) धीरे - धीरे स्पष्ट होती जाती है। दूर व पास की वस्तुओं को और अधिक साफ़ देखने के लिए ऑपरेशन के 2-4 सप्ताह बाद चश्में का नंबर दिया जा सकता है। इससे पहले चश्मा इसलिये नहीं दिया जाता क्यूंकि ऑपरेशन के बाद नंबर काफी तेजी से बदलता है । आँख के परदे (Retina) में जितनी ताकत होती है उतनी ही नज़र का सुधर संभव है !                            <br></br>
+                            </li>
+                            <br></br>
+                            <li>
+                                <b>उपरी पलक का नीचे की ओर झुकना :</b>
+                                <br></br>
+                                कुछ मरीज ऐसा महसूस करते है कि ऑपरेशन के बाद उनकी आँख कुछ छोटी दिखाई देती है। ऐसा उपरी पलक के नीचे की ओर झुकने के कारण होता है जो कि धीरे-धीरे अपने आप ठीक हो जाती है।                            <br></br>
+                            </li>
+                            <br></br>
+                            <li>
+                                <b>यदि आपको किसी दवा से एलर्जी होती है, तो पहले ही बता दे ।</b>
+                                <br></br>
+                            </li>
+                            <br></br>
+                            <li>
+                                <b>टपकाने वाली दवा 4 हफ्ते से 6 हफ्ते तक चलती है, खत्म होने पर तुरंत नई लेवें! खाने वाली गोली सिर्फ़ 3-6 दिन की होती है!</b>
+                                <br></br>
+                            </li>
+                        </ul>
+                        <br></br>
+                        <table style="width: 100%; font-size: 21px; border-collapse: collapse;">
+                            <tr>
+                                <td style="margin-left: 7px;">
+                                    <span style="margin-left: 20px;text-align:left;">
+                                        <b>नोट :</b> सर्जरी के बाद आंख में लाली और दर्द सामान्य से ज्यादा है और नज़र कमज़ोर हो रही है तो कृपया अपने 
+                                        <br></br><p style="padding-left:20px;">अस्पताल में 9034020803, 9053120802 संपर्क करें!</p>
+                                    </span>
+    
+                                </td>
+                            </tr>
+                        </table>
+    
+                        </p>
+    
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

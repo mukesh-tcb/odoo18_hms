@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tcb_prescription_order,tcb.prescription.order,model_tcb_prescription_order,,1,1,1,1
+access_tcb_prescription_line,tcb.prescription.line,model_tcb_prescription_line,,1,1,1,1
+access_tcb_prescription_frequency,tcb.prescription.frequency,model_tcb_prescription_frequency,,1,1,1,1
+access_tcb_prescription_duration,tcb.prescription.duration,model_tcb_prescription_duration,,1,1,1,1
+access_tcb_hms_disease,tcb.hms.disease,model_tcb_hms_disease,,1,1,1,1
+
+
+access_tcb_drug_form,tcb.drug.form,model_tcb_drug_from,,1,1,1,1
+access_tcb_active_component,tcb.active.component,model_tcb_active_component,,1,1,1,1
+
+access_tcb_drug_company,tcb.drung.company,model_tcb_drug_company,,1,1,1,1

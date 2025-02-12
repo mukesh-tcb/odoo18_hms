@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="tcb_ophthalmology.DrawingWidgetTemplate">
+        <div class="o_drawing_container">
+            <div class="button_panel">
+                <button class="btn btn-primary js-copy-image" type="button">Copy Image to Canvas</button>
+                <button class="btn btn-secondary js-undo" type="button">Undo</button>
+                <button class="btn btn-danger js-clear" type="button">Clear</button>
+                <button class="btn btn-success js-save" type="button">Save</button>
+            </div>
+            <div class="canvas_container">
+                <canvas class="drawing-canvas" style="border: 1px solid #000; cursor: crosshair;"/>
+            </div>
+        </div>
+    </t>
+</templates>

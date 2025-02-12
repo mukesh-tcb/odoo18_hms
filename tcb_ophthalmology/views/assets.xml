@@ -1,0 +1,10 @@
+<odoo>
+    <!-- Defining a template to load JS files into the backend -->
+    <template id="assets_backend" name="Custom Assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <!-- Add your JS file -->
+            <script type="text/javascript" src="/tcb_ophthalmology/static/src/js/dilation_timer.js"></script>
+        
+        </xpath>
+    </template>
+</odoo>

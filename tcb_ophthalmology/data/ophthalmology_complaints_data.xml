@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="tcb_oc_no_complaints" model="tcb.complaints">
+            <field name="name">NO COMPLAINTS</field>
+        </record>
+
+        <record id="tcb_oc_2nd_opinion_ref" model="tcb.complaints">
+            <field name="name">2nd OPINION FOR REF.ERR</field>
+        </record>
+
+        <record id="tcb_oc_asthenopia" model="tcb.complaints">
+            <field name="name">ASTHENOPIA</field>
+        </record>
+
+        <record id="tcb_oc_better_than_last_visit" model="tcb.complaints">
+            <field name="name">BETTER THAN LAST VISIT</field>
+        </record>
+
+        <record id="tcb_oc_black_patches_seen" model="tcb.complaints">
+            <field name="name">BLACK PATCHES SEEN</field>
+        </record>
+
+        <record id="tcb_oc_black_shadows_seen" model="tcb.complaints">
+            <field name="name">BLACK SHADOWS SEEN</field>
+        </record>
+
+        <record id="tcb_oc_black_spots_moving" model="tcb.complaints">
+            <field name="name">BLACK SPOTS MOVING</field>
+        </record>
+
+        <record id="tcb_oc_blurred_vision_with_cl" model="tcb.complaints">
+            <field name="name">BLURRED VISION WITH CL</field>
+        </record>
+
+        <record id="tcb_oc_blurred_vision" model="tcb.complaints">
+            <field name="name">BLURRED VISION</field>
+        </record>
+
+        <record id="tcb_oc_blurred_vn_with_pg" model="tcb.complaints">
+            <field name="name">BLURRED VN WITH PG</field>
+        </record>
+
+        <record id="tcb_oc_burning_sensation" model="tcb.complaints">
+            <field name="name">BURNING SENSATION</field>
+        </record>
+
+        <record id="tcb_oc_burning_sensation_with_cl" model="tcb.complaints">
+            <field name="name">BURNING SENSATION WITH CL</field>
+        </record>
+
+        <record id="tcb_oc_burning_sensation_itching" model="tcb.complaints">
+            <field name="name">BURNING SENSATION ITCHING</field>
+        </record>
+
+        <record id="tcb_oc_cer_poc" model="tcb.complaints">
+            <field name="name">C3R POC</field>
+        </record>
+
+        <record id="tcb_oc_came_for_2nd_opinion" model="tcb.complaints">
+            <field name="name">CAME FOR 2ND OPINION</field>
+        </record>
+
+        <record id="tcb_oc_came_for_a_scan" model="tcb.complaints">
+            <field name="name">CAME FOR A SCAN</field>
+        </record>
+
+        <record id="tcb_oc_came_for_bsv__test" model="tcb.complaints">
+            <field name="name">CAME FOR BSV TEST</field>
+        </record>
+
+        <record id="tcb_oc_came_for_cataract_sy" model="tcb.complaints">
+            <field name="name">CAME FOR CATARACT SY</field>
+        </record>
+
+        <record id="tcb_oc_came_for_cl" model="tcb.complaints">
+            <field name="name">CAME FOR CL</field>
+        </record>
+
+        <record id="tcb_oc_came_for_convergence_exercise" model="tcb.complaints">
+            <field name="name">CAME FOR CONVERGENCE EXERCISE</field>
+        </record>
+
+        <record id="tcb_oc_came_for_cyclo_refraction" model="tcb.complaints">
+            <field name="name">CAME FOR CYCLO REFRACTION</field>
+        </record>
+
+        <record id="tcb_oc_came_for_diode_green_laser" model="tcb.complaints">
+            <field name="name">CAME FOR DIODE GREEN LASER</field>
+        </record>
+
+        <record id="tcb_oc_came_for_disc_photos" model="tcb.complaints">
+            <field name="name">CAME FOR DISC PHOTOS</field>
+        </record>
+
+        <record id="tcb_oc_came_for_ffa" model="tcb.complaints">
+            <field name="name">CAME FOR FFA</field>
+        </record>
+
+        <record id="tcb_oc_came_for_glasses" model="tcb.complaints">
+            <field name="name">CAME FOR GLASSES</field>
+        </record>
+
+        <record id="tcb_oc_came_for_glaucoma_surgery" model="tcb.complaints">
+            <field name="name">CAME FOR GLAUCOMA SURGERY</field>
+        </record>
+
+        <record id="tcb_oc_came_for_hb_exercise" model="tcb.complaints">
+            <field name="name">CAME FOR HB EXERCISE</field>
+        </record>
+
+        <record id="tcb_oc_came_for_icl" model="tcb.complaints">
+            <field name="name">CAME FOR ICL</field>
+        </record>
+
+        <record id="tcb_oc_came_for_laser_treatment" model="tcb.complaints">
+            <field name="name">CAME FOR LASER TREATMENT</field>
+        </record>
+
+        <record id="tcb_oc_came_for_orthoptic_exercise" model="tcb.complaints">
+            <field name="name">CAME FOR ORTHOPTIC EXERCISE</field>
+        </record>
+
+        <record id="tcb_oc_came_for_pachymetry" model="tcb.complaints">
+            <field name="name">CAME FOR PACHYMETRY</field>
+        </record>
+
+        <record id="tcb_oc_came_for_prp_laser" model="tcb.complaints">
+            <field name="name">CAME FOR PRP LASER</field>
+        </record>
+
+        <record id="tcb_oc_came_for_pst" model="tcb.complaints">
+            <field name="name">CAME FOR PST</field>
+        </record>
+
+        <record id="tcb_oc_came_for_slt_laser" model="tcb.complaints">
+            <field name="name">CAME FOR SLT LASER</field>
+        </record>
+
+        <record id="tcb_oc_came_for_squint_assesment" model="tcb.complaints">
+            <field name="name">CAME FOR SQUINT ASSESMENT</field>
+        </record>
+
+        <record id="tcb_oc_came_for_squint_surgery" model="tcb.complaints">
+            <field name="name">CAME OFR SQUINT SUGERY</field>
+        </record>
+
+        <record id="tcb_oc_came_for_surgery" model="tcb.complaints">
+            <field name="name">CAME FOR surgery</field>
+        </record>
+
+        <record id="tcb_oc_came_for_thorough_check_up" model="tcb.complaints">
+            <field name="name">CAME FOR THOROUGH CHECK UP</field>
+        </record>
+
+        <record id="tcb_oc_came_for_TOPGRAPHY" model="tcb.complaints">
+            <field name="name">CAME FOR TOPOGRAPHY</field>
+        </record>
+
+        <record id="tcb_oc_came_for_visual_filed_test" model="tcb.complaints">
+            <field name="name">CAME FOR VISUAL FIELD TEST</field>
+        </record>
+
+        <record id="tcb_oc_came_for_yag_laser" model="tcb.complaints">
+            <field name="name">CAME FOR YAG LASER</field>
+        </record>
+
+        <record id="tcb_oc_came_for_yag_pi" model="tcb.complaints">
+            <field name="name">CAME FOR YAG PI</field>
+        </record>
+
+        <record id="tcb_oc_came_with_reports" model="tcb.complaints">
+            <field name="name">CAME WITH REPORTS</field>
+        </record>
+
+        <record id="tcb_oc_can_not_see_computer_screen" model="tcb.complaints">
+            <field name="name">CAN NOT SEE COMPUTER SCREEN</field>
+        </record>
+
+        <record id="tcb_oc_can_not_see_sunlight" model="tcb.complaints">
+            <field name="name">CAN NOT SEE SUNLIGHT</field>
+        </record>
+
+        <record id="tcb_oc_cataract_poc" model="tcb.complaints">
+            <field name="name">CATARACT POC</field>
+        </record>
+
+        <record id="tcb_oc_check_up" model="tcb.complaints">
+            <field name="name">CHECK UP</field>
+        </record>
+
+        <record id="tcb_oc_cl_is_not_comfortable" model="tcb.complaints">
+            <field name="name">CL IS NOT COMFORTABLE</field>
+        </record>
+
+        <record id="tcb_oc_cl_lost" model="tcb.complaints">
+            <field name="name">CL LOST</field>
+        </record>
+
+        <record id="tcb_oc_coloured_haloes" model="tcb.complaints">
+            <field name="name">COLOURED HALOES</field>
+        </record>
+
+        <record id="tcb_oc_complete_darken_at_day_light" model="tcb.complaints">
+            <field name="name">COMPLETE DARKEN AT DAY LIGHT</field>
+        </record>
+
+        <record id="tcb_oc_came_for_surgery" model="tcb.complaints">
+            <field name="name">CAME FOR surgery</field>
+        </record>
+
+        <record id="tcb_oc_decreased_vision" model="tcb.complaints">
+            <field name="name">DECREASED VISION</field>
+        </record>
+
+        <record id="tcb_oc_depostion_on_cl" model="tcb.complaints">
+            <field name="name">DEPOSTION ON CL</field>
+        </record>
+
+        <record id="tcb_oc_diabetic_eye_check_up" model="tcb.complaints">
+            <field name="name">DIABETIC EYE CHECK UP</field>
+        </record>
+
+        <record id="tcb_oc_difficulty_while_driving" model="tcb.complaints">
+            <field name="name">DIFFICULTY WHILE DRIVING</field>
+        </record>
+
+        <record id="tcb_oc_difficulty_while_seeing_computer" model="tcb.complaints">
+            <field name="name">DIFFICULTY WHILE SEEING COMPUTER</field>
+        </record>
+
+        <record id="tcb_oc_diminished_vision_for_distance" model="tcb.complaints">
+            <field name="name">DIMINISHED VISION FOR DISTANCE</field>
+        </record>
+
+        <record id="tcb_oc_diminished_vision_for_near" model="tcb.complaints">
+            <field name="name">DIMINISHED VISION FOR NEAR</field>
+        </record>
+
+        <record id="tcb_oc_diplopia" model="tcb.complaints">
+            <field name="name">DIPLOPIA</field>
+        </record>
+
+        <record id="tcb_oc_discharge" model="tcb.complaints">
+            <field name="name">DISCHARGE</field>
+        </record>
+
+        <record id="tcb_oc_discolouration_of_the_sclera" model="tcb.complaints">
+            <field name="name">DISCOLOURATION OF THE SCLERA</field>
+        </record>
+
+        <record id="tcb_oc_dizziness" model="tcb.complaints">
+            <field name="name">DIZZINESS</field>
+        </record>
+
+        <record id="tcb_oc_double_vision" model="tcb.complaints">
+            <field name="name">DOUBLE VISION</field>
+        </record>
+
+        <record id="tcb_oc_drooping_eye_lids" model="tcb.complaints">
+            <field name="name">DROOPING EYE LIDS</field>
+        </record>
+
+        <record id="tcb_oc_dryness" model="tcb.complaints">
+            <field name="name">DRYNESS</field>
+        </record>
+
+        <record id="tcb_oc_dull_glow" model="tcb.complaints">
+            <field name="name">DULL GLOW</field>
+        </record>
+
+        <record id="tcb_oc_dv_for_dv_with_cl" model="tcb.complaints">
+            <field name="name">DV FOR DV WITH CL</field>
+        </record>
+
+        <record id="tcb_oc_dv_for_dv_with_pg" model="tcb.complaints">
+            <field name="name">DV FOR DV WITH PG</field>
+        </record>
+
+        <record id="tcb_oc_dv_for_nv" model="tcb.complaints">
+            <field name="name">DV FOR NV</field>
+        </record>
+
+        <record id="tcb_oc_dv_for_nv_with_pg" model="tcb.complaints">
+            <field name="name">DV FOR NV WITH PG</field>
+        </record>
+
+        <record id="tcb_oc_eccentric_viewing" model="tcb.complaints">
+            <field name="name">ECCENTRIC VIEWING</field>
+        </record>
+
+        <record id="tcb_oc_existing_cl_is_comfortable" model="tcb.complaints">
+            <field name="name">EXISTING CL IS COMFORTABLE</field>
+        </record>
+
+        <record id="tcb_oc_extra_growth" model="tcb.complaints">
+            <field name="name">EXTRA GROWTH</field>
+        </record>
+
+        <record id="tcb_oc_eye_lids_are_not_closing" model="tcb.complaints">
+            <field name="name">EYE LIDS ARE NOT CLOSING</field>
+        </record>
+
+        <record id="tcb_oc_eye_strain" model="tcb.complaints">
+            <field name="name">EYE STRAIN</field>
+        </record>
+
+        <record id="tcb_oc_falling_eye_lashes" model="tcb.complaints">
+            <field name="name">FALLING EYE LASHES</field>
+        </record>
+
+        <record id="tcb_oc_fb_sensation" model="tcb.complaints">
+            <field name="name">FB SENSATION</field>
+        </record>
+
+        <record id="tcb_oc_fb_sensation_in_lower_eye_lid" model="tcb.complaints">
+            <field name="name">FB SENSATION IN LOWER EYE LID</field>
+        </record>
+
+        <record id="tcb_oc_fb_sensation_in_upper_eye_lid" model="tcb.complaints">
+            <field name="name">FB SENSATION IN UPPER EYE LID</field>
+        </record>
+
+        <record id="tcb_oc_flashes" model="tcb.complaints">
+            <field name="name">FLASHES</field>
+        </record>
+
+        <record id="tcb_oc_fleshy_growth" model="tcb.complaints">
+            <field name="name">FLESHY GROWTH</field>
+        </record>
+
+        <record id="tcb_oc_flickering_sensation" model="tcb.complaints">
+            <field name="name">FLICKERING SENSATION</field>
+        </record>
+
+        <record id="tcb_oc_floaters" model="tcb.complaints">
+            <field name="name">FLOATERS</field>
+        </record>
+
+        <record id="tcb_oc_foggy_vision" model="tcb.complaints">
+            <field name="name">FOGGY VISION</field>
+        </record>
+
+        <record id="tcb_oc_follow_up" model="tcb.complaints">
+            <field name="name">FOLLOW UP</field>
+        </record>
+
+        <record id="tcb_oc_for_checkup" model="tcb.complaints">
+            <field name="name">FOR CHECKUP</field>
+        </record>
+
+        <record id="tcb_oc_for_cyclo_refraction" model="tcb.complaints">
+            <field name="name">FOR CYCLO REFRACTION</field>
+        </record>
+
+        <record id="tcb_oc_for_eye_fitness_certificate" model="tcb.complaints">
+            <field name="name">FOR EYE FITNESS CERTIFICATE</field>
+        </record>
+
+        <record id="tcb_oc_for_medical_eye_check_up" model="tcb.complaints">
+            <field name="name">FOR MEDICAL EYE CHECK UP</field>
+        </record>
+
+        <record id="tcb_oc_for_pmt" model="tcb.complaints">
+            <field name="name">FOR PMT</field>
+        </record>
+
+        <record id="tcb_oc_for_regular_checkup" model="tcb.complaints">
+            <field name="name">FOR REGULAR CHECKUP</field>
+        </record>
+
+        <record id="tcb_oc_frequent_blinking" model="tcb.complaints">
+            <field name="name">FREQUENT BLINKING</field>
+        </record>
+
+        <record id="tcb_oc_frontal_headache" model="tcb.complaints">
+            <field name="name">FRONTAL HEADACHE</field>
+        </record>
+
+        <record id="tcb_oc_frontotemporal_headache" model="tcb.complaints">
+            <field name="name">FRONTOTEMPORAL HEADACHE</field>
+        </record>
+
+        <record id="tcb_oc_giddiness" model="tcb.complaints">
+            <field name="name">GIDDINESS</field>
+        </record>
+
+        <record id="tcb_oc_glarring" model="tcb.complaints">
+            <field name="name">GLARRING</field>
+        </record>
+
+        <record id="tcb_oc_glarring_at_night_time" model="tcb.complaints">
+            <field name="name">GLARRING AT NIGHT TIME</field>
+        </record>
+
+        <record id="tcb_oc_glaucoma_eye_check_up" model="tcb.complaints">
+            <field name="name">GLAUCOMA EYE CHECK UP</field>
+        </record>
+
+        <record id="tcb_oc_glaucoma_poc" model="tcb.complaints">
+            <field name="name">GLAUCOMA POC</field>
+        </record>
+
+        <record id="tcb_oc_haloes_seen" model="tcb.complaints">
+            <field name="name">HALOES SEEN</field>
+        </record>
+
+        <record id="tcb_oc_headache" model="tcb.complaints">
+            <field name="name">HEADACHE</field>
+        </record>
+
+        <record id="tcb_oc_headache_neck_pain" model="tcb.complaints">
+            <field name="name">HEADACHE NECK PAIN</field>
+        </record>
+
+        <record id="tcb_oc_headache_vomiting_sensation" model="tcb.complaints">
+            <field name="name">HEADACHE VOMITING SENSATION</field>
+        </record>
+
+        <record id="tcb_oc_heaviness" model="tcb.complaints">
+            <field name="name">HEAVINESS</field>
+        </record>
+
+        <record id="tcb_oc_inclosure_of_eye_lids" model="tcb.complaints">
+            <field name="name">INCLOSURE OF EYE LIDS</field>
+        </record>
+
+        <record id="tcb_oc_involuntary_movements_of_the_eyes" model="tcb.complaints">
+            <field name="name">INVOLUNTARY MOVEMENTS OF THE EYES</field>
+        </record>
+
+        <record id="tcb_oc_irritation" model="tcb.complaints">
+            <field name="name">IRRITATION</field>
+        </record>
+
+        <record id="tcb_oc_irritation_with_cl" model="tcb.complaints">
+            <field name="name">IRRITATION WITH CL</field>
+        </record>
+
+        <record id="tcb_oc_itching" model="tcb.complaints">
+            <field name="name">ITCHING</field>
+        </record>
+
+        <record id="tcb_oc_itching_with_cl" model="tcb.complaints">
+            <field name="name">ITCHING WITH CL</field>
+        </record>
+
+        <record id="tcb_oc_itching_burning_pricking_sensation" model="tcb.complaints">
+            <field name="name">ITCHING BURNING PRICKING SENSATION</field>
+        </record>
+
+        <record id="tcb_oc_itching_redness_watering" model="tcb.complaints">
+            <field name="name">ITCHING REDNESS WATERING</field>
+        </record>
+
+        <record id="tcb_oc_jaw_wikking_phenomenon" model="tcb.complaints">
+            <field name="name">JAW WIKKING PHENOMENON</field>
+        </record>
+
+        <record id="tcb_oc_lasik_poc" model="tcb.complaints">
+            <field name="name">LASIK POC</field>
+        </record>
+
+        <record id="tcb_oc_le_cl_is_not_comfortable" model="tcb.complaints">
+            <field name="name">LE CL IS NOT COMFORTABLE</field>
+        </record>
+
+        <record id="tcb_oc_light_senstivities" model="tcb.complaints">
+            <field name="name">LIGHT SENSTIVITIES</field>
+        </record>
+
+        <record id="tcb_oc_migraine" model="tcb.complaints">
+            <field name="name">MIGRAINE</field>
+        </record>
+
+        <record id="tcb_oc_mild_headache" model="tcb.complaints">
+            <field name="name">MILD HEADACHE</field>
+        </record>
+
+        <record id="tcb_oc_mild_pain" model="tcb.complaints">
+            <field name="name">MILD PAIN</field>
+        </record>
+
+        <record id="tcb_oc_neck_pain" model="tcb.complaints">
+            <field name="name">NECK PAIN</field>
+        </record>
+
+        <record id="tcb_oc_night_blindness" model="tcb.complaints">
+            <field name="name">NIGHT BLINDNESS</field>
+        </record>
+
+        <record id="tcb_oc_no_ocular_complaints" model="tcb.complaints">
+            <field name="name">NO OCULAR COMPLAINTS</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="ophthalmology_form_view_inherit_for_presenting_complaints_page" model="ir.ui.view">
+        <field name="name">ophthalmology.form.view.inherit.for.presenting.complaints.page</field>
+        <field name="model">tcb.ophthalmology.evaluation</field>
+        <field name="inherit_id" ref="tcb_ophthalmology.ophthalmology_form_view_inherit_for_doctor_examination_page"/>
+        <field name="arch" type="xml">
+            
+
+            <xpath expr="//page[@name='ophthalmology_doctor_examination']" position="after">
+                <page name="ophthalmology_presenting_complaints" string="Presenting Complaints">
+                        <div style="display: flex; gap: 10px;">
+                            <!-- Left Section - 70% -->
+                            <div style="flex: 0 0 65%;">
+                                <div class="title">
+                                    <h1>OPHTHALMIC HISTORY</h1>
+                                </div>
+                                <table class="ophthalmic-table">
+                                    <!-- Rest of the ophthalmic table content remains the same -->
+                                    <tr class="header-row">
+                                        <td>Symptoms</td>
+                                        <td>RE/LE/BE</td>
+                                        <td>Since</td>
+                                        <td>Duration</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="symptom-cell">
+                                            <field name="watering" class="symptom-checkbox"/>
+                                            <label for="watering">Watering in</label>
+                                        </td>
+                                        <td class="eye-selection-cell">
+                                            <field name="watering_eye" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                        <td class="since-cells">
+                                            <field name="watering_since" nolabel="1"/>
+                                        </td>
+                                        <td class="duration-cell">
+                                            <field name="watering_duration_type" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="symptom-cell">
+                                            <field name="redness" class="symptom-checkbox"/>
+                                            <label for="redness">Redness in</label>
+                                        </td>
+                                        <td class="eye-selection-cell">
+                                            <field name="redness_eye" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                        <td class="since-cells">
+                                            <field name="redness_since" nolabel="1"/>
+                                        </td>
+                                        <td class="duration-cell">
+                                            <field name="redness_duration_type" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="symptom-cell">
+                                            <field name="decreased_vision" class="symptom-checkbox"/>
+                                            <label for="decreased_vision">Decreased vision</label>
+                                        </td>
+                                        <td class="eye-selection-cell">
+                                            <field name="decreased_vision_eye" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                        <td class="since-cells">
+                                            <field name="decreased_vision_since" nolabel="1"/>
+                                        </td>
+                                        <td class="duration-cell">
+                                            <field name="decreased_vision_duration_type" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="symptom-cell">
+                                            <field name="pain" class="symptom-checkbox"/>
+                                            <label for="pain">Pain</label>
+                                        </td>
+                                        <td class="eye-selection-cell">
+                                            <field name="pain_eye" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                        <td class="since-cells">
+                                            <field name="pain_since" nolabel="1"/>
+                                        </td>
+                                        <td class="duration-cell">
+                                            <field name="pain_duration_type" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="symptom-cell">
+                                            <field name="discharge" class="symptom-checkbox"/>
+                                            <label for="discharge">Discharge</label>
+                                        </td>
+                                        <td class="eye-selection-cell">
+                                            <field name="discharge_eye" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                        <td class="since-cells">
+                                            <field name="discharge_since" nolabel="1"/>
+                                        </td>
+                                        <td class="duration-cell">
+                                            <field name="discharge_duration_type" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="symptom-cell">
+                                            <field name="itching" class="symptom-checkbox"/>
+                                            <label for="itching">Itching</label>
+                                        </td>
+                                        <td class="eye-selection-cell">
+                                            <field name="itching_eye" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                        <td class="since-cells">
+                                            <field name="itching_since" nolabel="1"/>
+                                        </td>
+                                        <td class="duration-cell">
+                                            <field name="itching_duration_type" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="symptom-cell">
+                                            <field name="burning" class="symptom-checkbox"/>
+                                            <label for="burning">Burning</label>
+                                        </td>
+                                        <td class="eye-selection-cell">
+                                            <field name="burning_eye" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                        <td class="since-cells">
+                                            <field name="burning_since" nolabel="1"/>
+                                        </td>
+                                        <td class="duration-cell">
+                                            <field name="burning_duration_type" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="symptom-cell">
+                                            <field name="swelling" class="symptom-checkbox"/>
+                                            <label for="swelling">Swelling</label>
+                                        </td>
+                                        <td class="eye-selection-cell">
+                                            <field name="swelling_eye" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                        <td class="since-cells">
+                                            <field name="swelling_since" nolabel="1"/>
+                                        </td>
+                                        <td class="duration-cell">
+                                            <field name="swelling_duration_type" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="symptom-cell">
+                                            <field name="irritation" class="symptom-checkbox"/>
+                                            <label for="irritation">Irritation</label>
+                                        </td>
+                                        <td class="eye-selection-cell">
+                                            <field name="irritation_eye" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                        <td class="since-cells">
+                                            <field name="irritation_since" nolabel="1"/>
+                                        </td>
+                                        <td class="duration-cell">
+                                            <field name="irritation_duration_type" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="symptom-cell">
+                                            <field name="foreign_body" class="symptom-checkbox"/>
+                                            <label for="foreign_body">Foreign body</label>
+                                        </td>
+                                        <td class="eye-selection-cell">
+                                            <field name="foreign_body_eye" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                        <td class="since-cells">
+                                            <field name="foreign_body_since" nolabel="1"/>
+                                        </td>
+                                        <td class="duration-cell">
+                                            <field name="foreign_body_duration_type" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="symptom-cell">
+                                            <field name="other" class="symptom-checkbox"/>
+                                            <label for="other">Other</label>
+                                        </td>
+                                        <td class="eye-selection-cell">
+                                            <field name="other_eye" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                        <td class="since-cells">
+                                            <field name="other_since" nolabel="1"/>
+                                        </td>
+                                        <td class="duration-cell">
+                                            <field name="other_duration_type" widget="radio" options="{'horizontal': true}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" style="width:500px ; height:80px">
+                                            <field name="other_description" placeholder="Describe other symptoms" widget="text" width="250px" invisible="other == False"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <!-- Right Section - 30% -->
+                            <div style="flex: 0 0 35%; margin-top: 0px;">
+                                <div style="background: #d15d5d; padding: 8px; margin-bottom: 4px;">
+                                <table style="width: 100%; border-collapse: collapse">
+                                    <tr>
+                                        <td style="width: 50%">
+                                            <h1 style="color : #fff;">Values</h1>
+                                        </td>
+                                        <td style="width: 50% ;color : #fff;">
+                                            <h1 style="color : #fff; border-bottom: 1px solid #fff" >
+                                                <field name="presenting_complaints_values" nolabel="1" />
+                                            </h1>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                </div>
+
+                                <div class="systemic-section" style="margin-top: 5px;" >
+                                    <div class="title">
+                                        <h1>SYSTEMIC ILLNESS</h1>
+                                    </div>
+                                    <table class="systemic-table">
+                                        <tr class="header-row">
+                                            <td>Condition</td>
+                                            <td>Since</td>
+                                            <td>Duration</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <field name="diabetes" class="illness-checkbox"/>
+                                                <label for="diabetes">Diabetes</label>
+                                            </td>
+                                            <td class="since-cells">
+                                                <field name="diabetes_since" nolabel="1"/>
+                                            </td>
+                                            <td class="duration-options">
+                                                <field name="diabetes_duration" widget="radio" options="{'horizontal': true}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <field name="hypertension" class="illness-checkbox"/>
+                                                <label for="hypertension">Hypertension</label>
+                                            </td>
+                                            <td class="since-cells">
+                                                <field name="hypertension_since" nolabel="1"/>
+                                            </td>
+                                            <td class="duration-options">
+                                                <field name="hypertension_duration" widget="radio" options="{'horizontal': true}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <field name="heart_disease" class="illness-checkbox"/>
+                                                <label for="heart_disease">Heart Disease</label>
+                                            </td>
+                                            <td class="since-cells">
+                                                <field name="heart_disease_since" nolabel="1"/>
+                                            </td>
+                                            <td class="duration-options">
+                                                <field name="heart_disease_duration" widget="radio" options="{'horizontal': true}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <field name="br_asthma" class="illness-checkbox"/>
+                                                <label for="br_asthma">Br. asthma</label>
+                                            </td>
+                                            <td class="since-cells">
+                                                <field name="br_asthma_since" nolabel="1"/>
+                                            </td>
+                                            <td class="duration-options">
+                                                <field name="br_asthma_duration" widget="radio" options="{'horizontal': true}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <field name="allergy" class="illness-checkbox"/>
+                                                <label for="allergy">Allergy</label>
+                                            </td>
+                                            <td class="since-cells">
+                                                <field name="allergy_since" nolabel="1"/>
+                                            </td>
+                                            <td class="duration-options">
+                                                <field name="allergy_duration" widget="radio" options="{'horizontal': true}"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3" style="text-align: left">
+                                                <field name="allergy_remarks" placeholder="Allergy Remarks"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <div class="title" style="margin-top: 20px;">
+                                        <h1>PRESENTING COMPLAINT</h1>
+                                    </div>
+                                    <field name="presenting_complaint" widget="text" style="width: 100%; min-height: 100px; background-color: mistyrose; padding: 20px;
+                                    border-radius: 10px; border-bottom : 2px solid #d15d5d"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <style>
+                            .ophthalmic-table, .systemic-table {
+                                width: 100%;
+                                border-collapse: collapse;
+                                margin: 0;
+                                background: #fff;
+                            }
+                        
+                            .ophthalmic-table td, .systemic-table td {
+                                border: 1px solid #ddd;
+                                padding: 4px;
+                                vertical-align: middle;
+
+                            }
+                        
+                            .header-row td {
+                                background: #b7f5f8;
+                                padding: 6px;
+                                font-weight: bold;
+                            }
+                        
+                            .eye-selection-cell .o_radio_item {
+                                display: inline-block;
+                                margin-right: 10px !important;
+                            }
+                        
+                            .duration-cell .o_radio_item {
+                                display: inline-block;
+                                margin-right: 8px !important;
+                            }
+                        
+                            .since-cells {
+                                width: 40px !important;
+                                min-width: 40px !important;
+                            }
+                        
+                            .since-cells input {
+                                width: 130% !important;
+                            }
+                        
+                            .symptom-cell {
+                                display: flex;
+                                align-items: center;
+                                gap: 2px;
+                                background: #f9f9f9;
+                            }
+                        
+                            .symptom-checkbox {
+                                margin: 0 !important;
+                            }
+                        
+                            /* Headers styling */
+                            .title {
+                                background: #d15d5d;
+                                padding: 8px;
+                                margin-bottom: 4px;
+                            }
+                        
+                            .title h1 {
+                                color: white;
+                                margin: 0;
+                                font-size: 16px;
+                            }
+                        
+                            /* Fix systemic illness table */
+                            .systemic-table td:first-child {
+                                width: 200px;
+                            }
+                        
+                            .systemic-table td.since-cells {
+                                width: 30px !important;
+                            }
+                        
+                            .systemic-table .duration-options {
+                                display: flex;
+                                gap: 8px;
+                                align-items: center;
+                            }
+                        
+                            /* Fix all radio groups alignment */
+                            .o_radio_item {
+                                margin: 0 !important;
+                                padding: 0 !important;
+                                display: inline-flex;
+                                align-items: center;
+                            }
+                        
+                            .o_radio_item input {
+                                margin: 0 4px !important;
+                            }
+                        
+                            /* Column widths for ophthalmic table */
+                            .ophthalmic-table td:first-child {
+                                width: 200px;
+                            }
+                        
+                            .ophthalmic-table td:nth-child(2) {
+                                width: 180px;
+                            }
+                        
+                            .ophthalmic-table td:nth-child(3) {
+                                width: 80px;
+                            }
+                        
+                            /* Spacing between sections */
+                            .systemic-section {
+                                margin-top: 20px;
+                            }
+                        
+                            /* Fix text input alignment */
+                            textarea, input {
+                                padding: 4px !important;
+                            }
+                        </style>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

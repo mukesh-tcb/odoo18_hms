@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ophthalmology_form_view_inherit_for_patient_complaints_page" model="ir.ui.view">
+        <field name="name">ophthalmology.form.view.inherit.for.patient.complaints.page</field>
+        <field name="model">tcb.ophthalmology.evaluation</field>
+        <field name="inherit_id" ref="tcb_ophthalmology.ophthalmology_form_view_inherit_for_presenting_complaints_page" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='ophthalmology_presenting_complaints']" position="after">
+                <page name="ophthalmology_patient_complaints" string="Patient Complaints">
+                    <div style="display: flex; flex-direction: column;">
+                        <group string="Ophthalmic Complaints">
+                            <field name="ophthalmic_complaints_ids" string="">
+                                <list string="Complaints" editable="bottom">
+                                    <field name="eye" />
+                                    <field name="complaints" />
+                                    <field name="duration" />
+                                    <field name="duration_unit" />
+                                    <field name="sl_no" />
+                                </list>
+                            </field>
+                        </group>
+                        <div style="border-top: 2px solid black; margin: 10px 0;"></div>
+                        <group string="Past History">
+                            <field name="past_history_ids" string="">
+                                <list string="History" editable="bottom">
+                                    <field name="eye" />
+                                    <field name="past_history" />
+                                    <field name="duration" />
+                                    <field name="duration_unit" />
+                                </list>
+                            </field>
+                        </group>
+                        <div style="border-top: 2px solid black; margin: 10px 0;"></div>
+                        <group string="SYSTEMIC ILLNESS">
+                            <field name="systematic_illness_ids" string="">
+                                <list string="History" editable="bottom">
+                                    <field name="disease_id" />
+                                    <field name="status_id" />
+                                    <field name="duration" />
+                                    <field name="duration_unit" />
+                                </list>
+                            </field>
+                        </group>
+                    </div>
+                    <style>
+                    :root {
+                        --primary-purple: #5E72E4;
+                        --border-color: #2c5282;
+                        }
+                        table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        font-size: 15px;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                        }
+                        th {
+                        background-color: var(--primary-purple);
+                        color: white;
+                        padding: 6px 10px;
+                        text-align: left;
+                        border: 1px solid var(--border-color);
+                        }
+                        td {
+                        padding: 2px 3px;
+                        border: 1px solid var(--border-color);
+                        }
+                        tbody tr:nth-child(even) {
+                        background-color: #f8f9fe;
+                        }
+                        .diagnosis-container,
+                        .procedure-container,
+                        .counselling-container,
+                        .treatment-container {
+                        margin: 4px 0;
+                        padding: 0px;
+                        border: 1px solid var(--border-color);
+                        }
+                        strong {
+                        font-size: 16px;
+                        color: Black;
+                        display: block;
+                        margin-bottom: 4px;
+                        margin-left: 4px;
+                        margin-top: 4px;
+                        }
+                        .fa-eye {
+                        color: Black;
+                        margin-left: 4px;
+
+                        }
+                    </style>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

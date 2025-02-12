@@ -1,0 +1,21 @@
+<odoo>
+    <data noupdate="1">
+        <!-- Deluxe Bed -->
+        <record id="product_deluxe_bed" model="product.template">
+            <field name="name">DELUX BED</field>
+            <field name="hospital_product_type">bed</field>
+        </record>
+
+        <!-- Normal Bed -->
+        <record id="product_normal_bed" model="product.template">
+            <field name="name">NORMAL BED</field>
+            <field name="hospital_product_type">bed</field>
+        </record>
+
+        <!-- Sharing Bed -->
+        <record id="product_sharing_bed" model="product.template">
+            <field name="name">SHARING BED</field>
+            <field name="hospital_product_type">bed</field>
+        </record>
+    </data>
+</odoo>

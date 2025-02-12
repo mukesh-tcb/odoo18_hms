@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tcb_hospitalization,tcb.hospitalization,model_tcb_hospitalization,,1,1,1,1
+access_tcb_procedure_type,tcb.procedure_type,model_tcb_procedure_type,,1,1,1,1
+access_tcb_patient_category,tcb.patient.category,model_tcb_patient_category,,1,1,1,1
+
+access_tcb_hms_services,tcb.hms.services,model_tcb_hms_services,,1,1,1,1
+access_tcb_hms_services_lines,tcb.hms.services.lines,model_tcb_hms_services_lines,,1,1,1,1
+
+access_hospital_ward,hospital.ward,model_hospital_ward,,1,1,1,1
+access_hospital_bed,hospital.bed,model_hospital_bed,,1,1,1,1
+
+access_patient_accommodation_history,patient.accommodation.history,model_patient_accommodation_history,,1,1,1,1
+
+
+access_followup_line,followup.line,model_followup_line,,1,1,1,1
+
+access_discharge_prescription_lines,discharge.prescription.lines,model_discharge_prescription_lines,,1,1,1,1

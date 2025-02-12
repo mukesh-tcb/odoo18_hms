@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="tcb_procedure_master_form_view" model="ir.ui.view">
+        <field name="name">tcb.procedure.master.form.view</field>
+        <field name="model">tcb.procedure.master</field>
+        <field name="arch" type="xml">
+            
+            <form string="Procedure Master">
+                <sheet>
+                    <group>
+                    <field name="name" string="Procedure Name"/>
+                    <field name="procedure_price" string="Procedure Price"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+    <record id="tcb_procdure_master_list_view" model="ir.ui.view">
+        <field name="name">tcb_procdure.master.list.view</field>
+        <field name="model">tcb.procedure.master</field>
+        <field name="arch" type="xml">
+            <list string="">
+                <field name="name" string="Procedure Name"/>
+                <field name="procedure_price" string="Procedure Price"/>
+            </list>
+        </field>
+    </record>
+    
+
+
+    <record id="action_procedure_master" model="ir.actions.act_window">
+        <field name="name">Procedure Masters</field>
+        <field name="res_model">tcb.procedure.master</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Payment Receipt
+            </p>
+        </field>
+    </record>
+
+
+
+    <menuitem id="procedure_menu"
+            name="Procedure"
+            sequence="12"/>
+
+    <menuitem id="procedure_master_menu" 
+            name="Procedure Masters" 
+            parent="procedure_menu" 
+            action="action_procedure_master" 
+            sequence="13"/>
+</odoo>

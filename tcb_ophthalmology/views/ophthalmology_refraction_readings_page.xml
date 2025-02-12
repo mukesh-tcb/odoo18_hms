@@ -1,0 +1,1031 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="ophthalmology_form_view_inherit_for_refraction_readings_page" model="ir.ui.view">
+        <field name="name">ophthalmology.form.view.inherit.for.refraction.readings.page</field>
+        <field name="model">tcb.ophthalmology.evaluation</field>
+        <field name="inherit_id" ref="tcb_ophthalmology.ophthalmology_form_view_inherit_for_patient_complaints_page"/>
+        <field name="arch" type="xml">
+            
+
+            <xpath expr="//page[@name='ophthalmology_patient_complaints']" position="after">
+                <page name="refraction_readings" string="Refraction Readings">
+                    <div class="first-tables"
+                        style="margin-top: 10px; display:flex; gap: 10px; text-align: center; ">
+
+                        <!-- Secondary Tables Section -->
+                        <table class="ophtha-visual-table"
+                            style="width: 80%; border: 2px solid #666;">
+
+                            <tr>
+                                <th colspan="5"
+                                    style="border: 1px solid #666; background-color: #f0f0f0; text-align: center;">VISUAL
+                                    ACUITY</th>
+                            </tr>
+
+
+                            <tr>
+                                <th colspan="2"
+                                    style="border: 1px solid #666; background-color: #ffffff0;"></th>
+
+                                <th colspan="1"
+                                    style="border: 1px solid #666; background-color: #f0f0f0;">RIGHT
+                                    EYE</th>
+                                <th colspan="1"
+                                    style="border: 1px solid #666; background-color: #f0f0f0;">LEFT
+                                    EYE</th>
+                            </tr>
+
+                            <tr>
+
+                                <th style="border: 1px solid #000000;" rowspan="2">UNAIDED</th>
+
+                                <th
+                                    style="border: 1px solid #666; background-color: #bcf9f0;">
+                                    Dist</th>
+
+                                <td style="border: 1px solid #666;"></td>
+                                <td style="border: 1px solid #666;"></td>
+                                <!-- <th style="border: 1px solid #666;">OS</th>  -->
+                            </tr>
+                            <tr>
+                                <!-- <th style="border: 0px solid #000000; rowspan:
+                                2;"></th> -->
+
+                                <th
+                                    style="border: 1px solid #666; background-color: #bcf9f0;">
+                                    Near</th>
+
+                                    <td style="border: 1px solid #666;"></td>
+                                    <td style="border: 1px solid #666;"></td>
+                                <!-- <th style="border: 1px solid #666;">OS</th>  -->
+                            </tr>
+
+                            <tr>
+                                <th style="border: 1px solid #666;" colspan="2">WITH PH</th>
+
+                                <td style="border: 1px solid #666;"></td>
+                                <td style="border: 1px solid #666;"></td>
+                                <!-- <th style="border: 1px solid #666;">OS</th>  -->
+                            </tr>
+
+                            <tr>
+                                <th style="border: 1px solid #666;" rowspan="2" width="10%">WITH
+                                    EXISTING GLASS</th>
+                                <th
+                                    style="border: 1px solid #666; background-color: #bcf9f0;">
+                                    Dist</th>
+
+                                    <td style="border: 1px solid #666;"></td>
+                                <td style="border: 1px solid #666;"></td>
+                                <!-- <th style="border: 1px solid #666;">OS</th>  -->
+                            </tr>
+
+                            <tr>
+                                <th
+                                    style="border: 1px solid #666; background-color: #bcf9f0;">
+                                    Near</th>
+
+                                    <td style="border: 1px solid #666;"></td>
+                                <td style="border: 1px solid #666;"></td>
+                                <!-- <th style="border: 1px solid #666;">OS</th>  -->
+                            </tr>
+                        </table>
+
+                        <div style="gap:10px; width: 70%;">
+
+                            <table class="ophtha-tonometry-table"
+                                style="width:100%; border: 2px solid #666;">
+
+                                <tr>
+
+                                    <th colspan="8"
+                                        style="border: 1px solid #666; background-color: #f0f0f0; text-align: center;">
+                                        TONOMETRY</th>
+
+                                </tr>
+
+                                <tr>
+                                    <th style="border: 1px solid #666;" colspan="1"></th>
+
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        NCT</th>
+
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        GAT</th>
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        CCT</th>
+                                </tr>
+
+                                <tr>
+
+
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        OD</th>
+
+                                    <td style="border: 1px solid #666;">
+                                        <field name="tonometry_od_nct" nolabel="1" />
+                                    </td>
+                                    <td style="border: 1px solid #666;">
+                                        <field name="tonometry_od_gat" nolabel="1" />
+                                    </td>
+                                    <td style="border: 1px solid #666;">
+                                        <field name="tonometry_od_cct" nolabel="1" />
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        OS</th>
+
+                                    <td style="border: 1px solid #666;">
+                                        <field name="tonometry_od_nct" nolabel="1" />
+                                    </td>
+                                    <td style="border: 1px solid #666;">
+                                        <field name="tonometry_od_gat" nolabel="1" />
+                                    </td>
+                                    <td style="border: 1px solid #666;">
+                                        <field name="tonometry_od_cct" nolabel="1" />
+                                    </td>
+
+                                </tr>
+
+                            </table>
+
+
+                            <!-- Color Vision Table -->
+                            <div class="ophtha-color-vision-table-container"
+                                style=" display: flex; gap:3px; width: 100%;">
+                                <table class="ophtha-color-vision-table"
+                                    style="width:100%; border: 2px solid #666; margin-top: 20px;">
+
+                                    <tr>
+
+                                        <th colspan="2"
+                                            style="border: 1px solid #666; background-color: #f0f0f0;">COLOR
+                                            VISION</th>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <th
+                                            style="border: 1px solid #666; background-color: #bcf9f0;">
+                                            OD</th>
+
+                                        <td style="border: 1px solid #666;">
+                                            <field name="color_vision_od" nolabel="1" />
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <th
+                                            style="border: 1px solid #666; background-color: #bcf9f0;">
+                                            OS</th>
+
+                                        <td style="border: 1px solid #666;">
+                                            <field name="color_vision_os" nolabel="1" />
+                                        </td>
+
+                                    </tr>
+
+                                </table>
+                                <!-- Prism value Table -->
+
+                                <table class="ophtha-prism-table"
+                                    style="width:100%; border: 2px solid #666; margin-top: 20px;">
+
+                                    <tr>
+
+                                        <th colspan="2"
+                                            style="border: 1px solid #666; background-color: #f0f0f0;">PRISM
+                                            VALUES</th>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <th
+                                            style="border: 1px solid #666; background-color: #bcf9f0;">
+                                            OD</th>
+
+                                        <td style="border: 1px solid #666;">
+                                            <field name="prism_value_re" nolabel="1" />
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <th
+                                            style="border: 1px solid #666; background-color: #bcf9f0;">
+                                            OS</th>
+
+                                        <td style="border: 1px solid #666;">
+                                            <field name="prism_value_le" nolabel="1" />
+                                        </td>
+
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </div>
+
+
+                        <!-- Keratometry Table -->
+
+                        <div class="ophtha-keratometry-table-container"
+                            style="gap:3px; width: 80%; ">
+
+                            <table class="ophtha-keratometry-table"
+                                style="width:100%; border: 2px solid #666; ">
+
+                                <tr>
+
+                                    <th colspan="14"
+                                        style="border: 1px solid #666; background-color: #f0f0f0; text-align: center;">
+                                        KERATOMETRY</th>
+
+                                </tr>
+                                <!--   Header row  -->
+                                <tr>
+
+                                    <th style="border: 1px solid #666;" colspan="5"></th>
+
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        AXIS</th>
+
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        AXL</th>
+
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        PCIOL</th>
+
+
+                                </tr>
+                                <!-- First row -->
+
+                                <tr>
+
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;"
+                                        rowspan="2">OD:</th>
+
+                                    <th
+                                        style="border: 1px solid #666; background-color:  #aefca6;">
+                                        K1</th>
+
+                                    <td style="border: 1px solid #666;">
+                                        <field name="keratometry_od_k1" nolabel="1" />
+                                    </td>
+
+                                    <th
+                                        style="border: 1px solid #666; background-color:  #aefca6;">
+                                        R1</th>
+
+                                    <td style="border: 1px solid #666;">
+                                        <!-- This field will be declared later -->
+                                        <field name="keratometry_od_k1_r1" nolabel="1" />
+                                    </td>
+
+
+                                    <td style="border: 1px solid #666;">
+                                        <field name="keratometry_od_k1_r1_axis" nolabel="1" />
+                                    </td>
+
+                                    <td style="border: 1px solid #666;">
+                                        <field name="keratometry_od_k1_r1_axl" nolabel="1" />
+                                    </td>
+
+                                    <td style="border: 1px solid #666;">
+                                        <field name="keratometry_od_k1_r1_pciol" nolabel="1" />
+                                    </td>
+                                </tr>
+
+                                <!--     Second row -->
+
+                                <tr style="border-bottom: 2px solid #666;">
+
+                                    <th
+                                        style="border: 1px solid #666; background-color:  #aefca6;">
+                                        K2</th>
+
+                                    <td style="border: 1px solid #666;">
+                                        <field name="keratometry_od_k2" nolabel="1" />
+                                    </td>
+
+                                    <th
+                                        style="border: 1px solid #666; background-color:  #aefca6;">
+                                        R2</th>
+
+                                    <td style="border: 1px solid #666;">
+                                        <!-- This field will be declared later -->
+                                        <field name="keratometry_od_k2_r2" nolabel="1" />
+                                    </td>
+
+
+                                    <td style="border: 1px solid #666;">
+                                        <field name="keratometry_od_k2_r2_axis" nolabel="1" />
+                                    </td>
+
+                                    <td style="border: 1px solid #666;">
+                                        <field name="keratometry_od_k2_r2_axl" nolabel="1" />
+                                    </td>
+
+                                    <td style="border: 1px solid #666;">
+                                        <field name="keratometry_od_k2_r2_pciol" nolabel="1" />
+                                    </td>
+                                </tr>
+
+                                <!-- Third row -->
+
+                                <tr>
+
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;"
+                                        rowspan="2">OS:</th>
+
+                                    <th
+                                        style="border: 1px solid #666; background-color:  #aefca6;">
+                                        K1</th>
+
+                                    <td style="border: 1px solid #666;">
+                                        <field name="keratometry_os_k1" nolabel="1" />
+                                    </td>
+
+                                    <th
+                                        style="border: 1px solid #666; background-color:  #aefca6;">
+                                        R1</th>
+
+                                    <td style="border: 1px solid #666;">
+                                        <!-- This field will be declared later -->
+                                        <field name="keratometry_os_k1_r1" nolabel="1" />
+                                    </td>
+
+
+                                    <td style="border: 1px solid #666;">
+                                        <field name="keratometry_os_k1_r1_axis" nolabel="1" />
+                                    </td>
+
+                                    <td style="border: 1px solid #666;">
+                                        <field name="keratometry_os_k1_r1_axl" nolabel="1" />
+                                    </td>
+
+                                    <td style="border: 1px solid #666;">
+                                        <field name="keratometry_os_k1_r1_pciol" nolabel="1" />
+                                    </td>
+                                </tr>
+
+                                <!-- Forth row -->
+
+                                <tr>
+
+                                    <th
+                                        style="border: 1px solid #666; background-color:  #aefca6;">
+                                        K2</th>
+
+                                    <td style="border: 1px solid #666;">
+                                        <field name="keratometry_os_k2" nolabel="1" />
+                                    </td>
+
+                                    <th
+                                        style="border: 1px solid #666; background-color:  #aefca6;">
+                                        R2</th>
+
+                                    <td style="border: 1px solid #666;">
+                                        <!-- This field will be declared later -->
+                                        <field name="keratometry_os_k2_r2" nolabel="1" />
+                                    </td>
+
+
+                                    <td style="border: 1px solid #666;">
+                                        <field name="keratometry_os_k2_r2_axis" nolabel="1" />
+                                    </td>
+
+                                    <td style="border: 1px solid #666;">
+                                        <field name="keratometry_os_k2_r2_axl" nolabel="1" />
+                                    </td>
+
+                                    <td style="border: 1px solid #666;">
+                                        <field name="keratometry_os_k2_r2_pciol" nolabel="1" />
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                            <!-- Pachy Table -->
+                            <table class="ophtha-pachy-table"
+                                style="width:100%; border: 2px solid #666; margin-top: 10px; height:10px">
+
+                                <tr style="height:10px">
+
+                                    <th colspan="2"
+                                        style="border: 1px solid #666; background-color: #f0f0f0;">PACHY
+                                        VALUES</th>
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        OD</th>
+
+                                    <td style="border: 1px solid #666;">
+                                        <field name="pachy_re" nolabel="1" />
+                                    </td>
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        OS</th>
+
+                                    <td style="border: 1px solid #666;">
+                                        <field name="pachy_le" nolabel="1" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+
+                        <!-- AR Table -->
+
+                        <div class="ophtha-ar-table-container" style="display:flex; flex-direction:column">
+                            <table class="ophtha-ar-dry-table"
+                                style="width:100%; border: 2px solid #666; ">
+                                <tr>
+                                    <th colspan="5"
+                                        style="border: 1px solid #666; background-color: #f0f0f0; text-align: center;">AR
+                                        READINGS (DRY)</th>
+                                </tr>
+                                <tr>
+                                    <th
+                                        style="border: 1px solid #666; background-color: #aefca6;">
+                                        DRY</th>
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        SPH</th>
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        CYL</th>
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        AXIS</th>
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        STATUS</th>
+                                </tr>
+                                <tr>
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        RE</th>
+                                    <td style="border: 1px solid #666;">
+                                        <field name="ar_dry_sph_right" nolabel="1" options="{'no_open': True,}"/>                                            </td>
+                                    <td style="border: 1px solid #666;">
+                                        <field name="ar_dry_cyl_right" nolabel="1" options="{'no_open': True,}" />
+                                    </td>
+                                    <td style="border: 1px solid #666;">
+                                        <field name="ar_dry_axis_right" nolabel="1" options="{'no_open': True,}" />
+                                    </td>
+                                    <td style="border: 1px solid #666;">
+                                        <field name="ar_dry_status_right" nolabel="1"
+                                            widget="selection" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        LE</th>
+                                    <td style="border: 1px solid #666;">
+                                        <field name="ar_dry_sph_left" nolabel="1" options="{'no_open': True,}" />
+                                    </td>
+                                    <td style="border: 1px solid #666;">
+                                        <field name="ar_dry_cyl_left" nolabel="1" options="{'no_open': True,}" />
+                                    </td>
+                                    <td style="border: 1px solid #666;">
+                                        <field name="ar_dry_axis_left" nolabel="1" options="{'no_open': True,}" />
+                                    </td>
+                                    <td style="border: 1px solid #666;">
+                                        <field name="ar_dry_status_left" nolabel="1"
+                                            widget="selection" />
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- AR Readings WET Table -->
+
+                            <table class="ophtha-ar-wet-table"
+                                style="width:100%; border: 2px solid #666; margin-top: 20px;">
+                                <tr>
+                                    <th colspan="5"
+                                        style="border: 1px solid #666; background-color: #f0f0f0; text-align: center;">AR
+                                        READINGS (WET)</th>
+                                </tr>
+                                <tr>
+                                    <th
+                                        style="border: 1px solid #666; background-color: #aefca6;">
+                                        WET</th>
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        SPH</th>
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        CYL</th>
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        AXIS</th>
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        STATUS</th>
+                                </tr>
+                                <tr>
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        RE</th>
+                                    <td style="border: 1px solid #666;">
+                                        <field name="ar_wet_sph_right" nolabel="1" options="{'no_open': True,}"/>
+                                    </td>
+                                    <td style="border: 1px solid #666;">
+                                        <field name="ar_wet_cyl_right" nolabel="1" options="{'no_open': True,}"/>
+                                    </td>
+                                    <td style="border: 1px solid #666;">
+                                        <field name="ar_wet_axis_right" nolabel="1" options="{'no_open': True,}"/>
+                                    </td>
+                                    <td style="border: 1px solid #666;">
+                                        <field name="ar_wet_status_right" nolabel="1"
+                                            widget="selection" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th
+                                        style="border: 1px solid #666; background-color: #bcf9f0;">
+                                        LE</th>
+                                    <td style="border: 1px solid #666;">
+                                        <field name="ar_wet_sph_left" nolabel="1" options="{'no_open': True,}"/>
+                                    </td>
+                                    <td style="border: 1px solid #666;">
+                                        <field name="ar_wet_cyl_left" nolabel="1" options="{'no_open': True,}"/>
+                                    </td>
+                                    <td style="border: 1px solid #666;">
+                                        <field name="ar_wet_axis_left" nolabel="1" options="{'no_open': True,}"/>
+                                    </td>
+                                    <td style="border: 1px solid #666;">
+                                        <field name="ar_wet_status_left" nolabel="1"
+                                            widget="selection" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- POG Table -->
+                    <div
+                        style="display: flex; gap: 10px; width: 100%; margin-top: 10px; text-align: center;">
+                        <table class="ophtha-pog-table"
+                            style="width: 100%; border: 2px solid #666;">
+                            <!-- Pog Header -->
+                            <tr>
+                                <th rowspan="2"
+                                    style="border: 1px solid #666; background-color: #d1f7f0; text-align: center;">
+                                    POG</th>
+                                <th colspan="4"
+                                    style="border-right: 2px solid #666; background-color: #f0f7f5; text-align: center;">RIGHT
+                                    EYE</th>
+                                <th colspan="4"
+                                    style="border-right: 2px solid #666; background-color: #f0f7f5; text-align: center;">LEFT
+                                    EYE</th>
+                                <th colspan="4"
+                                    style="border: 1px solid #666; background-color: #f0f7f5; text-align: center;"></th>
+                            </tr>
+                            <tr>
+                                <th
+                                    style="border: 1px solid #666; background-color:  #80faef ;">
+                                    SPH</th>
+                                <th
+                                    style="border: 1px solid #666; background-color:  #80faef ;">
+                                    CYL</th>
+                                <th
+                                    style="border: 1px solid #666; background-color:  #80faef ;">
+                                    Axis</th>
+                                <th
+                                    style="border: 1px solid #666; border-right: 2px solid #666; background-color:  #80faef ;">
+                                    Add</th>
+                                <th
+                                    style="border: 1px solid #666; background-color: #d6f7f1;">
+                                    SPH</th>
+                                <th
+                                    style="border: 1px solid #666; background-color: #d6f7f1;">
+                                    CYL</th>
+                                <th
+                                    style="border: 1px solid #666; background-color: #d6f7f1;">
+                                    Axis</th>
+                                <th
+                                    style="border: 1px solid #666; border-right: 2px solid #666; background-color: #d6f7f1;">
+                                    Add</th>
+                                <th
+                                    style="border: 1px solid #666; background-color: #e8fbf6;">
+                                    Type</th>
+                                <th colspan="2"
+                                    style="border: 1px solid #666; background-color: #e8fbf6;">How
+                                    Old</th>
+                                <th
+                                    style="border: 1px solid #666; background-color: #e8fbf6;">Done
+                                    By</th>
+                            </tr>
+
+                            <!-- Pog Body -->
+                            <tr>
+                                <th
+                                    style="border: 1px solid #666; background-color: #f0f7f5; width: 60px;">POG
+                                    1</th>
+                                <!-- POG1 Right eye -->
+                                <td style="border: 1px solid #666;">
+                                    <field name="pog1_ref_sph_re" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="pog1_ref_cyl_re" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="pog1_ref_axis_re" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666; border-right: 2px solid #666;">
+                                    <field name="pog1_ref_add_re" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <!-- POG1 Left eye -->
+                                <td style="border: 1px solid #666;">
+                                    <field name="pog1_ref_sph_le" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="pog1_ref_cyl_le" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="pog1_ref_axis_le" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666; border-right: 2px solid #666;">
+                                    <field name="pog1_ref_add_le" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="pog1_ref_type" nolabel="1"
+                                        widget="selection" />
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="pog1_ref_how_old_value"
+                                        placeholder="No. of D/M/Y" nolabel="1" />
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="pog1_ref_how_old_select"
+                                        placeholder="Select" nolabel="1" widget="selection" />
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="pog1_ref_done_by" nolabel="1" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th
+                                    style="border: 1px solid #666; background-color: #f0f7f5; width: 10px;">POG
+                                    2</th>
+                                <!-- POG2 Right eye -->
+                                <td style="border: 1px solid #666;">
+                                    <field name="pog2_ref_sph_re" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="pog2_ref_cyl_re" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="pog2_ref_axis_re" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666; border-right: 2px solid #666;">
+                                    <field name="pog2_ref_add_re" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <!-- POG2 Left eye -->
+                                <td style="border: 1px solid #666;">
+                                    <field name="pog2_ref_sph_le" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="pog2_ref_cyl_le" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="pog2_ref_axis_le" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666; border-right: 2px solid #666;">
+                                    <field name="pog2_ref_add_le" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="pog2_ref_type" nolabel="1"
+                                        widget="selection" />
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="pog2_ref_how_old_value"
+                                        placeholder="No. of D/M/Y" nolabel="1" />
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="pog2_ref_how_old_select"
+                                        placeholder="Select" nolabel="1" widget="selection" />
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="pog2_ref_done_by" nolabel="1" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+
+                <!-- Refraction Table -->
+                    <div
+                        style="display: flex; gap: 10px; width: 100%; margin-top: 10px; text-align: center;">
+                        <table class="ophtha-pog-table"
+                            style="width: 100%; border: 2px solid #666;">
+                            <!-- Refraction Header -->
+                            <tr>
+                                <th rowspan="2" colspan="2"
+                                    style="border: 1px solid #666; background-color: #d1f7f0; text-align: center;">
+                                    REFRACTION</th>
+                                <th colspan="4"
+                                    style="border-right: 2px solid #666; background-color: #f0f7f5; text-align: center;">RIGHT
+                                    EYE</th>
+                                <th colspan="4"
+                                    style="border-right: 2px solid #666; background-color: #f0f7f5; text-align: center;">LEFT
+                                    EYE</th>
+                                
+                            </tr>
+                            <tr>
+                                
+
+                                <th
+                                    style="border: 1px solid #666; background-color:  #80faef;">
+                                    VA</th>
+                                <th
+                                    style="border: 1px solid #666; background-color:  #80faef;">
+                                    SPH</th>
+                                <th
+                                    style="border: 1px solid #666; background-color:  #80faef;">
+                                    CYL</th>
+                                <th
+                                    style="border: 1px solid #666; background-color:  #80faef; border-right: 2px solid #666;">
+                                    Axis</th>
+                                
+                                <th
+                                    style="border: 1px solid #666; background-color: #d6f7f1;">
+                                    SPH</th>
+                                <th
+                                    style="border: 1px solid #666; background-color: #d6f7f1;">
+                                    CYL</th>
+                                <th
+                                    style="border: 1px solid #666; background-color: #d6f7f1;">
+                                    Axis</th>
+                                <th
+                                    style="border: 1px solid #666;  background-color: #d6f7f1;">
+                                    VA</th>
+                                
+                            </tr>
+
+                            <!-- Refraction Body -->
+                            <tr>
+                                <th rowspan="3"
+                                style="border: 1px solid #666; background-color:  #80faef ;">
+                                ACCEPTANCE</th>
+                                <th
+                                    style="border: 1px solid #666; background-color: #f0f7f5; width: 60px;">DIST</th>
+                                <!-- DIST Right eye -->
+
+                                <td style="border: 1px solid #666; ">
+                                    <field name="re_dist_va" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                
+                                <td style="border: 1px solid #666;">
+                                    <field name="refraction_dist_sph_re" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="refraction_dist_cyl_re" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666; border-right: 2px solid #666;">
+                                    <field name="refraction_dist_axis_re" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                            
+                                <!-- DIST Left eye -->
+                                <td style="border: 1px solid #666;">
+                                    <field name="refraction_dist_sph_le" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="refraction_dist_cyl_le" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="refraction_dist_axis_le" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666; ">
+                                    <field name="le_dist_va" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <th
+                                    style="border: 1px solid #666; background-color: #f0f7f5; width: 10px;">NEAR</th>
+                                <!-- NEAR Right eye -->
+                                <td style="border: 1px solid #666; ">
+                                    <field name="re_near_va" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="refraction_near_sph_re" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="refraction_near_cyl_re" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666; border-right: 2px solid #666;">
+                                    <field name="refraction_near_axis_re" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                
+                                <!-- NEAR Left eye -->
+                                
+                                <td style="border: 1px solid #666;">
+                                    <field name="refraction_near_sph_le" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="refraction_near_cyl_le" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666;">
+                                    <field name="refraction_near_axis_le" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                <td style="border: 1px solid #666; ">
+                                    <field name="le_near_va" nolabel="1" options="{'no_open': True,}"/>
+                                </td>
+                                
+                            </tr>
+
+                            <tr>
+                                <th style="border: 1px solid #666; background-color: #f0f7f5; width: 10px;">IPD</th>
+                                <td style="border: 1px solid #666; ">
+                                    <field name="refraction_ipd" nolabel="1" />
+                                </td>
+                                <td colspan="9" style="border: 1px solid #666 ; border-top: 2px solid #666; border-left : 2px solid #666; background-color: #f0f7f5;">
+                                </td>
+                            </tr>
+                        </table>
+
+
+            <!-- LAST Refraction Table -->
+            <table class="ophtha-pog-table"
+                style="width: 100%; border: 2px solid #666; text-align: center;">
+                <!-- Last Header -->
+                <tr>
+                    <th rowspan="2" colspan="2"
+                        style="border: 1px solid #666; background-color: #d1f7f0; text-align: center;">
+                        LAST</th>
+                    <th colspan="4"
+                        style="border-right: 2px solid #666; background-color: #f0f7f5; text-align: center;">RIGHT
+                        EYE</th>
+                    <th colspan="4"
+                        style="border-right: 2px solid #666; background-color: #f0f7f5; text-align: center;">LEFT
+                        EYE</th>
+                    
+                </tr>
+                <tr>
+                    
+
+                    <th
+                        style="border: 1px solid #666; background-color:  #80faef;">
+                        VA</th>
+                    <th
+                        style="border: 1px solid #666; background-color:  #80faef;">
+                        SPH</th>
+                    <th
+                        style="border: 1px solid #666; background-color:  #80faef;">
+                        CYL</th>
+                    <th
+                        style="border: 1px solid #666; background-color:  #80faef; border-right: 2px solid #666;">
+                        Axis</th>
+                    
+                    <th
+                        style="border: 1px solid #666; background-color: #d6f7f1;">
+                        SPH</th>
+                    <th
+                        style="border: 1px solid #666; background-color: #d6f7f1;">
+                        CYL</th>
+                    <th
+                        style="border: 1px solid #666; background-color: #d6f7f1;">
+                        Axis</th>
+                    <th
+                        style="border: 1px solid #666;  background-color: #d6f7f1;">
+                        VA</th>
+                    
+                </tr>
+
+                <!-- LAST Refraction Body -->
+                <tr>
+                    <th rowspan="2"
+                    style="border: 1px solid #666; background-color:#80faef;">
+                    REFRACTION</th>
+                    <th
+                        style="border: 1px solid #666; background-color: #f0f7f5; width: 60px;">DIST</th>
+                    <!-- DIST Right eye -->
+
+                    <td style="border: 1px solid #666; ">
+                        <field name="re_dist_va_last" nolabel="1" options="{'no_open': True,}"/>
+                    </td>
+                    
+                    <td style="border: 1px solid #666;">
+                        <field name="refraction_dist_sph_re_last" nolabel="1" options="{'no_open': True,}"/>
+                    </td>
+                    <td style="border: 1px solid #666;">
+                        <field name="refraction_dist_cyl_re_last" nolabel="1" options="{'no_open': True,}"/>
+                    </td>
+                    <td style="border: 1px solid #666; border-right: 2px solid #666;">
+                        <field name="refraction_dist_axis_re_last" nolabel="1" options="{'no_open': True,}"/>
+                    </td>
+                
+                    <!-- DIST Left eye -->
+                    <td style="border: 1px solid #666;">
+                        <field name="refraction_dist_sph_le_last" nolabel="1" options="{'no_open': True,}"/>
+                    </td>
+                    <td style="border: 1px solid #666;">
+                        <field name="refraction_dist_cyl_le_last" nolabel="1" options="{'no_open': True,}"/>
+                    </td>
+                    <td style="border: 1px solid #666;">
+                        <field name="refraction_dist_axis_le_last" nolabel="1" options="{'no_open': True,}"/>
+                    </td>
+                    <td style="border: 1px solid #666; ">
+                        <field name="le_dist_va_last" nolabel="1" options="{'no_open': True,}"/>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <th
+                        style="border: 1px solid #666; background-color: #f0f7f5; width: 10px;">NEAR</th>
+                    <!-- NEAR Right eye -->
+                    <td style="border: 1px solid #666; ">
+                        <field name="re_near_va_last" nolabel="1" options="{'no_open': True,}"/>
+                    </td>
+                    <td style="border: 1px solid #666;">
+                        <field name="refraction_near_sph_re_last" nolabel="1" options="{'no_open': True,}"/>
+                    </td>
+                    <td style="border: 1px solid #666;" options="{'no_open': True,}">
+                        <field name="refraction_near_cyl_re_last" nolabel="1" options="{'no_open': True,}"/>
+                    </td>
+                    <td style="border: 1px solid #666; border-right: 2px solid #666;">
+                        <field name="refraction_near_axis_re_last" nolabel="1" options="{'no_open': True,}"/>
+                    </td>
+                    
+                    <!-- NEAR Left eye -->
+                    
+                    <td style="border: 1px solid #666;">
+                        <field name="refraction_near_sph_le_last" nolabel="1" options="{'no_open': True,}"/>
+                    </td>
+                    <td style="border: 1px solid #666;">
+                        <field name="refraction_near_cyl_le_last" nolabel="1" options="{'no_open': True,}"/>
+                    </td>
+                    <td style="border: 1px solid #666;">
+                        <field name="refraction_near_axis_le_last" nolabel="1" options="{'no_open': True,}"/>
+                    </td>
+                    <td style="border: 1px solid #666; ">
+                        <field name="le_near_va_last" nolabel="1" options="{'no_open': True,}"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="form-group" style="display: flex;  border: 1px solid #fff; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px; padding: 5px; margin-top: 2px; background-color: #f9f9f9;">
+            
+            <div style="justify-content: space-between; padding-top: 0px;">
+                <div style="flex: 1; margin-right: 20px;">
+                    <div class="o_form_label" style="font-weight: bold; color: #555;">OPTOMETRIST NOTES:</div>
+                    <field name="optometrist_notes" nolabel="1" style="width: 600px; margin-top: 2px;"/>
+                </div>
+                
+                <div style="flex: 1; margin-right: 20px;">
+                    <div class="o_form_label" style="font-weight: bold; color: #555;">REFRACTION REMARKS:</div>
+                    <field name="refraction_remarks" nolabel="1" style="width: 600px; margin-top: 2px;"/>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <group>
+                <group>
+                    <field name="ref_workup_done" widget="boolean_checkbox"/>
+                    <field name="ref_wet_ar_please" widget="boolean_checkbox"/>
+                    <field name="ref_dilation_please" widget="boolean_checkbox"/>
+                    <field name="ref_pmt_please" widget="boolean_checkbox"/>
+                </group>
+                    <group>
+                    <field name="cyclo_refraction_please" widget="boolean_checkbox"/>
+                    <field name="atropine_refraction_please" widget="boolean_checkbox"/>
+                    <field name="refraction_next_visit_please" widget="boolean_checkbox"/>
+                </group>
+            </group>
+            </div>
+        </div>
+        
+        
+                </page>
+                
+
+    </xpath>
+</field>
+</record>
+
+</odoo>
+
+
+        

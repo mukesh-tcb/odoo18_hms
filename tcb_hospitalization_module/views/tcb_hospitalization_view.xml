@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Window Action -->
+    <record id="action_tcb_hospitalization" model="ir.actions.act_window">
+        <field name="name">Hospitalizations</field>
+        <field name="res_model">tcb.hospitalization</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a new hospitalization record.
+            </p>
+        </field>
+    </record>
+
+    <!-- List View -->
+    <record id="view_tcb_hospitalization_list" model="ir.ui.view">
+        <field name="name">tcb.hospitalization.list</field>
+        <field name="model">tcb.hospitalization</field>
+        <field name="arch" type="xml">
+            <list decoration-success="state == 'done'" decoration-danger="state == 'cancel'">
+                <field name="name" string="Hospitalization Number" />
+                <field name="patient_id" />
+                <field name="admission_date" />
+                <field name="discharge_date" />
+                <field name="physician_id" />
+                <field name="state" widget="badge" decoration-success="state == 'done'"
+                    decoration-danger="state == 'cancel'" />
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_tcb_hospitalization_form" model="ir.ui.view">
+        <field name="name">tcb.hospitalization.form</field>
+        <field name="model">tcb.hospitalization</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_confirm_hospitalization" string="Confirm" type="object"
+                        class="btn-primary" invisible="state not in 'draft'" />
+                    <button name="action_hospitalize" string="Hospitalize" type="object"
+                        class="btn-primary" invisible="state not in 'confirmed'" />
+                    <button name="action_request_discharge" string="Request Discharge" type="object"
+                        class="btn-primary" invisible="state not in 'hospitalized'" />
+                    <button name="action_discharge" string="Discharge" type="object"
+                        class="btn-primary" invisible="state not in 'discharge_requested'" />
+                    <button name="action_done" string="Done" type="object" class="btn-success"
+                        invisible="state not in 'discharged'" />
+                    <button name="action_cancel_hospitalization" string="Cancel" type="object"
+                        class="btn-warning" invisible="state in 'cancel'" />
+                    <button name="action_previous_state" string="Previous State" type="object"
+                        class="btn-secondary" invisible="state in ('draft','cancel')" />
+                    <button name="action_reset_to_draft" string="Reset to Draft" type="object"
+                        invisible="state in 'draft'" />
+                    <button name="action_create_ipd_payment" string="Create Payment" type="object"
+                        class="btn-outline-info"
+                        invisible="state in ('cancel','draft','confirmed') or ipd_payment_state in 'fully_paid'" />
+                    <button name="action_refund_ipd_payment" string="Refund" type="object"
+                        class="btn-warning" invisible="state in ('cancel','draft','confirmed') or ipd_payment_state == 'not_paid'"/>
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="draft,confirmed,hospitalized,discharge_requested,discharged,done,cancel" />
+                </header>
+                <sheet>
+                    <widget name="web_ribbon"
+                        title="Not Paid"
+                        bg_color="bg-dark"
+                        invisible="ipd_payment_state != 'not_paid'" />
+                    <widget name="web_ribbon"
+                        title="Fully Paid"
+                        bg_color="bg-success"
+                        invisible="ipd_payment_state != 'fully_paid'" />
+                    <widget name="web_ribbon"
+                        title="Partially Paid"
+                        bg_color="bg-info"
+                        invisible="ipd_payment_state != 'partially_paid'" />
+                    <widget name="web_ribbon"
+                        title="Fully Reversed"
+                        bg_color="bg-danger"
+                        invisible="ipd_payment_state != 'fully_reversed'" />
+                    <widget name="web_ribbon"
+                        title="Partially Reversed"
+                        bg_color="bg-warning"
+                        invisible="ipd_payment_state != 'partially_reversed'" />
+
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object"
+                            name="action_show_accommodation" icon="fa-bed">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value" widget="statinfo">Accommodation</span>
+                            </div>
+                        </button>
+
+                        <button class="oe_stat_button" name="%(report_discharge_summary)d" type="action" style ="margin-left: 5px;"
+                        string="Discharge Summary" icon="fa-print">
+                        <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value" widget="statinfo">Discharge Summary</span>
+                            </div>
+                            </button>
+
+                    </div>
+                    <group>
+                        <group>
+                            <div class="oe_title">
+                                <h1>
+                                    <field name="name" class="custom_field_class"/>
+                                </h1>
+                            </div>
+
+                            <field name="patient_id" required="1"
+                                readonly="state not in ('draft','confirmed')" />
+                            <field name="physician_id" required="1"
+                                readonly="state not in ('draft','confirmed')" />
+                            <field name="attending_physician_ids" widget="many2many_tags"
+                                readonly="state not in ('draft','confirmed')" />
+                            <field name="procedure_type_id"
+                                readonly="state not in ('draft','confirmed')" />
+                            <field name="gender" required="1"
+                                readonly="state not in ('draft','confirmed')" />
+                            <field name="date_of_birth"
+                                readonly="state not in ('draft','confirmed')" />
+                            <field name="age" readonly="state not in ('draft','confirmed')" />
+                            <field name="phone" readonly="state not in ('draft','confirmed')" />
+                            <field name="referred_by" readonly="state not in ('draft','confirmed')" />
+                            <field name="patient_category_id"
+                                readonly="state not in ('draft','confirmed')" />
+                        </group>
+                        <group>
+                        <group style="width:500px;">
+                            <field name="admission_date"
+                                readonly="state not in ('draft','confirmed')" />
+                            <field name="discharge_date" />
+
+                            <field name="ward_id"
+                                widget="selection" domain="[('state','=','available')]"
+                                required="state != 'draft'"
+                                readonly="state not in ('draft','confirmed')" />
+                            <field name="bed_id"
+                                widget="selection"
+                                domain="[('state','=','free'),('ward_id','=',ward_id)]"
+                                required="state != 'draft'"
+                                readonly="state not in ('draft','confirmed')" 
+                                style="'width':100px;"/></group>
+                            <field name="ipd_payment_state" invisible="1" />
+                            <separator string="Amount Details" colspan="4" />
+
+                            <group name="financial_details_left">
+                                <field name="total_ipd_amount" string="Total Amount"
+                                    widget="monetary" />
+                                <field name="ipd_discount_amount" string="Discount Amount"
+                                    widget="monetary" />
+                                <field name="ipd_payable_amount" string="Payable Amount"
+                                    widget="monetary" readonly="1" />
+                            </group>
+
+                            <group name="financial_details_right">
+                                <field name="ipd_total_paid_amount" string="Paid Amount"
+                                    widget="monetary" readonly="1" />
+                                <field name="ipd_total_refunded_amount" string="Refunded Amount"
+                                    widget="monetary" readonly="1" />
+                                <field name="ipd_total_received_amount" string="Total Received"
+                                    widget="monetary" readonly="1" />
+                                <field name="ipd_amount_pending" string="Pending Amount"
+                                    widget="monetary" readonly="1" />
+                            </group>
+
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Patient Information">
+                            <group>
+                                <group>
+                                    <label for="street" string="Address" />
+                                    <div class="o_address_format">
+                                        <field name="street" placeholder="Address line 1"
+                                            class="o_address_street"
+                                        />
+                                        <field name="street2" placeholder="Address line 2"
+                                            class="o_address_street"
+                                        />
+                                        <field name="city" placeholder="City" class="o_address_city"
+                                        />
+                                        <field name="state_id" class="o_address_state"
+                                            placeholder="State" options='{"no_open": True}'
+                                            context="{'country_id': country_id, 'zip': zip}"
+                                            domain="[('country_id','=','India')]" />
+                                        <field name="zip" placeholder="ZIP" class="o_address_zip"
+                                        />
+                                        <field name="country_id" placeholder="Country"
+                                            class="o_address_country"
+                                            options='{"no_open": True, "no_create": True}'
+                                        />
+                                    </div>
+                                </group>
+
+                                <group name="patient_relative_details"
+                                    string="Patient Relative Details">
+                                    <field name="patient_relative_name" />
+                                    <field name="patient_relative_relation" />
+                                    <field name="patient_relative_number" />
+                                </group>
+                                <group name="basic_details">
+                                    <field name="aadhar" />
+                                    <field name="pan" />
+                                    <field name="mobile" widget="phone" />
+                                    <field name="email" />
+                                    <field name="blood_group"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="Charges" name="charges">
+                            <field name="hms_services_line_ids">
+                                <list string="Charges" editable="bottom">
+                                    <field name="datetime" />
+                                    <field name="service_id" />
+                                    <field name="price" />
+                                    <field name="quantity" />
+                                    <field name="add_in_bill" />
+                                </list>
+                            </field>
+                        </page>
+
+                        <page string="Payments" invisible="state in ('draft','confirmed')">
+                            <field name="ipd_payment_line_ids" context="{'default_patient_id': patient_id}">
+                                <list name="payment_lines" editable="bottom">
+                                    <field name="name" />
+                                    <field name="patient_id" readonly="1"/>
+                                    <field name="payment_date" />
+                                    <field name="payment_mode" />
+                                    <field name="payment_amount" />
+                                    <field name="payment_type" />
+                                    <field name="payment_datetime" readonly="0" />
+                                </list>
+                            </field>
+
+                            <group col="4" class="oe_subtotal_footer">
+                                <field name="ipd_total_paid_amount" string="Total Paid"
+                                    widget="monetary" />
+                                <field name="ipd_total_refunded_amount" string="Total Refunded"
+                                    widget="monetary" />
+                                <field name="ipd_total_received_amount" string="Total Received"
+                                    widget="monetary" />
+                            </group>
+                        </page>
+
+
+                        
+
+                <page name="discharge_summary" string="Discharge Summary">
+                    <form>
+                        <sheet>
+                            <group>
+                                    <!-- this field gave error in hospitalization upon creating a new patient -->
+                                    <!-- <field name="patient_id" readonly="1" /> -->
+                                    <field name="free_follow_up" class="custom_field_class"/>
+                                    <field name="icd_code" class="custom_field_class"/>
+                                    <field name="past_history" class="custom_field_class"/>
+                                    <field name="admission_reason" class="custom_field_class"/>
+                                    <field name="dos" class="custom_field_class"/>
+                                    <field name="procedure_performed" class="custom_field_class"/>   
+                                    <field name="date_of_investigation" class="custom_field_class"/>
+                                    <field name="investigation_result" class="custom_field_class"/> 
+                                    <!-- <field name="prescription_line_ids">
+                                        <list editable="bottom">
+                                            <field name="eye_selection" string="Eye"/>
+                                            <field name="product_id" string="Medicine Name"/>
+                                            <field name="common_dosage_id" string="Frequency"/>
+                                            <field name="short_comment_id" string="Duration"/>
+
+                                        </list>
+                                    </field> -->
+                                    <!-- <field name="new_line_ids">
+                                        <list editable="bottom">
+                                            <field name="follow_up"/>
+                                            <field name="clinical_examination"/>
+                                            <field name="treatment"/>
+                                        </list>
+                                    </field> -->
+                                    
+
+                                
+                            </group>
+                            <group>
+                                <group style="width:34%">
+                                    <field name="hbsag" class ="custom_field_class"/>
+                                </group>
+                                <group style="width:33%">
+                                    <field name="hiv" class = "custom_field_class"/>
+                                </group>
+                                <group style="width:33%">
+                                    <field name="hcv" class = "custom_field_class"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group style="width:34%">
+                                    <field name="hb" class = "custom_field_class"/>
+                                </group>
+                                <group style="width:33%">
+                                    <field name="plt" class = "custom_field_class"/>
+                                </group>
+                                <group style="width:33%">
+                                    <field name="bsr" class = "custom_field_class"/>
+                                </group>
+                            </group>
+                            <separator string="Urine Examination"/>
+                            <group>
+                                <group style="width:34%">
+                                    <field name="sugar" class = "custom_field_class"/>
+                                </group>
+                                <group style="width:33%">
+                                    <field name="albumin" class = "custom_field_class"/>
+                                </group>
+                                <group style="width:33%">
+                                    <field name="pus_cells" class = "custom_field_class"/>
+                                </group>
+                            </group>
+                            
+
+                            <group>
+                                <!-- <field name="dos" />
+                                <field name="procedure_performed" /> -->
+                                <separator string="Diagnosis"/>
+                                <div style="width:50%">
+                                <table colspan="12">
+                                    <tbody>
+                                        <tr>
+                                            <td style="border:1px solid black;background-color:#ebdfe1;width:30%;">
+                                                <strong>Right Eye
+                                                    <i class="fa fa-eye" aria-hidden="true"/>
+                                                </strong>
+                                            </td>
+                                            <td>
+                                                <field name="diagnosis_details_re"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border:1px solid black;background-color:#ebdfe1;width:30%;">
+                                                <strong>Left Eye
+                                                    <i class="fa fa-eye" aria-hidden="true"/>
+                                                </strong>
+                                            </td>
+                                            <td>
+                                                <field name="diagnosis_details_le"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table></div>
+                                
+                            </group>
+
+
+                            <group>
+                                <separator string="POST-OP MEDICATIONS:"/>
+
+                                <field name="prescription_lines_ids" string="">
+                                    <list editable="bottom">
+                                        <field name="eye_selection" string="Eye" class="custom_field_class"/>
+                                        <field name="product_id" string="Medicine Name" class="custom_field_class"/>
+                                        <field name="frequency_id" string="Frequency" class="custom_field_class"/>
+                                        <field name="from_date" string="Duration" widget="daterange" options="{'related_end_date': 'to_date'}" class="custom_field_class"/>
+                                        <field name="to_date" widget="daterange" options="{'related_start_date': 'from_date'}" nolabel="1" class="custom_field_class"/>
+                                    </list>
+                                </field>
+                                <br></br>
+                                <br></br>
+                                <field name="follow_up_line_ids" string="">
+                                    <list editable="bottom">
+                                        <field name="follow_up" width="10" class="custom_field_class"/>
+                                        <field name="clinical_examination" width="50" class="custom_field_class"/>
+                                        <field name="treatment" width="50" class="custom_field_class"/>
+                                    </list>
+                                </field>
+                                <br></br>
+                                <br></br>
+
+                            </group>
+                            <style>
+                            .custom_field_class{
+                                border:0.5px solid #d5d5d5;
+                            }
+
+                            field {
+                                border : 0.5px solid #000 !important;
+                            }
+                            </style>
+                        </sheet>
+                    </form>
+                </page>
+                        <page string="Doctor Notes">
+                            <field name="doctor_notes" placeholder="Doctor Notes......" />
+                        </page>
+                    </notebook>
+                <style>
+                    :root {
+                    --primary-purple: #5E72E4;
+                    --border-color: #2c5282;
+                    }
+                    table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    font-size: 15px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    }
+                    th {
+                    background-color: var(--primary-purple);
+                    color: white;
+                    padding: 6px 10px;
+                    text-align: left;
+                    border: 1px solid var(--border-color);
+                    }
+                    td {
+                    padding: 2px 3px;
+                    border: 1px solid var(--border-color);
+                    }
+                    tbody tr:nth-child(even) {
+                    background-color: #f8f9fe;
+                    }
+
+                    strong {
+                    font-size: 16px;
+                    color: Black;
+                    display: block;
+                    margin-bottom: 4px;
+                    margin-left: 4px;
+                    margin-top: 4px;
+                    }
+                    .fa-eye {
+                    color: Black;
+                    margin-left: 4px;
+
+                    }
+                </style>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_tcb_hospitalization_search" model="ir.ui.view">
+        <field name="name">tcb.hospitalization.search</field>
+        <field name="model">tcb.hospitalization</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="patient_id" />
+                <field name="physician_id" />
+                <field name="admission_date" />
+                <filter string="Draft" name="state_draft" domain="[('state', '=', 'draft')]" />
+                <filter string="Confirmed" name="state_confirm" domain="[('state', '=', 'confirm')]" />
+                <filter string="Hospitalized" name="state_hospitalized"
+                    domain="[('state', '=', 'hospitalized')]" />
+                <filter string="Discharged" name="state_discharged"
+                    domain="[('state', '=', 'discharged')]" />
+            </search>
+        </field>
+    </record>
+
+    <!-- Menu Items -->
+    <!-- Top Menu -->
+    <menuitem id="menu_tcb_hospitalization_main" name="Hospitalization" sequence="11" />
+
+    <!-- Submenu -->
+    <menuitem id="menu_tcb_hospitalization_sub" name="Hospitalizations"
+        parent="menu_tcb_hospitalization_main" action="action_tcb_hospitalization" sequence="1" />
+</odoo>

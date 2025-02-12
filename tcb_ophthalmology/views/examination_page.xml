@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="ophthalmology_form_view_inherit_for_examination_page" model="ir.ui.view">
+        <field name="name">ophthalmology.form.view.inherit.for.examination.page</field>
+        <field name="model">tcb.ophthalmology.evaluation</field>
+        <field name="inherit_id" ref="tcb_ophthalmology.ophthalmology_form_view_inherit_for_refraction_readings_page" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='refraction_readings']" position="after">
+                <page name="ophthalmology_examination" string="Examination">
+                    <div style="display: flex; width: 100%;">
+                        <div class="examination-table-container">
+                            <table class="examination-table">
+                                <thead>
+                                    <tr>
+                                        <th>Examination</th>
+                                        <th>Right Eye</th>
+                                        <th>Left Eye</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="field-label" style="width: 145px">Orbit</td>
+                                        <td class="field-value-re">
+                                            <field name="orbit_re" />
+                                        </td>
+                                        <td class="field-value-le">
+                                            <field name="orbit_le" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field-label">Lids and Adnexa</td>
+                                        <td class="field-value-re">
+                                            <field name="lids_and_adnexa_re" />
+                                        </td>
+                                        <td class="field-value-le">
+                                            <field name="lids_and_adnexa_le" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field-label">Conjunctiva</td>
+                                        <td class="field-value-re">
+                                            <field name="conjunctiva_re" />
+                                        </td>
+                                        <td class="field-value-le">
+                                            <field name="conjunctiva_le" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field-label">Sclera</td>
+                                        <td class="field-value-re">
+                                            <field name="sclera_re" />
+                                        </td>
+                                        <td class="field-value-le">
+                                            <field name="sclera_le" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field-label">Cornea</td>
+                                        <td class="field-value-re">
+                                            <field name="cornea_re" />
+                                        </td>
+                                        <td class="field-value-le">
+                                            <field name="cornea_le" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field-label">Anterior Chamber</td>
+                                        <td class="field-value-re">
+                                            <field name="anterior_chamber_re" />
+                                        </td>
+                                        <td class="field-value-le">
+                                            <field name="anterior_chamber_le" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field-label">Pupil</td>
+                                        <td class="field-value-re">
+                                            <field name="pupil_re" />
+                                        </td>
+                                        <td class="field-value-le">
+                                            <field name="pupil_le" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field-label">Iris</td>
+                                        <td class="field-value-le">
+                                            <field name="iris_le" />
+                                        </td>
+                                        <td class="field-value-re">
+                                            <field name="iris_re" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field-label">Lens</td>
+                                        <td class="field-value-re">
+                                            <field name="lens_re" />
+                                        </td>
+                                        <td class="field-value-le">
+                                            <field name="lens_le" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field-label">IOP</td>
+                                        <td class="field-value-re">
+                                            <field name="iop_re" />
+                                        </td>
+                                        <td class="field-value-le">
+                                            <field name="iop_le" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field-label">Fundus</td>
+                                        <td class="field-value-re">
+                                            <field name="fundus_re" />
+                                        </td>
+                                        <td class="field-value-le">
+                                            <field name="fundus_le" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field-label">EDM</td>
+                                        <td class="field-value-re">
+                                            <field name="edm_re" />
+                                        </td>
+                                        <td class="field-value-le">
+                                            <field name="edm_le" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field-label">DUCT</td>
+                                        <td class="field-value-re">
+                                            <field name="duct_re" />
+                                        </td>
+                                        <td class="field-value-le">
+                                            <field name="duct_le" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+
+                            </table>
+                            <div style="display: flex;">
+                                <table class="examination-table" style="width:382px;">
+                                    <tbody>
+                                        <tr>
+                                            <td class="field-label" style="width: 145px">BP</td>
+                                            <td class="field-value-re">
+                                                <field name="bp" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="field-label">FBS</td>
+                                            <td class="field-value-re">
+                                                <field name="fbs" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="field-label">PPBS</td>
+                                            <td class="field-value-re">
+                                                <field name="ppbs" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="field-label">HbA1C</td>
+                                            <td class="field-value-re">
+                                                <field name="hba1c" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="field-label">RBS</td>
+                                            <td class="field-value-re">
+                                                <field name="rbs" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="examination-table-container">
+                                    <table style="width: 100%; height: 100%; padding-left: 2px;">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2"
+                                                    style="background-color: #5E72E4; color: #fff; font-weight: bold; padding: 8px;">Nutrition
+                                                    Growth</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="field-label"
+                                                    style="padding-left: 8px; border: 1px solid #2c5282">
+                                                    Height</td>
+                                                <td class="field-value"
+                                                    style="padding-left: 8px; border: 1px solid #2c5282">
+                                                    <field name="nutrition_growth_height" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="field-label"
+                                                    style="padding-left: 8px; border: 1px solid #2c5282">
+                                                    Weight</td>
+                                                <td class="field-value"
+                                                    style="padding-left: 8px; border: 1px solid #2c5282">
+                                                    <field name="nutrition_growth_weight" />
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div style = "display: flex; flex-direction: column">
+                        <div style="padding-left: 2px;">
+                            <table style="padding-left: 2px; border: 1px solid #2c5282 ;width: 825px;">
+                                <tr>
+                                    <th colspan="4"
+                                        style="background-color: #5E72E4; color: #fff; font-weight: bold; padding: 8px;">
+                                        RETINOSCOPY</th>
+                                </tr>
+                                <tr>
+                                    <td style="width: 50%">
+                                        <table style="width: 100%; border-collapse: collapse;">
+                                            <tr>
+                                                <th colspan="3"
+                                                    style="text-align: center; border: 1px solid #2c5282; padding: 4px; font-weight: bold;">
+                                                    RE</th>
+                                            </tr>
+                                            <tr>
+                                                <td
+                                                    style="width: 40%; padding: 4px; border: 1px solid #2c5282;">
+                                                    <field name="retinoscopy_axis_1_re"
+                                                        placeholder="Axis 1" style="width: 150px"/>
+                                                </td>
+                                                <td
+                                                    style="width: 40%; padding: 4px; border: 1px solid #2c5282; font-weight: bold;">
+                                                    Axis:
+                                                </td>
+                                                <td
+                                                    style="width: 60%; padding: 4px; border: 1px solid #2c5282;">
+                                                    <field name="retinoscopy_axis_2_re"
+                                                        placeholder="Axis 2" style="width: 150px"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td
+                                                    style="width: 40%; padding: 4px; border: 1px solid #2c5282;">
+                                                    <field name="retinoscopy_axis_3_re"
+                                                        placeholder="Axis 3" style="width: 150px"/>
+                                                </td>
+                                                <td
+                                                    style="width: 40%; padding: 4px; border: 1px solid #2c5282; font-weight: bold;">
+                                                    Axis:
+                                                </td>
+                                                <td
+                                                    style="width: 60%; padding: 4px; border: 1px solid #2c5282;">
+                                                    <field name="retinoscopy_axis_4_re"
+                                                        placeholder="Axis 4" style="width: 150px"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td style="width: 50%">
+                                        <table style="width: 100%; border-collapse: collapse;">
+                                            <tr>
+                                                <th colspan="3"
+                                                    style="text-align: center; border: 1px solid #2c5282; padding: 4px; font-weight: bold;">
+                                                    LE</th>
+                                            </tr>
+                                            <tr>
+                                                <td
+                                                    style="width: 40%; padding: 4px; border: 1px solid #2c5282;">
+                                                    <field name="retinoscopy_axis_1_le"
+                                                        placeholder="Axis 1" style="width: 150px"/>
+                                                </td>
+                                                <td
+                                                    style="width: 40%; padding: 4px; border: 1px solid #2c5282; font-weight: bold;">
+                                                    Axis:
+                                                </td>
+                                                <td
+                                                    style="width: 60%; padding: 4px; border: 1px solid #2c5282;">
+                                                    <field name="retinoscopy_axis_2_le"
+                                                        placeholder="Axis 2" style="width: 150px"/>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td
+                                                    style="width: 40%; padding: 4px; border: 1px solid #2c5282;">
+                                                    <field name="retinoscopy_axis_3_le"
+                                                        placeholder="Axis 3" style="width: 150px"/>
+                                                </td>
+                                                <td
+                                                    style="width: 40%; padding: 4px; border: 1px solid #2c5282; font-weight: bold;">
+                                                    Axis:
+                                                </td>
+                                                <td
+                                                    style="width: 60%; padding: 4px; border: 1px solid #2c5282;">
+                                                    <field name="retinoscopy_axis_4_le"
+                                                        placeholder="Axis 4" style="width: 150px"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th colspan="4"
+                                        style="background-color: #5E72E4; color: #fff; font-weight: bold; padding: 8px;">DILATED
+                                        RETINOSCOPY</th>
+                                </tr>
+                                <tr>
+                                    <td style="width: 50%">
+                                        <table style="width: 100%; border-collapse: collapse;">
+                                            <tr>
+                                                <td
+                                                    style="width: 40%; padding: 4px; border: 1px solid #2c5282;">
+                                                    <field name="dilated_retinoscopy_axis_1_re"
+                                                        placeholder="Axis 1" style="width: 150px"/>
+                                                </td>
+                                                <td
+                                                    style="width: 40%; padding: 4px; border: 1px solid #2c5282; font-weight: bold;">
+                                                    Axis:
+                                                </td>
+                                                <td
+                                                    style="width: 60%; padding: 4px; border: 1px solid #2c5282;">
+                                                    <field name="dilated_retinoscopy_axis_2_re"
+                                                        placeholder="Axis 2" style="width: 150px"/>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td
+                                                    style="width: 40%; padding: 4px; border: 1px solid #2c5282;">
+                                                    <field name="dilated_retinoscopy_axis_3_re"
+                                                        placeholder="Axis 3" style="width: 150px"/>
+                                                </td>
+                                                <td
+                                                    style="width: 40%; padding: 4px; border: 1px solid #2c5282; font-weight: bold;">
+                                                    Axis:
+                                                </td>
+                                                <td
+                                                    style="width: 60%; padding: 4px; border: 1px solid #2c5282;">
+                                                    <field name="dilated_retinoscopy_axis_4_re"
+                                                        placeholder="Axis 4" style="width: 150px"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td style="width: 50%">
+                                        <table style="width: 100%; border-collapse: collapse;">
+                                            <tr>
+                                                <td
+                                                    style="width: 40%; padding: 4px; border: 1px solid #2c5282;">
+                                                    <field name="dilated_retinoscopy_axis_1_le"
+                                                        placeholder="Axis 1" style="width: 150px"/>
+                                                </td>
+                                                <td
+                                                    style="width: 40%; padding: 4px; border: 1px solid #2c5282; font-weight: bold;">
+                                                    Axis:
+                                                </td>
+                                                <td
+                                                    style="width: 60%; padding: 4px; border: 1px solid #2c5282;">
+                                                    <field name="dilated_retinoscopy_axis_2_le"
+                                                        placeholder="Axis 2" style="width: 150px"/>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td
+                                                    style="width: 40%; padding: 4px; border: 1px solid #2c5282;">
+                                                    <field name="dilated_retinoscopy_axis_3_le"
+                                                        placeholder="Axis 3" style="width: 150px"/>
+                                                </td>
+                                                <td
+                                                    style="width: 40%; padding: 4px; border: 1px solid #2c5282; font-weight: bold;">
+                                                    Axis:
+                                                </td>
+                                                <td
+                                                    style="width: 60%; padding: 4px; border: 1px solid #2c5282;">
+                                                    <field name="dilated_retinoscopy_axis_4_le"
+                                                        placeholder="Axis 4" style="width: 150px"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="1" style="padding: 4px; border: 1px solid #2c5282">
+                                        <div class="field-label">Dialated Retinoscopy Remarks:</div>
+                                        <field name="dilated_retinoscopy_remarks"
+                                            placeholder="Enter remarks here..." style="width: 100%;" />
+                                    </td>
+                                    <td colspan="3" style="padding: 4px; border: 1px solid #2c5282">
+                                        <div class="field-label">Medication History:</div>
+                                        <field name="medication_history"
+                                            placeholder="Enter medication history..."
+                                            style="width: 100%;" />
+                                    </td>
+                                </tr>
+                            
+                            </table>
+                        </div>
+                    <div style="display: flex; margin-top: 3px;border: 1px solid #2c5282; height: 270px; margin-left:2px">
+                        <span style="height: 40px; margin-left: 10px;">
+                            <h3>Gonioscopy</h3>
+                        </span>
+                        <div class="cross-container">
+                            <center>
+                                <h3>R <i class="fa fa-eye" aria-hidden="true" />
+                                </h3>
+                            </center>
+                            <br />
+                            <div class="line vertical" style="left:20%;" />
+                            <div class="line horizontal" style="left:86%;" />
+                            <field
+                                name="re_gon_top_val"
+                                class="field"
+                                style="top:16%;right: 6%% !important;width:40%; border: 1px solid #2c5282;" />
+                            <field
+                                name="re_gon_left_val"
+                                class="field" style="left:20%;top:45%;width:40%; border: 1px solid #2c5282;" />
+                            <field
+                                name="re_gon_right_val"
+                                class="field" style="right:-30%;top:45%;width:40%; border: 1px solid #2c5282;" />
+                            <field
+                                name="re_gon_bottom_val"
+                                class="field" style="top:80%;left:53%;width:40%; border: 1px solid #2c5282;" />
+                        </div>
+                        
+                        <div class="cross-container" style = "margin-left: 60px;">
+                            <center>
+                                <h3>L <i class="fa fa-eye" aria-hidden="true" />
+                                </h3>
+                            </center>
+                            <br />
+                            <div class="line vertical" style="left:20%;" />
+                            <div class="line horizontal" style="left:86%;" />
+                            <field
+                                name="le_gon_top_val"
+                                class="field"
+                                style="top:16%;right: 6%% !important;width:40%; border: 1px solid #2c5282;"/>
+                            <field
+                                name="le_gon_left_val"
+                                class="field" style="left:20%;top:45%;width:40%; border: 1px solid #2c5282;" />
+                            <field
+                                name="le_gon_right_val"
+                                class="field" style="right:-30%;top:45%;width:40%; border: 1px solid #2c5282;" />
+                            <field
+                                name="le_gon_bottom_val"
+                                class="field" style="top:80%;left:53%;width:40%; border: 1px solid #2c5282;" />
+                        </div>
+                    </div>
+                    <style>
+                        .gonioscopy-details {
+                            width: 100%;
+                            margin-top: 3px;
+                            border-collapse: collapse;
+                            font-size: 14px;
+                            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                        }
+                        
+                        .gonioscopy-details td {
+                            padding: 4px 8px;
+                            border: 1px solid #2c5282;
+                            color: #4a5568;
+                        }
+                        
+                        .gonioscopy-details td:nth-child(odd) {
+                            font-weight: bold;
+                            background-color: #f8f9fe;
+                            width: 25%;
+                        }
+                        
+                        .gonioscopy-details td:nth-child(even) {
+                            width: 25%;
+                        }
+                        
+                        .gonioscopy-details field {
+                            width: 100%;
+                            padding: 2px 4px;
+                            color: #2c5282;
+                        }
+                        </style>
+                        
+                        <div class="gonioscopy-details-container" style ="margin-left:2px">
+                            <table class="gonioscopy-details">
+                                <tr>
+                                    <td>TM-Pigmentation</td>
+                                    <td><field name="tm_pigmentation" style = "width: 200px" /></td>
+                                    <td>Impression</td>
+                                    <td ><field name="impression" style = "width: 200px" /></td>
+                                </tr>
+                                <tr>
+                                    <td>IRIS Configuration</td>
+                                    <td><field name="iris_configuration" style = "width: 200px" /></td>
+                                    <td colspan="2"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    
+            
+                </div>
+                        <style>
+                            .examination-table-container {
+                            width: 40%;
+                            float: left;
+                            margin-right: 0%;
+
+                            border: 1px solid #2c5282;
+                            }
+
+                            .examination-table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            font-size: 14px;
+                            border-radius: 8px;
+                            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                            }
+
+                            .examination-table thead {
+                            background-color: #5E72E4;
+                            color: #fff;
+                            font-weight: bold;
+                            border-radius: 8px;
+                            border: 1px solid #2c5282;
+                            }
+
+                            .examination-table th,
+                            .examination-table td {
+                            padding: 3px 6px;
+                            text-align: left;
+                            border: 1px solid #2c5282;
+                            }
+
+                            .examination-table tbody tr:nth-child(even) {
+                            background-color: #f8f9fe;
+                            }
+
+                            .field-label {
+                            font-weight: bold;
+                            color: #4a5568;
+                            }
+
+                            .field-value-le,
+                            .field-value-re {
+                            color: #2c5282;
+                            border: 1px solid #2c5282;
+                            }
+
+                            .nutrition-growth-table-container {
+                            width: 28%;
+                            float: left;
+                            }
+
+                            .nutrition-growth-table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            font-size: 14px;
+                            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                            }
+
+                            .nutrition-growth-table thead {
+                            background-color: #5E72E4;
+                            color: #fff;
+                            font-weight: bold;
+                            }
+
+                            .nutrition-growth-table th,
+                            .nutrition-growth-table td {
+                            padding: 12px 16px;
+                            text-align: left;
+                            }
+
+                            .nutrition-growth-table tbody tr:nth-child(even) {
+                            background-color: #f8f9fe;
+                            }
+
+                            .field-value {
+                            color: #2c5282;
+                            }
+                            .retinoscopy-table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            margin-top: 10px;
+                            }
+
+                            .retinoscopy-table th {
+                            background-color: #5E72E4;
+                            color: #fff;
+                            padding: 8px;
+                            text-align: center;
+                            border: 1px solid #2c5282;
+                            }
+
+                            .retinoscopy-table td {
+                            padding: 4px;
+                            border: 1px solid #2c5282;
+                            }
+
+                            .retinoscopy-remarks {
+                            width: 100%;
+                            padding: 8px;
+                            margin-top: 10px;
+                            }
+
+                            .medication-history {
+                            width: 100%;
+                            padding: 8px;
+                            margin-top: 10px;
+                            }
+
+                        </style>
+                    </div>
+
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
