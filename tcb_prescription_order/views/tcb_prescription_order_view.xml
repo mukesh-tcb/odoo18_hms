@@ -34,9 +34,8 @@
             <field name="arch" type="xml">
                 <form string="Prescription Order">
                     <header>
-                        <button name="action_prescribe_with_payment" type="object" string="Prescribe With Payment" class="btn-primary"/>
-                        <button name="action_prescribe_without_payment" type="object" string="Prescribe Without Payment" invisible="state not in 'draft'" class="btn-primary"/>
-                        <button name="action_cancel" type="object" string="Cancel" invisible="state not in 'draft'" class="btn-danger"/>
+                        <button name="action_prescribe" type="object" string="Prescribe" class="btn-primary" invisible="state not in 'draft'"/>
+                        <button name="action_cancel" type="object" string="Cancel" invisible="state in 'cancelled'" class="btn-warning"/>
                         <button name="action_reset_to_draft" type="object" string="Reset to Draft" invisible="state in 'draft'"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,prescribed,cancelled"/>
                     </header>

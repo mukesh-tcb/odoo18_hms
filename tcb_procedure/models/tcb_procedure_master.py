@@ -8,4 +8,6 @@ class TCBProcedureMaster(models.Model):
 
     name = fields.Char(string="Name", required=True)
     procedure_price = fields.Float(string="Price", required=True)
-
+    product_id = fields.Many2one('product.template', string='Product')
+    
+    

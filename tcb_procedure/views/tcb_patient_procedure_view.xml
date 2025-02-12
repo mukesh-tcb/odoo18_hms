@@ -24,12 +24,15 @@
         <field name="arch" type="xml">
             <form string="Patient Procedure">
                 <header>
-                    <button name="action_confirm_with_payment" string="Confirm With Payment" type="object" invisible="state != 'draft' and procedure_payment_state in 'fully_paid'" class="oe_highlight"/>
+                    <button name="action_confirm_with_payment" string="Confirm With Payment" type="object" invisible="state not in ('draft')" class="oe_highlight"/>
+                    <!-- Duplicate button for create payment in next states -->
+                    <button name="action_confirm_with_payment" string="Create Payment" type="object" invisible="state in ('draft','cancelled') or procedure_payment_state in 'fully_paid'" class="oe_highlight"/>
+                    
                     <button name="action_confirm_without_payment" string="Confirm Without Payment" type="object" invisible="state != 'draft'" class="oe_highlight"/>
-                    <button name="action_refund_procedure" string="Refund" type="object" invisible="state in ('draft', 'cancel') or procedure_payment_state in ('not_paid','fully_reversed')" class="btn-warning"/>
+                    <button name="action_refund_procedure" string="Refund" type="object" invisible="state in ('draft', 'cancelled') or procedure_payment_state in ('not_paid','fully_reversed')" class="btn-warning"/>
                     <button name="action_done" string="Done" type="object" invisible="state != 'running'" class="oe_highlight"/>
-                    <button name="action_cancel" string="Cancel" type="object" invisible="state in 'cancel'"/>
-                    <button name="action_reset_to_draft" string="Reset to Draft" type="object" invisible="state not in 'cancel'"/>
+                    <button name="action_cancel" string="Cancel" type="object" invisible="state in 'cancelled'"/>
+                    <button name="action_reset_to_draft" string="Reset to Draft" type="object" invisible="state not in 'cancelled'"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,running,done"/>
                 </header>
                 <sheet>

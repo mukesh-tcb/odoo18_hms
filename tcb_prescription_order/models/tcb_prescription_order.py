@@ -55,12 +55,9 @@ class TcbPrescriptionOrder(models.Model):
             vals['name'] = self.env['ir.sequence'].next_by_code('tcb.prescription.order') or '/'
         return super(TcbPrescriptionOrder,self).create(vals)
     
-    def action_prescribe_with_payment(self):
+    def action_prescribe(self):
         self.write({'state': 'prescribed'})
-        
-        
-    def action_prescribe_without_payment(self):
-        self.write({'state': 'prescribed'})
+
         
     def action_cancel(self):
         self.write({'state' : 'cancelled'})

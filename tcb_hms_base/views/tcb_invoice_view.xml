@@ -17,9 +17,9 @@
                             class="btn-primary" invisible="state not in 'draft'"/>
                     <button name="action_register_payment" string="Register Payment" type="object"
                         class="btn-primary"
-                        invisible="state in ('cancel','draft') or payment_state in 'fully_paid'"/>
+                        invisible="state in ('cancelled','draft') or payment_state in 'fully_paid'"/>
                     <button name="action_refund_payment" string="Refund" type="object"
-                        class="btn-warning" invisible="state in ('cancel','draft') or payment_state in ('not_paid','fully_reversed')"/>
+                        class="btn-warning" invisible="state in ('cancelled','draft') or payment_state in ('not_paid','fully_reversed')"/>
                     
                     <button name="action_draft" 
                             string="Set to Draft" 

@@ -237,7 +237,7 @@ class TCBInvoice(models.Model):
         })
         # Find and cancel associated payment receipts
         payment_receipts = self.env['tcb.payment.receipt'].search([
-            ('appointment_id', '=', self.id),
+            ('invoice_id', '=', self.id),
             ('state', '!=', 'cancelled')
         ])
         if payment_receipts:
@@ -259,11 +259,7 @@ class TCBInvoice(models.Model):
                 )
         
         return True
-    # def action_cancel(self):
-    #     self.write({
-    #         'state': 'cancelled'
-    #     })
-    # Action to reset to draft
+    
     def action_draft(self):
         self.write({
             'state': 'draft'
@@ -287,7 +283,7 @@ class TCBInvoiceLine(models.Model):
     )
     
     product_id = fields.Many2one(
-        'product.product',
+        'product.template',
         string="Product", 
     )
     

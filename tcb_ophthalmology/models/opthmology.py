@@ -34,6 +34,7 @@ class TCBOphthalmologyEvaluation(models.Model):
     eye_drawing_le_re = fields.Binary(string="Eye Drawing")
     state = fields.Selection([('draft', 'Draft'), 
                             ('in_progress', 'In Progress'),
+                            ('dilation', 'Dilation'),
                             ('submitted', 'Submitted'),
                             ('done', 'Done'),
                             ('cancel', 'Cancel'),
@@ -86,6 +87,7 @@ class TCBOphthalmologyEvaluation(models.Model):
             record.dilation_start_time = fields.Datetime.now()
             record.dilation_end_time = False
             record.is_dilation_running = True
+            record.state = 'dilation'
 
     def action_end_dilation(self):
         """
@@ -99,6 +101,7 @@ class TCBOphthalmologyEvaluation(models.Model):
             # Set end time
             record.dilation_end_time = fields.Datetime.now()
             record.is_dilation_running = False
+            record.state = 'submitted'
 
     @api.depends('dilation_start_time', 'dilation_end_time')
     def _compute_dilation_total_time(self):

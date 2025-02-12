@@ -199,18 +199,25 @@ class TcbPatientProcedure(models.Model):
         if self.invoice_id:
             invoice = self.invoice_id
         else:
-            invoice = self.env['tcb.invoice'].create({
-                'patient_id': self.patient_id.id,
-                'invoice_line_ids': [(0, 0, {
-                    'product_id': self.procedure_line_ids.procedure_id.id,
+            invoice_lines = []
+            for proc_line in self.procedure_line_ids:
+                line_vals = {
+                    'product_id': proc_line.procedure_id.id,
                     'quantity': 1,
-                    'price_unit':self.procedure_line_ids.procedure_price,})],
+                    'price_unit': proc_line.procedure_price,
+                }
+                invoice_lines.append((0, 0, line_vals))
+            
+            invoice_vals = {
+                'patient_id': self.patient_id.id,
+                'invoice_line_ids': invoice_lines, 
                 'appointment_id': self.appointment_id.id,
-                'procedure_id':self.id,
-                'state':'posted',
+                'procedure_id': self.id,
+                'state': 'posted',
                 'physician_id': self.physician_id.id
-                })
-            print("else - ----",invoice)
+            }
+            
+            invoice = self.env['tcb.invoice'].create(invoice_vals)
             self.invoice_id = invoice.id
             
             
