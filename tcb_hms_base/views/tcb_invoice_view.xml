@@ -94,6 +94,7 @@
                             <field name="invoice_line_ids" readonly="state not in ('draft')">
                                 <list editable="bottom">
                                     <field name="product_id"/>
+                                    <field name="invoice_id" optional="hide"/>
                                     <field name="quantity"/>
                                     <field name="price_unit" readonly="0"/>
                                     <field name="subtotal"/>

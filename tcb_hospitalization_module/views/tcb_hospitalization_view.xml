@@ -40,20 +40,27 @@
                     <button name="action_hospitalize" string="Hospitalize" type="object"
                         class="btn-primary" invisible="state not in 'confirmed'" />
                     <button name="action_request_discharge" string="Request Discharge" type="object"
-                        class="btn-primary" invisible="state not in 'hospitalized'" />
+                        class="btn-primary" invisible="state not in 'hospitalized'" confirm="Are You Sure for Requesting Discharge of the Patient ?" />
                     <button name="action_discharge" string="Discharge" type="object"
-                        class="btn-primary" invisible="state not in 'discharge_requested'" />
+                        class="btn-primary" invisible="state not in 'discharge_requested'" confirm="Are You Sure to Discharge the Patient ?" />
                     <button name="action_done" string="Done" type="object" class="btn-success"
                         invisible="state not in 'discharged'" />
                     <button name="action_cancel_hospitalization" string="Cancel" type="object"
                         class="btn-warning" invisible="state in 'cancel'" />
+                    <!-- This previous state button is only for testing and development purpose so when this software will goes to production it should be removed 
+                    becuase it will lead to many bugs and loopholes in flow -->
                     <button name="action_previous_state" string="Previous State" type="object"
                         class="btn-secondary" invisible="state in ('draft','cancel')" />
+                        <!-- ################################### -->
                     <button name="action_reset_to_draft" string="Reset to Draft" type="object"
                         invisible="state in 'draft'" />
+                    <button name="action_ready_for_payment" string="Ready For Payment" type="object"
+                        class="btn-outline-primary" 
+                        invisible="state in ('cancel','draft','confirmed') or  ready_for_payment_bool" 
+                        confirm = "After Pressing ok you will not be able to add more charges lines in charges tab."/>
                     <button name="action_create_ipd_payment" string="Create Payment" type="object"
-                        class="btn-outline-info"
-                        invisible="state in ('cancel','draft','confirmed') or ipd_payment_state in 'fully_paid'" />
+                        class="btn-outline-info" 
+                        invisible="state in ('cancel','draft','confirmed') or ipd_payment_state in 'fully_paid' or total_ipd_amount == 0 or not ready_for_payment_bool"/>
                     <button name="action_refund_ipd_payment" string="Refund" type="object"
                         class="btn-warning" invisible="state in ('cancel','draft','confirmed') or ipd_payment_state == 'not_paid'"/>
                     <field name="state" widget="statusbar"
@@ -82,6 +89,15 @@
                         invisible="ipd_payment_state != 'partially_reversed'" />
 
                     <div class="oe_button_box" name="button_box">
+
+                    <button class="oe_stat_button" name="action_show_invoices" 
+                        type="object" invisible="state in 'draft'" icon="fa-credit-card" >
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value" 
+                                widget="statinfo">Invoices</span><span class="o_stat_value" widget="statinfo">
+                                <field name="invoice_count"/></span>
+                            </div>
+                    </button>
                         <button class="oe_stat_button" type="object"
                             name="action_show_accommodation" icon="fa-bed">
                             <div class="o_field_widget o_stat_info">
@@ -143,6 +159,8 @@
                             <separator string="Amount Details" colspan="4" />
 
                             <group name="financial_details_left">
+                            <field name="invoice_id" readonly="1"/>
+
                                 <field name="total_ipd_amount" string="Total Amount"
                                     widget="monetary" />
                                 <field name="ipd_discount_amount" string="Discount Amount"
@@ -209,30 +227,34 @@
                         </page>
 
                         <page string="Charges" name="charges">
-                            <field name="hms_services_line_ids">
+                            <field name="hms_services_line_ids" context="{'default_invoice_id': invoice_id}" readonly="ready_for_payment_bool">
                                 <list string="Charges" editable="bottom">
                                     <field name="datetime" />
-                                    <field name="service_id" />
-                                    <field name="price" />
-                                    <field name="quantity" />
-                                    <field name="add_in_bill" />
+                                    <field name="service_id"/>
+                                    <field name="price"/>
+                                    <field name="quantity"/>
+                                    <field name="add_in_bill"/>
                                 </list>
                             </field>
                         </page>
 
                         <page string="Payments" invisible="state in ('draft','confirmed')">
                             <field name="ipd_payment_line_ids" context="{'default_patient_id': patient_id}">
-                                <list name="payment_lines" editable="bottom">
+                                <list name="payment_lines" editable="bottom" decoration-danger="payment_type == 'send' and state == 'posted'" 
+                            decoration-warning="state == 'draft'" decoration-success="payment_type == 'receive' and state == 'posted'"
+                            decoration-bold= "state == 'cancelled'">
                                     <field name="name" />
                                     <field name="patient_id" readonly="1"/>
-                                    <field name="payment_date" />
-                                    <field name="payment_mode" />
-                                    <field name="payment_amount" />
-                                    <field name="payment_type" />
+                                    <field name="invoice_id"/>
+                                    <field name="payment_mode"/>
+                                    <field name="payment_amount"/>
+                                    <field name="payment_type"/>
                                     <field name="payment_datetime" readonly="0" />
                                 </list>
                             </field>
-
+                            <group>
+                            <group>
+                            <field name="ready_for_payment_bool" readonly="state  in ('done','cancelled','discharged')"/></group>
                             <group col="4" class="oe_subtotal_footer">
                                 <field name="ipd_total_paid_amount" string="Total Paid"
                                     widget="monetary" />
@@ -240,6 +262,7 @@
                                     widget="monetary" />
                                 <field name="ipd_total_received_amount" string="Total Received"
                                     widget="monetary" />
+                            </group>
                             </group>
                         </page>
 

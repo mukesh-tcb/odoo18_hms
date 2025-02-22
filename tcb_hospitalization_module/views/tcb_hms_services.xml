@@ -20,6 +20,7 @@
         <field name="arch" type="xml">
             <list>
                 <field name="name"/>
+                <field name="product_id"/>
                 <field name="price"/>
                 <field name="max_limit"/>
             </list>
@@ -35,6 +36,7 @@
                 <sheet>
                     <group>
                         <field name="name"/>
+                        <field name="product_id"/>
                         <field name="price"/>
                         <field name="max_limit"/>
                     </group>

@@ -75,13 +75,14 @@ class TCBHospitalization(models.Model):
         ('urgent','Urgent'),
         ('emergency','Emergency')], string='Admission type', default='routine',tracking=True)
     
-    hms_services_line_ids = fields.One2many('tcb.hms.services.lines', 'hospitalization_id', string="Services")
+    hms_services_line_ids = fields.One2many('tcb.hms.services.lines', 'hospitalization_id', string="Services",tracking=True,context={'default_country_id': country_id})
     
     ward_id = fields.Many2one('hospital.ward', ondelete="restrict", string='Ward/Room',tracking=True)
     bed_id = fields.Many2one('hospital.bed', ondelete="restrict", string='Bed No.',tracking=True)
     accommodation_history_ids = fields.One2many("patient.accommodation.history", "hospitalization_id", 
         string="Accommodation History", copy=False,tracking=True)   
     
+    ready_for_payment_bool = fields.Boolean(string="Ready for Payment",tracking=True)
     # Payment fields
     ipd_payment_state = fields.Selection([
         ('not_paid', 'Not Paid'),
@@ -107,6 +108,29 @@ class TCBHospitalization(models.Model):
     
     ipd_total_received_amount = fields.Float(string='Total Receivable Amount',store=True,tracking=True ,compute='_compute_ipd_received_amount')
     
+    invoice_id = fields.Many2one('tcb.invoice', string='Invoice', copy=False,tracking=True)
+    
+    # This is for invoice viewing Smart button 
+    invoice_count = fields.Integer(string="Invoice Count",
+        compute="_compute_invoice_count")
+    
+
+    @api.depends('ipd_payment_line_ids')
+    def _compute_invoice_count(self):
+        for record in self:
+            record.invoice_count = self.env['tcb.invoice'].search_count([('hospitalization_id', '=', record.id)])
+
+    def action_show_invoices(self):
+        return {
+            'name': 'Invoices',
+            'view_mode': 'form,list',
+            'res_model': 'tcb.invoice',
+            'res_id': self.invoice_id.id,
+            'domain': [('patient_id', '=', self.patient_id.id),('hospitalization_id', '=', self.id)],
+            'context':{'create':False},
+            'type': 'ir.actions.act_window',
+        }
+    ###############################################################
     
     #Discharge Summary fields - 
     
@@ -194,8 +218,7 @@ class TCBHospitalization(models.Model):
     @api.depends('hms_services_line_ids')
     def _compute_total_hospitalization_amount(self):
         for rec in self:
-            rec.total_ipd_amount = sum(rec.hms_services_line_ids.mapped('price'))
-            
+            rec.total_ipd_amount = sum(rec.hms_services_line_ids.filtered(lambda obj: obj.add_in_bill).mapped('price'))            
             
 
     @api.constrains('hms_services_line_ids')
@@ -375,14 +398,42 @@ class TCBHospitalization(models.Model):
             'context': {
                 'default_patient_id':self.patient_id.id,
                 'default_hospitalization_id': self.id,
+                'default_invoice_id': self.invoice_id.id,
                 'default_payment_type': 'send',
                 'default_payment_mode': 'cash',
                 'default_payment_amount': self.ipd_total_paid_amount
             }
         }
         
+    def action_ready_for_payment(self):
+        self.ready_for_payment_bool = True
+        
     def action_create_ipd_payment(self):
         self.ensure_one()
+        
+        if self.invoice_id:
+            invoice = self.invoice_id
+        else:
+            invoice_lines = []
+            for service_line in self.hms_services_line_ids:
+                line_vals = {
+                    'product_id': service_line.product_id.id,
+                    'quantity': service_line.quantity,
+                    'price_unit': service_line.price,
+                }
+                invoice_lines.append((0, 0, line_vals))
+            
+            invoice_vals = {
+                'patient_id': self.patient_id.id,
+                'invoice_line_ids': invoice_lines, 
+                'hospitalization_id': self.id,
+                'state': 'posted',
+                'physician_id': self.physician_id.id
+            }
+            
+            invoice = self.env['tcb.invoice'].create(invoice_vals)
+            self.invoice_id = invoice.id
+            
         return {
             'name': 'Confirm Payment',
             'type': 'ir.actions.act_window',
@@ -392,6 +443,7 @@ class TCBHospitalization(models.Model):
             'context': {
                 'default_patient_id':self.patient_id.id,
                 'default_hospitalization_id': self.id,
+                'default_invoice_id': self.invoice_id.id,
                 'default_payment_type': 'receive',
                 'default_payment_mode': 'cash',
                 'default_payment_amount': self.ipd_amount_pending
