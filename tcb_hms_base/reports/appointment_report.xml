@@ -2,7 +2,7 @@
 <odoo>
 
     <template id="appointment_report">
-        <t t-call="web.external_layout">
+        <t t-call="web.external_layout_standard">
         <t t-foreach="docs" t-as="doc">
             <t t-set="doc" t-value="doc.with_context({lang: env.lang})"/>
             <div class="page">

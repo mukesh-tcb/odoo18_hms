@@ -75,7 +75,7 @@ class TCBHospitalization(models.Model):
         ('urgent','Urgent'),
         ('emergency','Emergency')], string='Admission type', default='routine',tracking=True)
     
-    hms_services_line_ids = fields.One2many('tcb.hms.services.lines', 'hospitalization_id', string="Services",tracking=True,context={'default_country_id': country_id})
+    hms_services_line_ids = fields.One2many('tcb.hms.services.lines', 'hospitalization_id', string="Services",tracking=True)
     
     ward_id = fields.Many2one('hospital.ward', ondelete="restrict", string='Ward/Room',tracking=True)
     bed_id = fields.Many2one('hospital.bed', ondelete="restrict", string='Bed No.',tracking=True)

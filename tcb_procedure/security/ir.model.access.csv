@@ -1,5 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
-access_tcb_procedure_master,procedure.master,model_tcb_procedure_master,,1,1,1,1
 access_tcb_patient_procedure,tcb.patient.procedure,model_tcb_patient_procedure,,1,1,1,1
 access_tcb_patient_procedure_line,tcb.patient.procedure.line,model_tcb_patient_procedure_line,,1,1,1,1
