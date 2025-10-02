@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="product.product_template_form_view"/>
             <field name="arch" type="xml">
 
-            <xpath expr="//field[@name='purchase_ok']" position="after">
+            <xpath expr="//div[@name='options']" position="after">
                 <field name="is_medicament_product"/>
                 <label for='is_medicament_product'>Is Medicament Product</label>
             </xpath>
